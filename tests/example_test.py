@@ -12,6 +12,9 @@ def test_that_stb_tester_logo_is_shown():
     stbt.press('KEY_CHANNELUP')
     assert stbt.wait_for_match('stb-tester-logo.png')
 
+def test_that_menu_launches():
+    stbt.press('KEY_MENU')
+    assert stbt.wait_for_match('images/menu_logo.png')
 
 def test_read_menu():
     stbt.press('KEY_CLOSE')
