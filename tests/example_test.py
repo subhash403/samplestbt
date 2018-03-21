@@ -13,6 +13,7 @@ def test_that_stb_tester_logo_is_shown():
     assert stbt.wait_for_match('stb-tester-logo.png')
 
 def test_that_menu_launches():
+    stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
 
