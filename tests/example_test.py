@@ -8,9 +8,18 @@ from requests.auth import HTTPBasicAuth
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
     assert stbt.wait_for_motion()
+    
+def init():
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    stbt.press('KEY_GUIDE')
+    if stbt.wait_for_match('images/black_screen.png'): stbt.press('KEY_POWER')
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_GUIDE')
+    if stbt.wait_for_match('images/black_screen.png'): stbt.press('KEY_POWER')
+    stbt.press('KEY_EXIT')
 
 def test_VOD_ME_6119_tv_shows_launch():
-    for _ in " "*3: stbt.press('KEY_EXIT')
+    init()
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
     stbt.press('KEY_DOWN')
