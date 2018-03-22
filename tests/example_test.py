@@ -52,7 +52,7 @@ def test_login_edge
     uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     http = Net::HTTP.new(uri.host, uri.port)
     request = Net::HTTP::Post.new(uri.request_uri)
-    request.body = "macAddress="+mac_id
+    request.body = "macAddress=3438B77F88F8"
     request.basic_auth("charternet", "Chart3rn3t")
     response = http.request(request)
     assert response.code == 200
