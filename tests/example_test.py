@@ -52,6 +52,7 @@ def test_read_menu():
 def test_login_edge():
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
     r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
+    r = r.json()
     #uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     #http = Net::HTTP.new(uri.host, uri.port)
     #request = Net::HTTP::Post.new(uri.request_uri)
