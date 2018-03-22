@@ -22,6 +22,7 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
     stbt.press('KEY_DOWN')
+    stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     if not stbt.wait_for_match('images/tv_shows_logo.png'): fail("TV Shows not launched")
     macAddress = stbt.get_config("sst", "macAddress")
