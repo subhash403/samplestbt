@@ -47,7 +47,7 @@ def test_read_menu():
     sleep(1)
     print stbt.ocr()
     
-def test_login_edge
+def test_login_edge():
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
     uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     http = Net::HTTP.new(uri.host, uri.port)
