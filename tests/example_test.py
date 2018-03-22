@@ -24,7 +24,11 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_DOWN')
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_for_match('images/tv_shows_logo.png'), "TV Shows not launched"
+    try:
+        assert stbt.wait_for_match('images/tv_shows_logo.png'), "TV Shows not launched"
+    except AssertionError as e:
+        raise
+    
     macAddress = stbt.get_config("sst", "macAddress")
     print (macAddress)
     
