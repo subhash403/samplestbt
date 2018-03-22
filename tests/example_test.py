@@ -3,6 +3,7 @@ import requests
 import stbt
 import time
 import requests
+from requests.auth import HTTPBasicAuth
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
