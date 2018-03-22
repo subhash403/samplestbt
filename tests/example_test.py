@@ -27,6 +27,7 @@ def test_VOD_ME_6119_tv_shows_launch():
     try:
         assert stbt.wait_for_match('images/tv_shows_logo.png'), "TV Shows not launched"
     except AssertionError as e:
+        e.args += ('TV Shows not launched')
         raise
     
     macAddress = stbt.get_config("sst", "macAddress")
