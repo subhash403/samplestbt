@@ -22,7 +22,6 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
     stbt.press('KEY_DOWN')
-    stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/tv_shows_logo.png")), \
     "TV Shows not launched"
@@ -31,7 +30,8 @@ def test_VOD_ME_6119_tv_shows_launch():
     
 def test_VOD_ME_6120_check_tv_shows_filter():
     test_VOD_ME_6119_tv_shows_launch()
-    assert stbt.wait_for_match('images/included_with.png')
+    assert stbt.wait_until(lambda: stbt.match("images/included_with.png")), \
+    "Included With filter not found in TV Shows"
     
 def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
     test_VOD_ME_6119_tv_shows_launch()
