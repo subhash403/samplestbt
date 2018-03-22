@@ -50,7 +50,7 @@ def test_read_menu():
     print stbt.ocr()
     
 def test_login_edge():
-    r = requests.get('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login')
+    r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login')
     r.text()
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
     #r = requests.get('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
