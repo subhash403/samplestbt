@@ -1,7 +1,7 @@
 from time import sleep
 
 import stbt
-
+import time
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
