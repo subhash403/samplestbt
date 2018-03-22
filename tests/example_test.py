@@ -2,6 +2,7 @@ from time import sleep
 import requests
 import stbt
 import time
+import requests
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
@@ -49,11 +50,12 @@ def test_read_menu():
     
 def test_login_edge():
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-    uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
-    http = Net::HTTP.new(uri.host, uri.port)
-    request = Net::HTTP::Post.new(uri.request_uri)
-    request.body = "macAddress=3438B77F88F8"
-    request.basic_auth("charternet", "Chart3rn3t")
-    response = http.request(request)
-    assert response.code == 200
+    r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
+    #uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
+    #http = Net::HTTP.new(uri.host, uri.port)
+    #request = Net::HTTP::Post.new(uri.request_uri)
+    #request.body = "macAddress=3438B77F88F8"
+    #request.basic_auth("charternet", "Chart3rn3t")
+    #response = http.request(request)
+    assert r.code == 200
     #response = requests.post(url, data=data)
