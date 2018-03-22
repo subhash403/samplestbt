@@ -51,13 +51,13 @@ def test_read_menu():
     
 def test_login_edge():
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-    r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
-    r = r.json()
+    r = requests.get('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
+    print r
     #uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     #http = Net::HTTP.new(uri.host, uri.port)
     #request = Net::HTTP::Post.new(uri.request_uri)
     #request.body = "macAddress=3438B77F88F8"
     #request.basic_auth("charternet", "Chart3rn3t")
     #response = http.request(request)
-    assert r.code == 200
+    #assert r.code == 200
     #response = requests.post(url, data=data)
