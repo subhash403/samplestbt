@@ -12,16 +12,16 @@ def test_that_live_tv_is_playing():
 def init():
     for _ in " "*3: stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
-    if stbt.wait_for_match('images/black_screen.png'): stbt.press('KEY_POWER')
+    if stbt.is_screen_black(): stbt.press('KEY_POWER')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
-    if stbt.wait_for_match('images/black_screen.png'): stbt.press('KEY_POWER')
+    if stbt.is_screen_black(): stbt.press('KEY_POWER')
     stbt.press('KEY_EXIT')
 
 def test_VOD_ME_6119_tv_shows_launch():
     init()
     stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu_logo.png')
+    assert stbt.wait_until('images/menu_logo.png')
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_for_match('images/tv_shows_logo.png')
