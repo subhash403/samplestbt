@@ -11,7 +11,7 @@ def test_VOD_VH_6119_tv_shows_launch():
     for _ in " "*3: stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
-    stbt.press('KEY_DOWNARROW')
+    stbt.press('KEY_DOWN_ARROW')
     stbt.press('KEY_SELECT')
     assert stbt.wait_for_match('images/tv_shows_logo.png')
 
