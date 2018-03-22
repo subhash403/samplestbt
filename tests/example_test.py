@@ -18,6 +18,19 @@ def test_VOD_ME_6119_tv_shows_launch():
 def test_VOD_ME_6120_check_tv_shows_filter():
     test_VOD_ME_6119_tv_shows_launch()
     assert stbt.wait_for_match('images/included_with.png')
+    
+def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
+    test_VOD_ME_6119_tv_shows_launch()
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_MENU')
+    assert stbt.wait_for_match('images/menu_logo.png')
+    stbt.press('KEY_ENTER')
+    while True:
+     stbt.press('KEY_DOWN')
+     if stbt.wait_for_match('images/recently_watched.png')
+        break
+    stbt.press('KEY_ENTER')
+    assert not stbt.wait_for_match('images/VOD_page.png')
 
 def test_that_stb_tester_logo_is_shown():
     stbt.press('KEY_CHANNELUP')
