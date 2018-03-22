@@ -69,7 +69,7 @@ def test_login_edge():
     #uri = urlparse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     #http = http.client.HTTPConnection(uri.host, uri.port)
     #This sets up the https connection
-    c = HTTPSConnection("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"))
+    c = HTTPSConnection("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
     #we need to base 64 encode it 
     #and then decode it to acsii as python 3 stores it as a byte string
     userAndPass = b64encode(b""charternet:Chart3rn3t"").decode("ascii")
