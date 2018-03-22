@@ -16,12 +16,7 @@ def test_VOD_ME_6119_tv_shows_launch():
     assert stbt.wait_for_match('images/tv_shows_logo.png')
     
 def test_VOD_ME_6120_check_tv_shows_filter():
-    for _ in " "*3: stbt.press('KEY_EXIT')
-    stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu_logo.png')
-    stbt.press('KEY_DOWN')
-    stbt.press('KEY_ENTER')
-    assert stbt.wait_for_match('images/tv_shows_logo.png')
+    test_VOD_ME_6119_tv_shows_launch()
     assert stbt.wait_for_match('images/included_with.png')
 
 def test_that_stb_tester_logo_is_shown():
