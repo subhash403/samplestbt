@@ -59,5 +59,4 @@ def test_read_menu():
     sleep(1)
     print stbt.ocr()
     
-def test_login_edge():
 
