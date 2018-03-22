@@ -3,9 +3,8 @@ import requests
 import stbt
 import time
 import requests
-from requests.auth import HTTPBasicAuth
-from http.client import HTTPSConnection
-from base64 import b64encode
+import httplib2
+
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
     assert stbt.wait_for_motion()
@@ -62,23 +61,9 @@ def test_read_menu():
     print stbt.ocr()
     
 def test_login_edge():
-    #r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login')
-    #r.text()
-    #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-    #r = requests.get('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
-    #print r
-    #uri = urlparse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
-    #http = http.client.HTTPConnection(uri.host, uri.port)
-    #This sets up the https connection
-    c = HTTPSConnection("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
-    #we need to base 64 encode it 
-    #and then decode it to acsii as python 3 stores it as a byte string
-    userAndPass = b64encode(b"charternet:Chart3rn3t").decode("ascii")
-    headers = { 'Authorization' : 'Basic %s' %  userAndPass }
-    #then connect
-    c.request('GET', '/', headers=headers)
-    #get the response back
-    res = c.getresponse()
-    # at this point you could check the status etc
-    # this gets the page text
-    data = res.read() 
+    h = httplib2.Http(".cache")
+
+    h.add_credentials('name', 'password') # Basic authentication
+
+    resp, content = h.request("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login", "GET", body="foobar")
+
