@@ -28,8 +28,7 @@ def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
     stbt.press('KEY_ENTER')
     while True:
      stbt.press('KEY_DOWN')
-     if stbt.wait_for_match('images/recently_watched.png')
-        break
+     if stbt.wait_for_match('images/recently_watched.png'): break      
     stbt.press('KEY_ENTER')
 
 def test_that_stb_tester_logo_is_shown():
