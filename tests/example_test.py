@@ -5,7 +5,6 @@ import time
 import requests
 from requests.auth import HTTPBasicAuth
 from http.client import HTTPSConnection
-import http.client
 from base64 import b64encode
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
@@ -27,7 +26,8 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_for_match('images/tv_shows_logo.png')
-    print stbt.get_config("sst", "macAddress")
+    macAddress = stbt.get_config("sst", "macAddress")
+    print (macAddress)
     
 def test_VOD_ME_6120_check_tv_shows_filter():
     test_VOD_ME_6119_tv_shows_launch()
