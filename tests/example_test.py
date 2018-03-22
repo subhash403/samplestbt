@@ -2,8 +2,7 @@ from time import sleep
 import requests
 import stbt
 import time
-import requests
-import httplib2
+
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
@@ -61,9 +60,4 @@ def test_read_menu():
     print stbt.ocr()
     
 def test_login_edge():
-    h = httplib2.Http(".cache")
-
-    h.add_credentials('name', 'password') # Basic authentication
-
-    resp, content = h.request("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login", "GET", body="foobar")
 
