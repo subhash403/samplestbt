@@ -5,6 +5,7 @@ import time
 import requests
 from requests.auth import HTTPBasicAuth
 from http.client import HTTPSConnection
+import http.client
 from base64 import b64encode
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
