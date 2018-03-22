@@ -59,16 +59,23 @@ def test_read_menu():
     print stbt.ocr()
     
 def test_login_edge():
-    r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login')
-    r.text()
+    #r = requests.post('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login')
+    #r.text()
     #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
     #r = requests.get('http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login', auth=HTTPBasicAuth('charternet', 'Chart3rn3t'))
     #print r
-    #uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
-    #http = Net::HTTP.new(uri.host, uri.port)
-    #request = Net::HTTP::Post.new(uri.request_uri)
-    ##request.body = "macAddress=3438B77F88F8"
-    #request.basic_auth("charternet", "Chart3rn3t")
-    #response = http.request(request)
-    #assert response.code == 200
-    #response = requests.post(url, data=data)
+    #uri = urlparse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
+    #http = http.client.HTTPConnection(uri.host, uri.port)
+    #This sets up the https connection
+    c = HTTPSConnection("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"))
+    #we need to base 64 encode it 
+    #and then decode it to acsii as python 3 stores it as a byte string
+    userAndPass = b64encode(b""charternet:Chart3rn3t"").decode("ascii")
+    headers = { 'Authorization' : 'Basic %s' %  userAndPass }
+    #then connect
+    c.request('GET', '/', headers=headers)
+    #get the response back
+    res = c.getresponse()
+    # at this point you could check the status etc
+    # this gets the page text
+    data = res.read() 
