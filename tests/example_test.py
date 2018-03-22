@@ -26,6 +26,7 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_for_match('images/tv_shows_logo.png')
+    print stbt.get_config("sst", "macAddress")
     
 def test_VOD_ME_6120_check_tv_shows_filter():
     test_VOD_ME_6119_tv_shows_launch()
