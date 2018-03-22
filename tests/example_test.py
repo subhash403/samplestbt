@@ -1,5 +1,5 @@
 from time import sleep
-
+import requests
 import stbt
 import time
 
@@ -46,3 +46,14 @@ def test_read_menu():
     stbt.press('KEY_MENU')
     sleep(1)
     print stbt.ocr()
+    
+def test_login_edge
+    #url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
+    uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login")
+    http = Net::HTTP.new(uri.host, uri.port)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.body = "macAddress="+mac_id
+    request.basic_auth("charternet", "Chart3rn3t")
+    response = http.request(request)
+    assert response.code == 200
+    #response = requests.post(url, data=data)
