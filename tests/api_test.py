@@ -9,7 +9,7 @@ def test_get_auth_token():
      res=req.text.split("Token")
      r= res[1].decode('utf-8')
      t = str(r)[3:len(str(r))].split(",")
-     token = str(t)[0:len(str(t))-1]
+     token = str(t[0])[0:len(str(t[0]))-1]
      print token
      return r
 
