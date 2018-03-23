@@ -5,7 +5,7 @@ import stbt
 def test_get_auth_token():
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
      req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
-     print   req.status_code
+     assert req.status_code == 200
      return req.text
 
 def test_kandarp():
