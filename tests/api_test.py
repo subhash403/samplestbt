@@ -20,7 +20,7 @@ def test_HDAT_setting():
 			#newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
 		#end
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
-	headers={'X-CHARTER-SESSION':token}
+	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
 	print req
 	assert req.status_code == 200
