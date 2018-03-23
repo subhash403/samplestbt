@@ -6,7 +6,7 @@ import os
 import sys
 
 def test_DVR_on_reboot():
-    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
+    hard_reboot()
     time.sleep(5)
     stbt.press('KEY_POWER')
     time.sleep(5)
@@ -42,14 +42,12 @@ def test_DVR_on_reboot():
      "Recording not set with RECORD press in guide"
    
 def hard_reboot():
-    os.system("ssh P2729593@olympus.dev-charter.net")
-    os.system("")
-    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
-    os.system("seqa!23")
-    os.system("ssh root@30.255.240.82")
-    os.system("wb@humax")
-    os.system("stbdiag")
-    os.system("rebootnow")
+    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
+    os.system("Bananadev24.me" .join(sys.argv[1:]))
+    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com" .join(sys.argv[1:]))
+    os.system("seqa!23" .join(sys.argv[1:]))
+    os.system("./mototerm 30.255.240.82" .join(sys.argv[1:]))
+    os.system("osdiag RebootNow" .join(sys.argv[1:]))
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
