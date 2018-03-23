@@ -9,7 +9,7 @@ def test_weekend_run():
     stbt.press('KEY_4')    
     stbt.press('KEY_INFO')
     count =0
-    while TRUE:
+    while True:
     	if stbt.wait_until(lambda: stbt.match("images/view_series_info.png")): break
     	else:
     		stbt.press('KEY_RIGHT')
