@@ -33,7 +33,7 @@ def test_DVR_on_reboot():
    
 def hard_reboot():
     os.system("ssh P2729593@olympus.dev-charter.net")
-    os.system("")
+    os.system("Bananadev24.me")
     os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
     os.system("seqa!23")
     os.system("ssh root@30.255.141.82")
