@@ -26,7 +26,8 @@ def test_weekend_run():
 		
     assert stbt.wait_until(lambda: stbt.match("images/added_to_watchlist.png")), \
     "Added to watchlist did not appear when selecting the cta in the guide"
-	
+
+    stbt.press('KEY_ENTER')
     stbt.press('KEY_LAST')
     stbt.press('KEY_LAST')
     stbt.press('KEY_OPTIONS')
