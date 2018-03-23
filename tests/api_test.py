@@ -5,7 +5,7 @@ import numpy as np
 
 def get_auth_token():
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-     req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
+     req = requests.post(url, data={"macAddress":"0000048ACE24"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
      r= res[1].decode('utf-8')
@@ -16,9 +16,9 @@ def get_auth_token():
 def HDAT_setting(value):
 	token = get_auth_token()
 	if value == "Off":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB0000048ACE24","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
 	elif value == "On":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB0000048ACE24","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
