@@ -1,5 +1,3 @@
-import example_test
-
 def test_weekend_run():
     stbt.press('KEY_GUIDE')
     assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
