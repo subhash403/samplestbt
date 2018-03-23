@@ -31,6 +31,7 @@ def moviescatalog():
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.get(url, auth=('charternet', 'Chart3rn3t'),headers=headers)
 	assert req.status_code == 200
+	print req.text
 	assets = movies_parser(req.text)
 	return assets
 
