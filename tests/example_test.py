@@ -7,7 +7,7 @@ import os
 import sys
 import socket
 
-def test_DVR_on_reboot():
+def stb_reboot():
     command0 = "osdiag RebootNow"
     timeout = 10.0
     result = ""
@@ -21,6 +21,10 @@ def test_DVR_on_reboot():
         print(ex)
     finally:
         sock.close()
+
+def test_DVR_on_reboot():
+    stb_reboot()
+    time.sleep(30)
     stbt.press('KEY_POWER')
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
     "Stick Around screen not found after hard reboot"
