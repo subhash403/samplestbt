@@ -1,4 +1,5 @@
 import stbt
+import time
 
 def test_weekend_run():
     stbt.press('KEY_EXIT')
@@ -6,8 +7,17 @@ def test_weekend_run():
     stbt.press('KEY_GUIDE')
     assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
 		"Guide not launched"
-    stbt.press('KEY_4')    
+    stbt.press('KEY_4')   
+    time.sleep(3)
     stbt.press('KEY_INFO')
+	
+    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png"))
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_ENTER')
+	
     count =0
     while True:
     	if stbt.wait_until(lambda: stbt.match("images/view_series_info.png")): break
@@ -62,8 +72,15 @@ def test_weekend_run():
     assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
     "Filter not taken away after selecting favorites filter from options in the guide while the filter is already applied"
 	
-    stbt.press('KEY_4')    
+    stbt.press('KEY_4')  
+    time.sleep(3)
     stbt.press('KEY_INFO')
+    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png"))
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_0')
+	stbt.press('KEY_ENTER')
 	
     count =0
     while True:
