@@ -18,7 +18,7 @@ def test_weekend_run():
 		assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
 		"Asset did not have a view series info cta"
                 
-    stbt.press('KEY_SELECT')            
+    stbt.press('KEY_ENTER')            
     stbt.press('KEY_RIGHT')
     stbt.press('KEY_SELECT')
     stbt.press('KEY_OPTIONS')
