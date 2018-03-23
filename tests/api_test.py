@@ -50,11 +50,11 @@ def movies_parser(string):
 
 	
 def Add_watchlist():
-	#assets = moviescatalog()
+	assets = moviescatalog()
 	token = get_auth_token()
 	url = "http://spectrum.engprod-charter.net/api/pub/watchlistedge/watchlist"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
-	newAcctJson ='{"TitleId":"MV009783020000"}'
+	newAcctJson ='{"TitleId":"'+assets[0]+'"}'
 	print newAcctJson
 	req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
 	print req.status_code
