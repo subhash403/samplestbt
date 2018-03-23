@@ -32,7 +32,9 @@ def guide_launch():
     "Guide not launched"
     
 def miniguide_launch():
-    for _ in " "*2: stbt.press('KEY_ENTER')
+    stbt.press('KEY_ENTER')
+    time.sleep(1.2)
+    stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/miniguide.png")), \
     "Miniguide not launched"
     
