@@ -9,7 +9,7 @@ import socket
 
 
 def test_DVR_on_reboot():
-    command0 ="osdiag rebootnow"
+    command0 ="osdiag RebootNow"
     timeout = 10.0
     result = ""
     port = 65432
@@ -57,21 +57,6 @@ def test_DVR_on_reboot():
      assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
    
-def hard_reboot():
-    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("password" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("seqa!23" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("./mototerm 30.255.240.82" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("osdiag RebootNow" .join(sys.argv[1:]))
-    time.sleep(5)
-    time.sleep(5)
-
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
     assert stbt.wait_for_motion()
