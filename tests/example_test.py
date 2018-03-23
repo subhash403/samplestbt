@@ -7,7 +7,7 @@ import os
 import sys
 import socket
 
-def stb_reboot():
+def test_stb_reboot():
     command0 = "osdiag RebootNow"
     timeout = 10.0
     result = ""
