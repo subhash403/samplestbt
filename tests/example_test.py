@@ -5,11 +5,25 @@ import time
 import datetime
 import os
 import sys
-
+import socket
 
 
 def test_DVR_on_reboot():
-    python motoreboot.py 30.255.240.82
+    command0 ="osdiag rebootnow"
+    result = ""
+    port = 65432
+    print('Sending command "%s" to %s:%d' % (command, box_ip, port))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.settimeout(timeout)
+    try:
+        sock.connect((30.255.240.82, port))
+        sock.send(command)
+            #print('"%s" command' % (command))
+    except Exception as ex:
+        print('"%s" command execution failed!' % command)
+        print(ex)
+    finally:
+        sock.close()
     stbt.press('KEY_POWER')
     time.sleep(5)
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
