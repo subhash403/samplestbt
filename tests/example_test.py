@@ -5,7 +5,7 @@ import time
 import os
 
 def test_DVR_on_reboot():
-    hard_reboot()
+    os.system("ls -l")
     time.sleep(5)
     stbt.press('KEY_POWER')
     time.sleep(5)
