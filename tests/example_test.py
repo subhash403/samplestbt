@@ -2,6 +2,7 @@ from time import sleep
 import requests
 import stbt
 import time
+import os
 
 def test_DVR_on_reboot():
     init()
