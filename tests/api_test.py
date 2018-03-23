@@ -52,6 +52,7 @@ def Add_watchlist():
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	newAcctJson ='{"TitleId":"'+assets[0]+'"}'
 	req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
+	print req
 	assert req.status_code == 200 or req.status_code == 201
 	
 def test_parser():
