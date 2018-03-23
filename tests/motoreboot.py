@@ -19,7 +19,7 @@ class STB_reboot(object):
         import socket
         result = ""
         port = 65432
-        print('Sending command "%s" to %s:%d' % (command, box_ip, port))
+        #print('Sending command "%s" to %s:%d' % (command, box_ip, port))
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.settimeout(timeout)
         try:
