@@ -13,14 +13,17 @@ def test_DVR_on_reboot():
     stbt.press('KEY_EXIT')
     miniguide_launch()
     stbt.press('KEY_RECORD')
-    if not stbt.wait_for_match('images/miniguide_rec_icon.png'): stbt.press('KEY_RECORD') 
-    assert stbt.wait_until(lambda: stbt.match("images/miniguide_rec_icon.png")), \
-    "Recording not set with RECORD press in miniguide"
+    while True:
+     if stbt.wait_for_match('images/edit_ep_rec.png'): break 
+     assert stbt.wait_until(lambda: stbt.match("images/miniguide_rec_icon.png")), \
+     "Recording not set with RECORD press in miniguide"
+    stbt.press('KEY_EXIT')  
     guide_launch()
     stbt.press('KEY_RECORD')
-    if not stbt.wait_for_match('images/guide_rec_icon.png'): stbt.press('KEY_RECORD') 
-    assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
-    "Recording not set with RECORD press in guide"
+    while True:
+     if not stbt.wait_for_match('images/in_progress.png'): break
+     assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
+     "Recording not set with RECORD press in guide"
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
