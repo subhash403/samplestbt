@@ -65,10 +65,3 @@ def test_weekend_run():
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")), \
 		"Removed to watchlist did not appear when selecting the cta in the guide"
-				
-				
-				
-				
-				
-				
-				
