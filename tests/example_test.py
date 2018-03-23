@@ -5,7 +5,7 @@ import time
 import os
 
 def test_DVR_on_reboot():
-    init()
+    hard_reboot()
     stbt.press('KEY_EXIT')
     assert stbt.wait_for_motion()
     guide_launch()
@@ -25,6 +25,16 @@ def test_DVR_on_reboot():
      if stbt.wait_for_match('images/in_progress.png'): break
      assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
+   
+def hard_reboot():
+    os.system("ssh P2729593@olympus.dev-charter.net")
+    os.system("Bananadev24.me")
+    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
+    os.system("seqa!23")
+    os.system("ssh root@30.255.141.82")
+    os.system("wb@humax")
+    os.system("stbdiag")
+    os.system("rebootnow")
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
