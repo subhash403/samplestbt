@@ -42,7 +42,7 @@ def movies_parser(string):
 	for num in m:
 		str = num[3:-1]
 		id = str.split("'")
-		st= id[0][0:13]
+		st= id[0][0:14]
 		if 'ctec' not in st and 'exit' not in st:
 			assets.append(st)
 	asset = np.unique(assets)
