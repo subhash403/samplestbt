@@ -5,6 +5,11 @@ def test_weekend_run():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
+    if stbt.wait_until(lambda: stbt.match("images/guide_filter_favorites.png"))
+	stbt.press('KEY_OPTIONS')
+	stbt.press('KEY_DOWN')
+    	stbt.press('KEY_ENTER')
+	
     assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
 		"Guide not launched"
     stbt.press('KEY_4')   
