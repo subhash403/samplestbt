@@ -7,7 +7,7 @@ def test_get_auth_token():
      req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
-     r= res[1].encode('ascii','ignore')[3:res[1].length()]
+     r= res[1].encode('ascii','ignore')
      print r[3:r.length()]
      return r
 
