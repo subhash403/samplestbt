@@ -47,5 +47,5 @@ def movies_parser(string):
 	return assets
 
 def test_parser():
-	assets = moviecatalog()
+	assets = moviescatalog()
 	print assets
