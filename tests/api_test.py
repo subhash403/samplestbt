@@ -7,8 +7,9 @@ def test_get_auth_token():
      req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
-     print res[1].encode('ascii','ignore')[3:res[1].length()]
-     return res
+     r= res[1].encode('ascii','ignore')[3:res[1].length()]
+     print r[3:r.length()]
+     return r
 
 def test_kandarp():
      nurl = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
