@@ -3,19 +3,29 @@ import requests
 import stbt
 import time
 import os
+import sys
 
 def test_DVR_on_reboot():
-    os.system("ssh P2729593@olympus.dev-charter.net")
+    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
     time.sleep(5)
     stbt.press('KEY_POWER')
     time.sleep(5)
-    assert stbt.wait_until(lambda: stbt.match("images/stick_around.png")), \
+    assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
     "Stick Around screen not found after hard reboot"
     stbt.press('KEY_EXIT')
     assert stbt.wait_for_motion()
     guide_launch()
     stbt.press('KEY_EXIT')
     mydvr_launch()
+    count = 0
+    while True:
+     if stbt.wait_for_match('images/watch_cta.png'): break
+     stbt.press('KEY_ENTER')
+     count += 1
+     if count > 10: break
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
+    "DVR asset did not play back"
     stbt.press('KEY_EXIT')
     miniguide_launch()
     stbt.press('KEY_RECORD')
