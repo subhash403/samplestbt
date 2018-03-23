@@ -6,7 +6,19 @@ import os
 import sys
 
 def test_DVR_on_reboot():
-    hard_reboot()
+    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("Bananadev24.me" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("seqa!23" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("./mototerm 30.255.240.82" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("osdiag RebootNow" .join(sys.argv[1:]))
+    time.sleep(5)
+    time.sleep(5)
     time.sleep(5)
     stbt.press('KEY_POWER')
     time.sleep(5)
