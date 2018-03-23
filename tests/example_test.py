@@ -6,20 +6,7 @@ import os
 import sys
 
 def test_DVR_on_reboot():
-    os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("Bananadev24.me" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("seqa!23" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("./mototerm 30.255.240.82" .join(sys.argv[1:]))
-    time.sleep(5)
-    os.system("osdiag RebootNow" .join(sys.argv[1:]))
-    time.sleep(5)
-    time.sleep(5)
-    time.sleep(5)
+    hard_reboot()
     stbt.press('KEY_POWER')
     time.sleep(5)
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
@@ -55,11 +42,18 @@ def test_DVR_on_reboot():
    
 def hard_reboot():
     os.system("ssh P2729593@olympus.dev-charter.net" .join(sys.argv[1:]))
-    os.system("Bananadev24.me" .join(sys.argv[1:]))
+    time.sleep(5)
+    os.system("password" .join(sys.argv[1:]))
+    time.sleep(5)
     os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com" .join(sys.argv[1:]))
+    time.sleep(5)
     os.system("seqa!23" .join(sys.argv[1:]))
+    time.sleep(5)
     os.system("./mototerm 30.255.240.82" .join(sys.argv[1:]))
+    time.sleep(5)
     os.system("osdiag RebootNow" .join(sys.argv[1:]))
+    time.sleep(5)
+    time.sleep(5)
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
