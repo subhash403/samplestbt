@@ -89,7 +89,7 @@ def init():
     stbt.press('KEY_EXIT')
 
 def test_VOD_ME_6119_tv_shows_launch():
-    init()
+    #init()
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu_logo.png')
     stbt.press('KEY_DOWN')
