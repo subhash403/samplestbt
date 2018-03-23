@@ -26,6 +26,6 @@ def test_moviescatalog():
 	url = "http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_c3h2/features/movie_vod/catalog?depth=20&folderContentLimit=100&channelLineupId=CC32-1&folderId=0&startIndex=0&maxResults=100"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.get(url, auth=('charternet', 'Chart3rn3t'),headers=headers)
-	print req
+	print req.text
 	assert req.status_code == 200
 
