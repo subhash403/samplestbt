@@ -10,15 +10,18 @@ def test_get_auth_token():
      r= res[1].decode('utf-8')
      t = str(r)[3:len(str(r))].split(",")
      token = str(t[0])[0:len(str(t[0]))-1]
-     print token
-     return r
+     return token
 
-def test_kandarp():
-     nurl = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-     headers = {'Content-Type': "application/x-www-form-urlencoded"}
-     payload = {"macAddress":"3438B77F88F8"}
-     req = requests.post(url = nurl, data=payload, auth=('charternet', 'Chart3rn3t'))
-
-     print req.text
+def test_HDAT_setting():
+          token = test_get_auth_token()
+		#if value == "Off"
+			newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
+		#elsif value == "On"
+			#newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
+		#end
+          url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
+          headers={'X-CHARTER-SESSION':token}
+          req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
+          assert req.status_code == 200
 
 
