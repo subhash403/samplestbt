@@ -9,7 +9,7 @@ import sys
 
 
 def test_DVR_on_reboot():
-    python MotoReboot.py 30.255.240.82
+    python motoreboot.py 30.255.240.82
     stbt.press('KEY_POWER')
     time.sleep(5)
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
