@@ -10,6 +10,7 @@ import socket
 
 def test_DVR_on_reboot():
     command0 ="osdiag rebootnow"
+    timeout = 10.0
     result = ""
     port = 65432
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
