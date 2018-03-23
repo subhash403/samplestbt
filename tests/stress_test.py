@@ -11,8 +11,7 @@ def test_weekend_run():
     count =0
     while True:
     	if stbt.wait_until(lambda: stbt.match("images/view_series_info.png")): break
-    	else:
-    		stbt.press('KEY_RIGHT')
+    	stbt.press('KEY_RIGHT')
     	count +=1
 			if count > 10:
 				assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
@@ -22,11 +21,11 @@ def test_weekend_run():
     stbt.press('KEY_RIGHT')
     stbt.press('KEY_ENTER')
     if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
-			stbt.press('KEY_ENTER')
-			stbt.press('KEY_ENTER')
+		stbt.press('KEY_ENTER')
+		stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/added_to_watchlist.png")), \
 		"Added to watchlist did not appear when selecting the cta in the guide"
-		stbt.press('KEY_LAST')
+	  stbt.press('KEY_LAST')
 		stbt.press('KEY_LAST')
     stbt.press('KEY_OPTIONS')
 		assert stbt.wait_until(lambda: stbt.match("images/guide_filters.png")), \
@@ -54,8 +53,7 @@ def test_weekend_run():
     count =0
     while True:
     	if stbt.wait_until(lambda: stbt.match("images/view_series_info.png")): break
-    	else:
-    		stbt.press('KEY_RIGHT')
+    	stbt.press('KEY_RIGHT')
     	count +=1
 			if count > 10:
 				assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
