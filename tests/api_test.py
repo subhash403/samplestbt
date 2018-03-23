@@ -52,6 +52,7 @@ def movies_parser(string):
 def Add_watchlist(n):
 	assets = moviescatalog()
 	token = get_auth_token()
+	count =0
 	for asset in assets:
 		url = "http://spectrum.engprod-charter.net/api/pub/watchlistedge/watchlist"
 		headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
