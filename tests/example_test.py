@@ -5,7 +5,6 @@ import time
 import os
 
 def test_DVR_on_reboot():
-    print ("THING THING LSKFJS:LFJL:SJFS:LK")
     hard_reboot()
     time.sleep(5)
     stbt.press('KEY_POWER')
@@ -33,9 +32,8 @@ def test_DVR_on_reboot():
      "Recording not set with RECORD press in guide"
    
 def hard_reboot():
-    print ("THING THING THING THING")
     os.system("ssh P2729593@olympus.dev-charter.net")
-    os.system("Bananadev24.me")
+    os.system("")
     os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
     os.system("seqa!23")
     os.system("ssh root@30.255.141.82")
