@@ -11,7 +11,7 @@ def test_weekend_run():
     time.sleep(3)
     stbt.press('KEY_INFO')
 	
-    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png"))
+    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png")):
 	stbt.press('KEY_0')
 	stbt.press('KEY_0')
 	stbt.press('KEY_0')
@@ -75,7 +75,7 @@ def test_weekend_run():
     stbt.press('KEY_4')  
     time.sleep(3)
     stbt.press('KEY_INFO')
-    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png"))
+    if stbt.wait_until(lambda: stbt.match("images/enter_pin_guide.png")):
 	stbt.press('KEY_0')
 	stbt.press('KEY_0')
 	stbt.press('KEY_0')
