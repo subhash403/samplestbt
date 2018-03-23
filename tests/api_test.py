@@ -1,6 +1,7 @@
 import requests
 from requests.auth import HTTPBasicAuth
 import stbt
+import numpy as np
 
 def get_auth_token():
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
@@ -40,9 +41,8 @@ def movies_parser(string):
 		st= id[0][0:13]
 		if 'ctec' not in st and 'exit' not in st:
 			assets.append(st)
-	asset = set(assets)
-	assets = asset(list)
-	return assets
+	asset = np.unique(assets)
+	return asset
 
 def test_parser():
 	assets = moviescatalog()
