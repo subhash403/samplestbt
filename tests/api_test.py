@@ -8,7 +8,9 @@ def test_get_auth_token():
      assert req.status_code == 200
      res=req.text.split("Token")
      r= res[1].decode('utf-8')
-     print str(r)[3:len(str(r))]
+     t = str(r)[3:len(str(r))].split(",")
+     token = str(t)[0:len(str(t))-1]
+     print token
      return r
 
 def test_kandarp():
