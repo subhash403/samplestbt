@@ -14,9 +14,9 @@ def test_weekend_run():
     	else:
     		stbt.press('KEY_RIGHT')
     	count +=1
-			if count > 10:
-				assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
-				"Asset did not have a view series info cta"
+	if count > 10:
+		assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
+		"Asset did not have a view series info cta"
                 
     stbt.press('KEY_SELECT')            
     stbt.press('KEY_RIGHT')
