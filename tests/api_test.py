@@ -40,8 +40,6 @@ def movies_parser(string):
 		st= id[0][0:13]
 		if 'ctec' not in st and 'exit' not in st:
 			assets.append(st)
-		end
-	end
 	asset = set(assets)
 	assets = asset(list)
 	return assets
