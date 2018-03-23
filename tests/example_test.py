@@ -23,7 +23,7 @@ def test_stb_reboot():
         sock.close()
 
 def test_DVR_on_reboot():
-    stb_reboot()
+    test_stb_reboot()
     time.sleep(15)
     stbt.press('KEY_POWER')
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
