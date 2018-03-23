@@ -4,7 +4,7 @@ import stbt
 import numpy as np
 
 def get_auth_token():
-     url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
+     url = "http://spectrumint.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
      req = requests.post(url, data={"macAddress":"0000048ACE24"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
