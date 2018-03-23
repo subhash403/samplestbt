@@ -32,6 +32,7 @@ def test_DVR_on_reboot():
      "Recording not set with RECORD press in guide"
    
 def hard_reboot():
+    print ("THING THING THING THING")
     os.system("ssh P2729593@olympus.dev-charter.net")
     os.system("Bananadev24.me")
     os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
