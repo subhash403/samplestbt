@@ -7,7 +7,7 @@ def test_get_auth_token():
      req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
-     print res[1]
+     print res[1][3:res[1].length()]
      return res
 
 def test_kandarp():
