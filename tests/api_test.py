@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import stbt
 
-def test_get_auth_token():
+def get_auth_token():
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
      req = requests.post(url, data={"macAddress":"3438B77F88F8"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
@@ -21,11 +21,31 @@ def test_HDAT_setting():
 	print req
 	assert req.status_code == 200
 	
-def test_moviescatalog():
+def moviescatalog():
 	token = test_get_auth_token()
 	url = "http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_c3h2/features/movie_vod/catalog?depth=20&folderContentLimit=100&channelLineupId=CC32-1&folderId=0&startIndex=0&maxResults=100"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.get(url, auth=('charternet', 'Chart3rn3t'),headers=headers)
-	print req.text
 	assert req.status_code == 200
+	assets = movies_parser(req.text)
+	return assets
 
+def movies_parser(string):
+	assert string
+	m = string.split("TitleId")
+	assets = []
+	for num in m:
+		str = num[3:-1]
+		id = str.split("'")
+		st= id[0][0:13]
+		if 'ctec' not in st and 'exit' not in st
+			assets.append(st)
+		end
+	end
+	asset = set(assets)
+	assets = asset(list)
+	return assets
+
+def test_parser():
+	assets = moviecatalog()
+	print assets
