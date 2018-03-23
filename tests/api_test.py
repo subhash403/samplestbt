@@ -14,15 +14,18 @@ def test_get_auth_token():
 
 def test_HDAT_setting():
 	token = test_get_auth_token()
-		#if value == "Off"
 	newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
-		#elsif value == "On"
-			#newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
-		#end
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
 	print req
 	assert req.status_code == 200
-
+	
+def test_moviescatalog():
+	token = test_get_auth_token()
+	uri = URI.parse("http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_c3h2/features/movie_vod/catalog?depth=20&folderContentLimit=100&channelLineupId=CC32-1&folderId=0&startIndex=0&maxResults=100")
+	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
+	req = requests.get(url, auth=('charternet', 'Chart3rn3t'),headers=headers)
+	print req
+	assert req.status_code == 200
 
