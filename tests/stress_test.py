@@ -7,7 +7,7 @@ def test_weekend_run():
     assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
 		"Guide not launched"
     stbt.press('KEY_4')    
-    stbt.press('KEY_SELECT')
+    stbt.press('KEY_INFO')
     count =0
     while true:
     	if stbt.wait_until(lambda: stbt.match("images/view_series_info.png")): break
