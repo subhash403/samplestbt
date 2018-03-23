@@ -61,11 +61,11 @@ def Add_watchlist(n):
 		print req.status_code
 		assert req.status_code == 200 or req.status_code == 201
 		count +=1
-		if count >= n:
+		if count >= int(n):
 			break
 	
 def test_parser():
 	HDAT_setting("On")
 	HDAT_setting("Off")
-	Add_watchlist()
+	Add_watchlist(7)
 
