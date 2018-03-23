@@ -50,9 +50,10 @@ def Add_watchlist():
 	token = get_auth_token()
 	url = "http://spectrum.engprod-charter.net/api/pub/watchlistedge/watchlist"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
+	print assets[0]
 	newAcctJson ='{"TitleId":"'+assets[0]+'"}'
 	req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
-	print req
+	print req.text
 	assert req.status_code == 200 or req.status_code == 201
 	
 def test_parser():
