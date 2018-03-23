@@ -13,7 +13,7 @@ def get_auth_token():
      return token
 
 def test_HDAT_setting():
-	token = test_get_auth_token()
+	token = get_auth_token()
 	newAcctJson ='{"settings":{"groups":[{"id":"STB3438B77F88F8","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
