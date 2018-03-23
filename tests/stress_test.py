@@ -100,10 +100,6 @@ def test_weekend_run():
     stbt.press('KEY_ENTER')            
     stbt.press('KEY_RIGHT')
     stbt.press('KEY_ENTER')
-    if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
-		d = datetime.minute
-		print d
-		#if d == 01 or d == 02 or d == 03
     assert stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")), \
     "Removed to watchlist did not appear when selecting the cta in the guide"
 
