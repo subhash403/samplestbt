@@ -56,7 +56,7 @@ def Add_watchlist():
 	newAcctJson ='{"TitleId":"'+assets[0]+'"}'
 	print newAcctJson
 	req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
-	print req.text
+	print req.status_code
 	assert req.status_code == 200 or req.status_code == 201
 	
 def test_parser():
