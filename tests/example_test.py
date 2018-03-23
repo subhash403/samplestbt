@@ -23,7 +23,19 @@ def stb_reboot():
         sock.close()
 
 def test_DVR_on_reboot():
-    stb_reboot()
+    command0 = "osdiag RebootNow"
+    timeout = 10.0
+    result = ""
+    port = 65432
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.settimeout(timeout)
+    try:
+        sock.connect(("30.255.240.82", port))
+        sock.send(command0)          
+    except Exception as ex:
+        print(ex)
+    finally:
+        sock.close()
     stbt.press('KEY_POWER')
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
     "Stick Around screen not found after hard reboot"
