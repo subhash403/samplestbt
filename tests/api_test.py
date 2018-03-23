@@ -49,16 +49,20 @@ def movies_parser(string):
 	return asset
 
 	
-def Add_watchlist():
+def Add_watchlist(n):
 	assets = moviescatalog()
 	token = get_auth_token()
-	url = "http://spectrum.engprod-charter.net/api/pub/watchlistedge/watchlist"
-	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
-	newAcctJson ='{"TitleId":"'+assets[0]+'"}'
-	print newAcctJson
-	req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
-	print req.status_code
-	assert req.status_code == 200 or req.status_code == 201
+	for asset in assets:
+		url = "http://spectrum.engprod-charter.net/api/pub/watchlistedge/watchlist"
+		headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
+		newAcctJson ='{"TitleId":"'+assets[0]+'"}'
+		print newAcctJson
+		req = requests.post(url, data=newAcctJson,auth=('charternet', 'Chart3rn3t'),headers=headers)
+		print req.status_code
+		assert req.status_code == 200 or req.status_code == 201
+		count +=1
+		if count >= n:
+			break
 	
 def test_parser():
 	HDAT_setting("On")
