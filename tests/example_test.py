@@ -46,7 +46,7 @@ def hard_reboot():
     os.system("")
     os.system("ssh seqa@ctec-stb-seqa.enwd.co.sa.charterlab.com")
     os.system("seqa!23")
-    os.system("ssh root@30.255.141.82")
+    os.system("ssh root@30.255.240.82")
     os.system("wb@humax")
     os.system("stbdiag")
     os.system("rebootnow")
