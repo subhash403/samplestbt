@@ -21,7 +21,7 @@ def test_DVR_on_reboot():
     guide_launch()
     stbt.press('KEY_RECORD')
     while True:
-     if not stbt.wait_for_match('images/in_progress.png'): break
+     if stbt.wait_for_match('images/in_progress.png'): break
      assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
 
