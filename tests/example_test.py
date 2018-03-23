@@ -3,10 +3,43 @@ import requests
 import stbt
 import time
 
+def test_DVR_on_reboot():
+    init()
+    stbt.press('KEY_EXIT')
+    assert stbt.wait_for_motion()
+    guide_launch()
+    stbt.press('KEY_EXIT')
+    mydvr_launch()
+    stbt.press('KEY_EXIT')
+    miniguide_launch()
+    stbt.press('KEY_REC')
+    if not stbt.wait_for_match('images/miniguide_rec_icon.png'): stbt.press('KEY_REC') 
+    assert stbt.wait_until(lambda: stbt.match("images/miniguide_rec_icon.png")), \
+    "Recording not set with REC press in miniguide"
+    guide_launch()
+    stbt.press('KEY_REC')
+    if not stbt.wait_for_match('images/guide_rec_icon.png'): stbt.press('KEY_REC') 
+    assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
+    "Recording not set with REC press in guide"
 
 def test_that_live_tv_is_playing():
     stbt.press('KEY_CLOSE')  # Close any open menus
     assert stbt.wait_for_motion()
+    
+def guide_launch():
+    stbt.press('KEY_GUIDE')
+    assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
+    "Guide not launched"
+    
+def miniguide_launch():
+    for _ in " "*2: stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/miniguide.png")), \
+    "Miniguide not launched"
+    
+def mydvr_launch():
+    stbt.press('KEY_MYDVR')
+    assert stbt.wait_until(lambda: stbt.match("images/my_dvr.png")), \
+    "MyDVR not launched"
     
 def init():
     for _ in " "*3: stbt.press('KEY_EXIT')
