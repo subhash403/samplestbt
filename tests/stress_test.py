@@ -39,7 +39,7 @@ def test_weekend_run():
 	print "Unable to added guide asset to the watchlist because series info unavailable was seen in the environment within the asset after selecting the view series info cta"
     	watchlist_flag = 1
 	
-    if watchlist_flag == 0:
+    else:
    	stbt.press('KEY_RIGHT')
     	stbt.press('KEY_ENTER')
     	if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
