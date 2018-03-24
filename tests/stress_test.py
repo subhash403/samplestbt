@@ -33,19 +33,24 @@ def test_weekend_run():
 		assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
 		"Asset did not have a view series info cta"
                 
-    stbt.press('KEY_ENTER')   
-    if stbt.wait_until(lambda: stbt.match("images/series_info_unavailable.png"))
+    stbt.press('KEY_ENTER') 
+    watchlist_flag = 0
+    if stbt.wait_until(lambda: stbt.match("images/series_info_unavailable.png")):
 	print "Unable to added guide asset to the watchlist because series info unavailable was seen in the environment within the asset after selecting the view series info cta"
-    stbt.press('KEY_RIGHT')
-    stbt.press('KEY_ENTER')
-    if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
+    	watchlist_flag = 1
+	
+    if watchlist_flag == 0:
+   	stbt.press('KEY_RIGHT')
+    	stbt.press('KEY_ENTER')
+    	if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
 		stbt.press('KEY_ENTER')
 		stbt.press('KEY_ENTER')
 		
-    assert stbt.wait_until(lambda: stbt.match("images/added_to_watchlist.png")), \
-    "Added to watchlist did not appear when selecting the cta in the guide"
+    	assert stbt.wait_until(lambda: stbt.match("images/added_to_watchlist.png")), \
+    	"Added to watchlist did not appear when selecting the cta in the guide"
 
-    stbt.press('KEY_ENTER')
+    	stbt.press('KEY_ENTER')
+	
     stbt.press('KEY_LAST')
     stbt.press('KEY_LAST')
     stbt.press('KEY_OPTIONS')
@@ -99,9 +104,10 @@ def test_weekend_run():
 		assert stbt.wait_until(lambda: stbt.match("images/view_series_info.png")), \
 		"Asset did not have a view series info cta"
 
-    stbt.press('KEY_ENTER')            
-    stbt.press('KEY_RIGHT')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")), \
-    "Removed to watchlist did not appear when selecting the cta in the guide"
+    if watchlist_flag == 0:
+    	stbt.press('KEY_RIGHT')
+    	stbt.press('KEY_ENTER')
+    	assert stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")), \
+    	"Removed to watchlist did not appear when selecting the cta in the guide"
 
