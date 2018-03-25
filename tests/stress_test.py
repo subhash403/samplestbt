@@ -107,6 +107,7 @@ def test_weekend_run():
 		"Asset did not have a view series info cta"
 
     stbt.press('KEY_ENTER')
+    time.sleep(5)
     if watchlist_flag == 0:
     	stbt.press('KEY_RIGHT')
 	stbt.press('KEY_RIGHT')
