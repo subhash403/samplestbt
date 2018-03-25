@@ -41,6 +41,7 @@ def test_weekend_run():
 	
     else:
    	stbt.press('KEY_RIGHT')
+	stbt.press('KEY_RIGHT')
     	stbt.press('KEY_ENTER')
     	if stbt.wait_until(lambda: stbt.match("images/removed_from_watchlist.png")): 
 		stbt.press('KEY_ENTER')
