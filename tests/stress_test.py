@@ -40,6 +40,7 @@ def test_weekend_run():
     	watchlist_flag = 1
 	
     else:
+	time.sleep(5)
    	stbt.press('KEY_RIGHT')
 	stbt.press('KEY_RIGHT')
     	stbt.press('KEY_ENTER')
