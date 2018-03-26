@@ -62,7 +62,7 @@ def test_DVR_on_reboot():
     stbt.press('KEY_RECORD')
     while True:
      if stbt.wait_for_match('images/in_progress.png'): break
-     assert stbt.wait_until(lambda: stbt.match("images/guide_rec_icon.png")), \
+     assert stbt.wait_until(lambda: stbt.match("images/guide/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
    
 def test_that_live_tv_is_playing():
@@ -71,7 +71,7 @@ def test_that_live_tv_is_playing():
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
-    assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
     "Guide not launched"
     
 def miniguide_launch():
