@@ -40,7 +40,6 @@ def test_DVR_on_reboot():
     while True:
      if stbt.is_screen_black(): break
      count += 1
-     time.sleep(3)
      assert count < 10, \
      "STB did not reboot within 30 seconds with osdiag RebootNow"     
     stbt.press('KEY_POWER')
