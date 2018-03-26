@@ -1,3 +1,2 @@
 #!/bin/sh
-ip="30.255.240.82"
-echo "osdiag rebootnow" | ./mototerm "$ip"
+echo "osdiag rebootnow" | ./mototerm 30.255.240.82
