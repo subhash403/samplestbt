@@ -70,7 +70,7 @@ def test_DVR_on_reboot():
      assert count < 10, \
      "STB did not reboot within 30 seconds with osdiag RebootNow"     
     stbt.press('KEY_POWER')
-    assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
+    assert stbt.wait_until(lambda: stbt.match('images/menu/stick_around.png')), \
     "Stick Around screen not found after hard reboot"
     time.sleep(30)
     stbt.press('KEY_EXIT')
@@ -92,7 +92,7 @@ def test_DVR_on_reboot():
     stbt.press('KEY_RECORD')
     while True:
      if stbt.wait_for_match('images/edit_ep_rec.png'): break 
-     assert stbt.wait_until(lambda: stbt.match("images/miniguide_rec_icon.png")), \
+     assert stbt.wait_until(lambda: stbt.match("images/miniguide/miniguide_rec_icon.png")), \
      "Recording not set with RECORD press in miniguide"
     stbt.press('KEY_EXIT')  
     guide_launch()
@@ -115,12 +115,12 @@ def miniguide_launch():
     stbt.press('KEY_ENTER')
     time.sleep(1.2)
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/miniguide.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/miniguide/miniguide.png")), \
     "Miniguide not launched"
     
 def mydvr_launch():
     stbt.press('KEY_MYDVR')
-    assert stbt.wait_until(lambda: stbt.match("images/my_dvr.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
     "MyDVR not launched"
     
 def init():
@@ -137,10 +137,10 @@ def test_VOD_ME_6119_tv_shows_launch():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu_logo.png')
+    assert stbt.wait_for_match('images/menu/menu_logo.png')
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/tv_shows_logo.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/vod/tv_shows_logo.png")), \
     "TV Shows not launched"
     macAddress = stbt.get_config("sst", "macAddress")
     print (macAddress)
@@ -155,11 +155,11 @@ def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
     time.sleep(65)
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu_logo.png')
+    assert stbt.wait_for_match('images/menu/menu_logo.png')
     stbt.press('KEY_ENTER')
     while True:
      stbt.press('KEY_DOWN')
-     if stbt.wait_for_match('images/recently_watched.png'): break      
+     if stbt.wait_for_match('images/vod/recently_watched.png'): break      
     stbt.press('KEY_ENTER')
 
 def test_that_stb_tester_logo_is_shown():
@@ -169,7 +169,7 @@ def test_that_stb_tester_logo_is_shown():
 def test_that_menu_launches():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu_logo.png')
+    assert stbt.wait_for_match('images/menu/menu_logo.png')
 
 def test_read_menu():
     stbt.press('KEY_CLOSE')
