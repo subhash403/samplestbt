@@ -57,13 +57,7 @@ def send_command_internal(command, box_ip, timeout=10.0):
 def test_DVR_on_reboot():
     print("TESTEST")
     os.chdir("/var/lib/stbt/test-pack/tests")
-    p = subprocess.Popen('chmod 777 mototerm', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    p = subprocess.Popen('ls -lrt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    for line in p.stdout.readlines():
-     print line,
-    retval = p.wait()
-    cwd = os.getcwd()
-    print(cwd)
+    subprocess.call(['./test1.sh'])
     count = 0
     while True:
      if stbt.is_screen_black(): break
