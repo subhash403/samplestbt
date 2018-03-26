@@ -30,7 +30,7 @@ def test_DVR_on_reboot():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.settimeout(timeout)
     try:
-        sock.connect("30.255.240.82:65432")
+        sock.connect("30.255.240.82", port)
         sock.send(command0)          
     except Exception as ex:
         print(ex)
