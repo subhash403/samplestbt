@@ -56,7 +56,7 @@ def send_command_internal(command, box_ip, timeout=10.0):
 
 def test_DVR_on_reboot():
     print("TESTEST")
-    subprocess.call(['./test1.sh'])
+    p = subprocess.Popen('ls -lrt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     count = 0
     while True:
      if stbt.is_screen_black(): break
