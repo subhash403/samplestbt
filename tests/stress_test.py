@@ -6,12 +6,12 @@ def test_weekend_run():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
-    if stbt.wait_until(lambda: stbt.match("images/guide_filter_favorites.png")):
+    if stbt.wait_until(lambda: stbt.match("images/guide/guide_filter_favorites.png")):
 	stbt.press('KEY_OPTIONS')
 	stbt.press('KEY_DOWN')
     	stbt.press('KEY_ENTER')
 	
-    assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
 		"Guide not launched"
     stbt.press('KEY_4')   
     time.sleep(3)
@@ -57,13 +57,13 @@ def test_weekend_run():
     stbt.press('KEY_LAST')
     stbt.press('KEY_OPTIONS')
 
-    assert stbt.wait_until(lambda: stbt.match("images/guide_filters.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_filters.png")), \
     "Filters not entered upon selecting options on black remote"
 
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
 
-    assert stbt.wait_until(lambda: stbt.match("images/guide_filter_favorites.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_filter_favorites.png")), \
     "Filter not applied after selecting favorites filter from options in the guide"
 
     assert stbt.wait_until(lambda: stbt.match("images/heart_icons_for_filter.png")), \
@@ -73,18 +73,18 @@ def test_weekend_run():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
 	
-    assert stbt.wait_until(lambda: stbt.match("images/guide_filter_favorites.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_filter_favorites.png")), \
     "Filter not applied after closing the guide and reopening"
 	
     stbt.press('KEY_OPTIONS')	
 
-    assert stbt.wait_until(lambda: stbt.match("images/guide_filters.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_filters.png")), \
     "Filters not entered upon selecting options on black remote"
 
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
 	
-    assert stbt.wait_until(lambda: stbt.match("images/guide_options.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
     "Filter not taken away after selecting favorites filter from options in the guide while the filter is already applied"
 	
     stbt.press('KEY_4')  
