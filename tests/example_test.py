@@ -24,7 +24,20 @@ def test_stb_reboot():
         sock.close()
 
 def test_DVR_on_reboot():
-    test_stb_reboot()
+    command0 = "osdiag RebootNow"
+    timeout = 10.0
+    result = ""
+    port = 65432
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.settimeout(timeout)
+    try:
+        sock.connect(("30.255.240.82", port))
+        time.sleep(5)
+        sock.send(command0)          
+    except Exception as ex:
+        print(ex)
+    finally:
+        sock.close()
     count = 0
     while True:
      if stbt.is_screen_black(): break
