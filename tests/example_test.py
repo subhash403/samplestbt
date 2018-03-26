@@ -6,6 +6,7 @@ import datetime
 import os
 import sys
 import socket
+import subprocess
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -55,7 +56,7 @@ def send_command_internal(command, box_ip, timeout=10.0):
 
 def test_DVR_on_reboot():
     print("TESTEST")
-    stat = send_command_internal("osdiag rebootnow", "30.255.240.82", timeout=10.0)
+    subprocess.call(['./test1.sh'])
     count = 0
     while True:
      if stbt.is_screen_black(): break
