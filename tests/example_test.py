@@ -24,7 +24,7 @@ def test_stb_reboot():
 
 def test_DVR_on_reboot():
     test_stb_reboot()
-    time.sleep(15)
+    time.sleep(25)
     stbt.press('KEY_POWER')
     assert stbt.wait_until(lambda: stbt.match('images/stick_around.png')), \
     "Stick Around screen not found after hard reboot"
