@@ -66,7 +66,7 @@ def test_weekend_run():
     assert stbt.wait_until(lambda: stbt.match("images/guide/guide_filter_favorites.png")), \
     "Filter not applied after selecting favorites filter from options in the guide"
 
-    assert stbt.wait_until(lambda: stbt.match("images/heart_icons_for_filter.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/guide/heart_icons_for_filter.png")), \
     "Heart Icons not found on guide after applying favorites filter"
 
     stbt.press('KEY_EXIT')
