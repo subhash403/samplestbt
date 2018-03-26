@@ -7,6 +7,7 @@ import os
 import sys
 import socket
 import subprocess
+import pexpect
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
