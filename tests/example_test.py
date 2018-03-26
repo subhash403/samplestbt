@@ -61,7 +61,7 @@ def test_DVR_on_reboot():
     for line in p.stdout.readlines():
      print line,
     retval = p.wait()
-    subprocess.call(['./test1.sh'])
+    subprocess.call(['expect reboot.exp'])
     count = 0
     while True:
      if stbt.is_screen_black(): break
