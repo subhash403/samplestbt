@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 ip="30.255.240.82"
 group=$2
 echo "osdiag rebootnow" | ./mototerm "$ip" &
