@@ -1,0 +1,27 @@
+#!/usr/bin/expect
+set prompt "root@ctec-ams-a3h4a ~]#"
+set timeout 5
+spawn ssh root@172.30.82.176
+        expect {
+                timeout {
+                        puts "Connection timed out"
+                        exit 1
+                }
+                "yes/no" {
+                        send "yes\r"
+                        exp_continue
+                }
+                "assword:" {
+                        send -- "Charter1\r"
+                        exp_continue
+                }
+                "$prompt" {
+                        send "./mototerm/mototerm 30.255.240.82\r"
+                        exp_continue
+                }
+                "cmd2k mode is off" {
+                        send "osdiag rebootnow\r"
+                        exp_continue
+                }
+        interact
+        }
