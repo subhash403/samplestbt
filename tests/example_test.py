@@ -6,7 +6,6 @@ import datetime
 import os
 import sys
 import socket
-import paramiko
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -24,6 +23,9 @@ def test_stb_reboot():
         sock.close()
         
 def send_command_internal(command, box_ip, timeout=10.0):
+        import os
+        cwd = os.getcwd()
+        print(cwd)
         import socket
         result = ""
         port = 65432
