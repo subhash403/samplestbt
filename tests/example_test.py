@@ -58,10 +58,6 @@ def test_DVR_on_reboot():
     print("TESTEST")
     os.chdir("/var/lib/stbt/test-pack/tests")
     subprocess.call(['./test1.sh'])
-    p1 = subprocess.Popen(["echo", "osdiag rebootnow"], stdout=subprocess.PIPE)
-    p2 = subprocess.Popen(["./mototerm", "30.255.240.82"], stdin=p1.stdout, stdout=subprocess.PIPE)
-    p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.
-    output,err = p2.communicate()
     count = 0
     while True:
      if stbt.is_screen_black(): break
