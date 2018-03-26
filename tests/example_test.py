@@ -51,6 +51,7 @@ def send_command_internal(command, box_ip, timeout=10.0):
         return str(result)
 
 def test_DVR_on_reboot():
+    print("TESTEST")
     stat = send_command_internal("osdiag rebootnow", "30.255.240.82", timeout=10.0)
     count = 0
     while True:
