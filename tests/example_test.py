@@ -61,6 +61,7 @@ def test_DVR_on_reboot():
      print line,
     retval = p.wait()
     cwd = os.getcwd()
+    print(cwd)
     count = 0
     while True:
      if stbt.is_screen_black(): break
