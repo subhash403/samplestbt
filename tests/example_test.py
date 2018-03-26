@@ -56,10 +56,7 @@ def send_command_internal(command, box_ip, timeout=10.0):
 
 def test_DVR_on_reboot():
     print("TESTEST")
-    p1 = subprocess.Popen(["echo", "osdiag rebootnow"], stdout=subprocess.PIPE)
-    p2 = subprocess.Popen(["./mototerm", "30.255.240.82"], stdin=p1.stdout, stdout=subprocess.PIPE)
-    p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.
-    output,err = p2.communicate()
+    subprocess.Popen('ls', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     count = 0
     while True:
      if stbt.is_screen_black(): break
