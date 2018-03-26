@@ -6,6 +6,7 @@ import datetime
 import os
 import sys
 import socket
+import paramiko
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
