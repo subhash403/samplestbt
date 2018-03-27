@@ -82,8 +82,8 @@ child.sendline('exit')
         s.sendline("ls -l")
         s.prompt()
         s.logout()
-    expect:
-        print "Exception"
+    except Exception as ex:
+        print(ex)
     count = 0
     while True:
      if stbt.is_screen_black(): break
