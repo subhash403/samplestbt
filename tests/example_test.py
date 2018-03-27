@@ -159,7 +159,7 @@ def test_that_stb_tester_logo_is_shown():
     
 def my_library_launch():
     menu_launch()
-    stbt.press('KEY_CHANNEL_UP')
+    stbt.press('KEY_CHANNELUP')
     for _ in " "*2: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/vod/my_library_logo.png")), \
@@ -167,7 +167,7 @@ def my_library_launch():
     
 def tv_shows_launch():
     menu_launch()
-    stbt.press('KEY_CHANNEL_UP')
+    stbt.press('KEY_CHANNELUP')
     for _ in " "*3: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/vod/tv_shows_logo.png")), \
@@ -175,7 +175,7 @@ def tv_shows_launch():
     
 def movies_launch():
     menu_launch()
-    stbt.press('KEY_CHANNEL_UP')
+    stbt.press('KEY_CHANNELUP')
     for _ in " "*4: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/vod/movies_logo.png")), \
@@ -183,11 +183,25 @@ def movies_launch():
     
 def video_store_launch():
     menu_launch()
-    stbt.press('KEY_CHANNEL_UP')
+    stbt.press('KEY_CHANNELUP')
     for _ in " "*5: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/vod/video_store_logo.png")), \
     "Video Store not launched"
+    
+ def settings_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNELDOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/settings_logo.png")), \
+    "Settings not launched"
+    
+def search_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNELUP')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/search_logo.png")), \
+    "Search not launched"
 
 def menu_launch():
     stbt.press('KEY_EXIT')
