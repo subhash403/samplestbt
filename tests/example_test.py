@@ -204,7 +204,7 @@ def search_launch():
     "Search not launched"
 
 def menu_launch():
-    stbt.press('KEY_EXIT')
+    for _ in " "*2: stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu/menu_logo.png')
     
