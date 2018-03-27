@@ -225,10 +225,10 @@ def test_launch_methods():
     menu_launch()
     guide_launch()
     my_library_launch()
-	  tv_shows_launch()
-		movies_lanuch()
-		video_store_launch()
-		settings_launch()
+	tv_shows_launch()
+	movies_lanuch()
+	video_store_launch()
+	settings_launch()
                
 def init():
     for _ in " "*2: stbt.press('KEY_EXIT')
