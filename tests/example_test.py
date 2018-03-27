@@ -231,7 +231,8 @@ def test_launch_methods():
     settings_launch()
                
 def init():
-    if stbt.match('images/env/user_settings.png'): for _ in " "*2: stbt.press('KEY_POWER')
+    if stbt.match('images/env/user_settings.png'):
+        for _ in " "*2: stbt.press('KEY_POWER')
     else:
         for _ in " "*2: stbt.press('KEY_EXIT')
         stbt.press('KEY_GUIDE')
