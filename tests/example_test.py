@@ -233,7 +233,9 @@ def test_launch_methods():
 def init():
     for _ in " "*2: stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
-    time.sleep(2)
+    time.sleep(1)
     if stbt.is_screen_black(): stbt.press('KEY_POWER')
     stbt.press('KEY_EXIT')
+    time.sleep(1)
+    if stbt.is_screen_black(): stbt.press('KEY_POWER')
     
