@@ -244,7 +244,7 @@ def init():
         time.sleep(2)
         stbt.press('KEY_MENU')
         if stbt.match('images/env/user_settings.png'):
-        for _ in " "*2: stbt.press('KEY_POWER')
+            for _ in " "*2: stbt.press('KEY_POWER')
         stbt.press('KEY_EXIT')
         time.sleep(3)
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
