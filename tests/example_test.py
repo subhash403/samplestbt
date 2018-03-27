@@ -8,7 +8,6 @@ import sys
 import socket
 import subprocess
 import pexpect
-import pexpect
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -126,18 +125,9 @@ def mydvr_launch():
     stbt.press('KEY_MYDVR')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
     "MyDVR not launched"
-    
-def init():
-    for _ in " "*3: stbt.press('KEY_EXIT')
-    stbt.press('KEY_GUIDE')
-    if stbt.is_screen_black(): stbt.press('KEY_POWER')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_GUIDE')
-    if stbt.is_screen_black(): stbt.press('KEY_POWER')
-    stbt.press('KEY_EXIT')
 
 def test_VOD_ME_6119_tv_shows_launch():
-    #init()
+    init()
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
@@ -181,3 +171,10 @@ def test_read_menu():
     stbt.press('KEY_MENU')
     sleep(1)
     print stbt.ocr()
+
+def init():
+    for _ in " "*2: stbt.press('KEY_EXIT')
+    stbt.press('KEY_GUIDE')
+    if stbt.is_screen_black(): stbt.press('KEY_POWER')
+    stbt.press('KEY_EXIT')
+    
