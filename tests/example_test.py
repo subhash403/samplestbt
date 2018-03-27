@@ -60,7 +60,7 @@ def test_DVR_on_reboot():
     child = pexpect.spawn('/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@172.30.82.139')
     #child.expect('(yes/no)?',timeout=20)
     #child.sendline('yes')
-    child.expect('*password*', timeout=120)
+    child.expect('password', timeout=120)
     #time.sleep(20)
     child.sendline('Charter1')
     child.expect(r'.*', timeout=120)
@@ -240,4 +240,3 @@ def init():
         stbt.press('KEY_EXIT')
         guide_launch()
         stbt.press('KEY_EXIT')
-    
