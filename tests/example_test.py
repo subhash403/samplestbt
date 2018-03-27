@@ -229,6 +229,7 @@ def test_launch_methods():
     movies_launch()
     video_store_launch()
     settings_launch()
+    stbt.press('KEY_POWER')
                
 def init():
     if stbt.match('images/env/user_settings.png'):
