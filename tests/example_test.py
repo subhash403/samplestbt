@@ -210,7 +210,7 @@ def menu_launch():
     "Menu not launched"
     
 def guide_launch():
-    stbt.press('KEY_EXIT')
+    for _ in " "*2: stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
     assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
     "Guide not launched"
@@ -246,6 +246,4 @@ def init():
         if stbt.match('images/env/user_settings.png'):
             for _ in " "*2: stbt.press('KEY_POWER')
         stbt.press('KEY_EXIT')
-        time.sleep(3)
-        if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
     
