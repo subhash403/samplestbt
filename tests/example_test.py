@@ -193,14 +193,14 @@ def video_store_launch():
     menu_launch()
     stbt.press('KEY_CHANNELDOWN')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/vod/settings_logo.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/menu/settings_logo.png")), \
     "Settings not launched"
     
 def search_launch():
     menu_launch()
     stbt.press('KEY_CHANNELUP')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/vod/search_logo.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/menu/search_logo.png")), \
     "Search not launched"
 
 def menu_launch():
