@@ -139,10 +139,6 @@ child.sendline('exit')
      if stbt.wait_for_match('images/in_progress.png'): break
      assert stbt.wait_until(lambda: stbt.match("images/guide/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
-   
-def test_that_live_tv_is_playing():
-    stbt.press('KEY_CLOSE')  # Close any open menus
-    assert stbt.wait_for_motion()
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
@@ -165,21 +161,15 @@ def mydvr_launch():
 
 def test_VOD_ME_6119_tv_shows_launch():
     init()
-    menu_launch()
-    stbt.press('KEY_DOWN')
-    stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/vod/tv_shows_logo.png")), \
-    "TV Shows not launched"
-    macAddress = stbt.get_config("sst", "macAddress")
-    print (macAddress)
+    tv_shows_launch()
     
 def test_VOD_ME_6120_check_tv_shows_filter():
-    test_VOD_ME_6119_tv_shows_launch()
+    tv_shows_launch()
     assert stbt.wait_until(lambda: stbt.match("images/vod/included_with.png")), \
     "Included With filter not found in TV Shows"
     
 def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
-    test_VOD_ME_6119_tv_shows_launch()
+    tv_shows_launch()
     time.sleep(65)
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
@@ -189,10 +179,6 @@ def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
      stbt.press('KEY_DOWN')
      if stbt.wait_for_match('images/vod/recently_watched.png'): break      
     stbt.press('KEY_ENTER')
-
-def test_that_stb_tester_logo_is_shown():
-    stbt.press('KEY_CHANNELUP')
-    assert stbt.wait_for_match('stb-tester-logo.png')
     
 def my_library_launch():
     menu_launch()
@@ -278,3 +264,11 @@ def test_read_menu():
     stbt.press('KEY_MENU')
     sleep(1)
     print stbt.ocr()
+
+def test_that_live_tv_is_playing():
+    stbt.press('KEY_CLOSE')  # Close any open menus
+    assert stbt.wait_for_motion()
+    
+def test_that_stb_tester_logo_is_shown():
+    stbt.press('KEY_CHANNELUP')
+    assert stbt.wait_for_match('stb-tester-logo.png')
