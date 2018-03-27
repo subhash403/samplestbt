@@ -72,6 +72,11 @@ child.sendline('exit')
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
     '''
+    os.chdir("/var/lib/stbt/test-pack/tests/")
+    child = pexpect.spawn('./mototerm 30.255.240.82')
+    child.expect('cmd2k mode is off',timeout=20)
+    child.sendline('osdiag rebootnow')
+    child.interact()
     try:
         s = pxssh.pxssh()
         #hostname = raw_input(host)
@@ -143,6 +148,7 @@ def guide_launch():
     "Guide not launched"
     
 def miniguide_launch():
+    stbt.press('KEY_EXIT')
     stbt.press('KEY_ENTER')
     time.sleep(1.2)
     stbt.press('KEY_ENTER')
@@ -150,6 +156,7 @@ def miniguide_launch():
     "Miniguide not launched"
     
 def mydvr_launch():
+    stbt.press('KEY_EXIT')
     stbt.press('KEY_MYDVR')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
     "MyDVR not launched"
