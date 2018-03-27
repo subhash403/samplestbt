@@ -221,7 +221,7 @@ def test_read_menu():
     print stbt.ocr()
              
 def test_launch_methods():
-    #init()
+    init()
     menu_launch()
     guide_launch()
     my_library_launch()
