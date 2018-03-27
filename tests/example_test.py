@@ -193,6 +193,11 @@ def menu_launch():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu/menu_logo.png')
+    
+def guide_launch():
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_GUIDE)
+    assert stbt.wait_for_match('images/guide/guide_options.png')
 
 def test_read_menu():
     stbt.press('KEY_CLOSE')
