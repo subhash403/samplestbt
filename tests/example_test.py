@@ -65,12 +65,12 @@ child.sendline('Charter1')
 child.expect(r'.*', timeout=120)
 child.sendline('python dvr_status.py 30.255.240.82')
 child.sendline('exit')
-'''
     ssh = subprocess.Popen(["/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@172.30.82.139", "ls -l"],
                            shell=False,
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
+    '''
     count = 0
     while True:
      if stbt.is_screen_black(): break
