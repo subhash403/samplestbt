@@ -236,10 +236,14 @@ def init():
         for _ in " "*2: stbt.press('KEY_POWER')
     else:
         stbt.press('KEY_EXIT')
-        guide_launch()
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_GUIDE')
+        assert stbt.wait_for_match('images/guide/guide_options.png')
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
         time.sleep(2)
-        guide_launch()
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_GUIDE')
+        assert stbt.wait_for_match('images/guide/guide_options.png')
         time.sleep(2)
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
     
