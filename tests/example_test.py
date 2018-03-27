@@ -189,7 +189,7 @@ def video_store_launch():
     assert stbt.wait_until(lambda: stbt.match("images/vod/video_store_logo.png")), \
     "Video Store not launched"
     
- def settings_launch():
+def settings_launch():
     menu_launch()
     stbt.press('KEY_CHANNELDOWN')
     stbt.press('KEY_ENTER')
