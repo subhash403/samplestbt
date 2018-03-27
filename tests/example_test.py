@@ -81,7 +81,9 @@ child.sendline('exit')
         s.login(hostName, userName, password)
         s.sendline("ls -l")
         s.prompt()
+        print("!#$%!#%$!$@!#$@#$")
         print s.before
+        print("!#$%!#%$!$@!#$@#$")
         s.logout()
     except Exception as ex:
         print(ex)
