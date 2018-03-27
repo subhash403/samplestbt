@@ -237,6 +237,7 @@ def init():
     else:
         for _ in " "*2: stbt.press('KEY_EXIT')
         stbt.press('KEY_GUIDE')
+        if stbt.wait_for_match('images/guide/guide_options.png'): break
         time.sleep(2)
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
         time.sleep(2)
