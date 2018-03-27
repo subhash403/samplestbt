@@ -239,6 +239,7 @@ def init():
         stbt.press('KEY_GUIDE')
         time.sleep(2)
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
+        time.sleep(2)
         stbt.press('KEY_GUIDE')
         time.sleep(2)
         if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
