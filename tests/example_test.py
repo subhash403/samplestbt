@@ -231,7 +231,6 @@ def test_launch_methods():
     movies_launch()
     video_store_launch()
     settings_launch()
-    stbt.press('KEY_POWER')
                
 def init():
     if stbt.match('images/env/user_settings.png'):
@@ -239,11 +238,6 @@ def init():
     else:
         stbt.press('KEY_EXIT')
         stbt.press('KEY_EXIT')
-        time.sleep(3)
-        if stbt.match('images/env/black_screen.png'): stbt.press('KEY_POWER')
-        time.sleep(2)
-        stbt.press('KEY_MENU')
-        if stbt.match('images/env/user_settings.png'):
-            for _ in " "*2: stbt.press('KEY_POWER')
+        guide_launched()
         stbt.press('KEY_EXIT')
     
