@@ -128,10 +128,7 @@ def mydvr_launch():
 
 def test_VOD_ME_6119_tv_shows_launch():
     init()
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_MENU')
-    assert stbt.wait_for_match('images/menu/menu_logo.png')
+    menu_launch()
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/vod/tv_shows_logo.png")), \
@@ -159,8 +156,40 @@ def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
 def test_that_stb_tester_logo_is_shown():
     stbt.press('KEY_CHANNELUP')
     assert stbt.wait_for_match('stb-tester-logo.png')
+    
+def my_library_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNEL_UP')
+    for _ in " "*2: stbt.press('KEY_DOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/my_library_logo.png")), \
+    "My Library not launched"
+    
+def tv_shows_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNEL_UP')
+    for _ in " "*3: stbt.press('KEY_DOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/tv_shows_logo.png")), \
+    "TV Shows not launched"
+    
+def movies_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNEL_UP')
+    for _ in " "*4: stbt.press('KEY_DOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/movies_logo.png")), \
+    "Movies not launched"
+    
+def video_store_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNEL_UP')
+    for _ in " "*5: stbt.press('KEY_DOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/vod/video_store_logo.png")), \
+    "Video Store not launched"
 
-def test_that_menu_launches():
+def menu_launch():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_MENU')
     assert stbt.wait_for_match('images/menu/menu_logo.png')
