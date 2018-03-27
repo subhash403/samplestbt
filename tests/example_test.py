@@ -8,7 +8,6 @@ import sys
 import socket
 import subprocess
 import pexpect
-import paramiko
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -57,6 +56,21 @@ def send_command_internal(command, box_ip, timeout=10.0):
         return str(result)
 
 def test_DVR_on_reboot():
+    '''
+    child = pexpect.spawn('/usr/bin/ssh root@172.30.82.139')
+child.expect('(yes/no)?',timeout=20)
+child.sendline('yes')
+child.expect('password:', timeout=120)
+child.sendline('Charter1')
+child.expect(r'.*', timeout=120)
+child.sendline('python dvr_status.py 30.255.240.82')
+child.sendline('exit')
+'''
+    ssh = subprocess.Popen(["/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@172.30.82.139", "ls -l"],
+                           shell=False,
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE)
+    result = ssh.stdout.readlines(
     count = 0
     while True:
      if stbt.is_screen_black(): break
@@ -205,18 +219,12 @@ def guide_launch():
     stbt.press('KEY_GUIDE')
     assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
     "Guide not launched"
-
-def test_read_menu():
-    stbt.press('KEY_CLOSE')
-    sleep(1)
-    stbt.press('KEY_MENU')
-    sleep(1)
-    print stbt.ocr()
              
 def test_launch_methods():
     init()
     menu_launch()
     guide_launch()
+    miniguide_launch()
     my_library_launch()
     tv_shows_launch()
     movies_launch()
@@ -231,3 +239,10 @@ def init():
         stbt.press('KEY_EXIT')
         guide_launch()
         stbt.press('KEY_EXIT')
+
+def test_read_menu():
+    stbt.press('KEY_CLOSE')
+    sleep(1)
+    stbt.press('KEY_MENU')
+    sleep(1)
+    print stbt.ocr()
