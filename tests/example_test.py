@@ -74,15 +74,8 @@ child.sendline('exit')
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
     '''
-    os.chdir("/usr/bin/")
-    p = subprocess.Popen('ls -lrt', shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    for line in p.stdout.readlines():
-        print line,
-    retval = p.wait()
-    cwd = os.getcwd()
-    shutil.copy2 ('/var/lib/stbt/test-pack/tests/mototerm', '/usr/bin/mototerm')
     os.chdir("/var/lib/stbt/test-pack/tests/")
-    child = pexpect.spawn('bash', ['-c', './mototerm 30.255.240.82'])
+    child = pexpect.spawn('bash', ['-c', '/var/lib/stbt/test-pack/tests/mototerm 30.255.240.82'])
     child.expect('cmd2k mode is off',timeout=20)
     child.sendline('osdiag rebootnow')
     child.sendcontrol('c')
