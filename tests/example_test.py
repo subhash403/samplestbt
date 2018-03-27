@@ -79,7 +79,7 @@ child.sendline('exit')
         userName = raw_input("root")
         password = getpass.getpass("Charter1")
         s.login(hostName, userName, password)
-        s.sendline("ls -l")
+        s.sendline("python dvr_status.py 30.255.240.82")
         s.prompt()
         print("!#$%!#%$!$@!#$@#$")
         print s.before
