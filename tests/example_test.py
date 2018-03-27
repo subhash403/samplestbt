@@ -10,6 +10,7 @@ import subprocess
 import pexpect
 import pxssh
 import getpass
+import fabric
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
