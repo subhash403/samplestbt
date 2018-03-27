@@ -82,7 +82,7 @@ child.sendline('exit')
         s.sendline("ls -l")
         s.prompt()
         s.logout()
-    expect pxssh.ExceptionPxssh, e:
+    expect:
         print "Exception"
     count = 0
     while True:
