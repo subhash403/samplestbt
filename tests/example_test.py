@@ -7,8 +7,7 @@ import os
 import sys
 import socket
 import subprocess
-import pexpect
-import pxssh
+from pexpect import pxssh
 import getpass
 
 def test_stb_reboot():
