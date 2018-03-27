@@ -210,7 +210,7 @@ def menu_launch():
     
 def guide_launch():
     stbt.press('KEY_EXIT')
-    stbt.press('KEY_GUIDE)
+    stbt.press('KEY_GUIDE')
     assert stbt.wait_for_match('images/guide/guide_options.png')
 
 def test_read_menu():
