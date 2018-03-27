@@ -238,6 +238,6 @@ def init():
     else:
         stbt.press('KEY_EXIT')
         stbt.press('KEY_EXIT')
-        guide_launched()
+        guide_launch()
         stbt.press('KEY_EXIT')
     
