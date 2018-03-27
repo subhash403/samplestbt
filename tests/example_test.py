@@ -73,7 +73,17 @@ child.sendline('exit')
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
     '''
-    
+    try:
+        s = pxssh.pxssh()
+        hostName = raw_input("172.30.82.139")
+        userName = raw_input("root")
+        password = getpass.getpass("Charter1")
+        s.login(hostName, userName, password)
+        s.sendline("ls -l")
+        s.prompt()
+        s.logout()
+    expect pxssh.ExceptionPxssh, e:
+        print "Exception"
     count = 0
     while True:
      if stbt.is_screen_black(): break
