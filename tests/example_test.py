@@ -7,6 +7,7 @@ import os
 import sys
 import socket
 import subprocess
+import pexpect
 from pexpect import pxssh
 import getpass
 
