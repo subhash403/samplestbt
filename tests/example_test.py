@@ -75,7 +75,7 @@ child.sendline('exit')
     result = ssh.stdout.readlines(
     '''
     os.chdir("/var/lib/stbt/test-pack/tests/")
-    child = pexpect.spawn('bash', ['-c', '/var/lib/stbt/test-pack/tests/mototerm 30.255.240.82'])
+    child = pexpect.spawn('bash', ['-c', '. /var/lib/stbt/test-pack/tests/mototerm 30.255.240.82'])
     child.expect('cmd2k mode is off',timeout=20)
     child.sendline('osdiag rebootnow')
     child.sendcontrol('c')
