@@ -57,11 +57,11 @@ def send_command_internal(command, box_ip, timeout=10.0):
 
 def test_DVR_on_reboot():
     print("TESTEST")
-    child = pexpect.spawn('/usr/bin/ssh root@172.30.82.139')
-    child.expect('(yes/no)?',timeout=20)
-    child.sendline('yes')
-    #child.expect('password', timeout=120)
-    time.sleep(20)
+    child = pexpect.spawn('/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@172.30.82.139')
+    #child.expect('(yes/no)?',timeout=20)
+    #child.sendline('yes')
+    child.expect('*password*', timeout=120)
+    #time.sleep(20)
     child.sendline('Charter1')
     child.expect(r'.*', timeout=120)
     child.sendline('python dvr_status.py 30.255.240.82')
