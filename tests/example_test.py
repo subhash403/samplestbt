@@ -219,7 +219,17 @@ def test_read_menu():
     stbt.press('KEY_MENU')
     sleep(1)
     print stbt.ocr()
-
+             
+def test_launch_methods():
+    init()
+    menu_launch()
+    guide_launch()
+    my_library_launch()
+	  tv_shows_launch()
+		movies_lanuch()
+		video_store_launch()
+		settings_launch()
+               
 def init():
     for _ in " "*2: stbt.press('KEY_EXIT')
     stbt.press('KEY_GUIDE')
