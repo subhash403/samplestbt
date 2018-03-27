@@ -10,7 +10,6 @@ import subprocess
 import pexpect
 import pxssh
 import getpass
-import fabric
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -76,18 +75,24 @@ child.sendline('exit')
     '''
     try:
         s = pxssh.pxssh()
-        hostName = raw_input("172.30.82.139")
-        userName = raw_input("root")
-        password = getpass.getpass("Charter1")
-        s.login(hostName, userName, password)
-        s.sendline("python dvr_status.py 30.255.240.82")
+        #hostname = raw_input(host)
+        #username = raw_input(user)
+        #password = getpass.getpass(passwd)
+        s.login('172.30.82.139', 'root', 'Charter1')
+        print("*****************************************************************************************")
+        s.sendline('uptime')   # run a command
+        s.prompt()             # match the prompt
+        print(s.before)        # print everything before the prompt.
+        s.sendline('ls -l')
         s.prompt()
-        print("!#$%!#%$!$@!#$@#$")
-        print s.before
-        print("!#$%!#%$!$@!#$@#$")
+        print(s.before)
+        s.sendline('df')
+        s.prompt()
+        print(s.before)
         s.logout()
-    except Exception as ex:
-        print(ex)
+    except pxssh.ExceptionPxssh as e:
+        print("pxssh failed on login.")
+        print(e)
     count = 0
     while True:
      if stbt.is_screen_black(): break
