@@ -89,14 +89,12 @@ child.sendline('exit')
         s.sendline('python dvr_status.py 30.255.240.82')   # run a command
         s.prompt()             # match the prompt
         print(s.before)       # print everything before the prompt.
-        '''
         s.sendline('ls -l')
         s.prompt()
         print(s.before)
         s.sendline('df')
         s.prompt()
         print(s.before)
-        '''
         s.logout()
     except pxssh.ExceptionPxssh as e:
         print("pxssh failed on login.")
