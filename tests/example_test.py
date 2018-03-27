@@ -235,7 +235,7 @@ def init():
     stbt.press('KEY_GUIDE')
     time.sleep(2)
     if stbt.is_screen_black(): stbt.press('KEY_POWER')
-    stbt.press('GUIDE')
+    stbt.press('KEY_GUIDE')
     time.sleep(2)
     if stbt.is_screen_black(): stbt.press('KEY_POWER')
     
