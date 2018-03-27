@@ -9,6 +9,7 @@ import socket
 import subprocess
 import pexpect
 import pxssh
+import getpass
 
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
@@ -72,6 +73,7 @@ child.sendline('exit')
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
     '''
+    
     count = 0
     while True:
      if stbt.is_screen_black(): break
