@@ -75,9 +75,10 @@ child.sendline('exit')
     '''
     os.chdir("/var/lib/stbt/test-pack/tests/")
     child = pexpect.spawn('./mototerm 30.255.240.82')
-    child.expect('cmd2k mode is off',timeout=20)
+    child.expect('cmd2k mode*',timeout=20)
     child.sendline('osdiag rebootnow')
     child.interact()
+    '''
     try:
         s = pxssh.pxssh()
         #hostname = raw_input(host)
@@ -100,6 +101,7 @@ child.sendline('exit')
     except pxssh.ExceptionPxssh as e:
         print("pxssh failed on login.")
         print(e)
+        '''
     count = 0
     while True:
      if stbt.is_screen_black(): break
