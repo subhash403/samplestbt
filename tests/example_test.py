@@ -59,6 +59,9 @@ def send_command_internal(command, box_ip, timeout=10.0):
         return str(result)
 
 def test_DVR_on_reboot():
+    subprocess.check_call([
+    "sshpass", "-p", "Charter1", "ssh", "-o", "StrictHostKeyChecking=no", "-o",  "UserKnownHostsFile=/dev/null",
+    "root@172.30.82.139", "whoami"])
     '''
     child = pexpect.spawn('/usr/bin/ssh root@172.30.82.139')
 child.expect('(yes/no)?',timeout=20)
@@ -73,13 +76,11 @@ child.sendline('exit')
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
     result = ssh.stdout.readlines(
-    '''
     os.chdir("/var/lib/stbt/test-pack/tests/")
     child = pexpect.spawn('bash', ['-c',' exec /var/lib/stbt/test-pack/tests/mototerm 30.255.240.82'])
     child.expect('cmd2k mode is off',timeout=20)
     child.sendline('osdiag rebootnow')
     child.sendcontrol('c')
-    '''
     try:
         s = pxssh.pxssh()
         #hostname = raw_input(host)
