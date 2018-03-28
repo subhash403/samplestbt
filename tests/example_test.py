@@ -100,7 +100,6 @@ child.sendline('exit')
     except pxssh.ExceptionPxssh as e:
         print("pxssh failed on login.")
         print(e)
-        '''
     count = 0
     while True:
      if stbt.is_screen_black(): break
@@ -139,6 +138,7 @@ child.sendline('exit')
      if stbt.wait_for_match('images/in_progress.png'): break
      assert stbt.wait_until(lambda: stbt.match("images/guide/guide_rec_icon.png")), \
      "Recording not set with RECORD press in guide"
+     '''
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
