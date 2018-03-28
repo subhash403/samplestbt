@@ -66,7 +66,6 @@ def Add_watchlist(n):
 			break
 	
 def test_parser():
-	HDAT_setting("On")
 	HDAT_setting("Off")
 	Add_watchlist(7)
 
