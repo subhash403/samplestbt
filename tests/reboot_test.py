@@ -36,6 +36,7 @@ def test_DVR_on_reboot():
     "RECORD press on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
     count = 0
+    ###
     while True:
         stbt.press('KEY_ENTER')
         if stbt.match('images/cta/watch.png'): break
