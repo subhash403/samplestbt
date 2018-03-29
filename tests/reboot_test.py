@@ -12,7 +12,6 @@ from pexpect import pxssh
 import getpass
 import shutil
 import example_test
-#######
 
 def test_DVR_on_reboot():
     count = 0
