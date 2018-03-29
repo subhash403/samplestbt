@@ -31,7 +31,7 @@ def test_DVR_on_reboot():
      "Stick Around screen is not shown after reboot within 3 minutes"
     stbt.wait_for_motion(timeout_secs=300)
     stbt.press('KEY_RECORD')
-    assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or stbt.match("images/dvr/ch_bar_rec")), \
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or stbt.match("images/dvr/ch_bar_rec.png")), \
     "RECORD press on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
     count = 0
