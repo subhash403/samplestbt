@@ -12,13 +12,6 @@ from pexpect import pxssh
 import getpass
 import shutil
 
-def reboot(ip_address):
-    subprocess.check_call([
-        "ssh", "-o", "StrictHostKeyChecking=no",
-        "-i", os.path.join(os.path.dirname(__file__), "id_rsa"),
-        "root@%s" % ip_address,
-        "osdiag rebootnow"])
-
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
     timeout = 10.0
@@ -66,87 +59,27 @@ def send_command_internal(command, box_ip, timeout=10.0):
         return str(result)
 
 def test_DVR_on_reboot():
-    subprocess.check_call([
-    "sshpass", "-p", "Charter1", "ssh", "-o", "StrictHostKeyChecking=no", "-o",  "UserKnownHostsFile=/dev/null",
-    "root@172.30.82.139", "whoami"])
-    '''
-    child = pexpect.spawn('/usr/bin/ssh root@172.30.82.139')
-child.expect('(yes/no)?',timeout=20)
-child.sendline('yes')
-child.expect('password:', timeout=120)
-child.sendline('Charter1')
-child.expect(r'.*', timeout=120)
-child.sendline('python dvr_status.py 30.255.240.82')
-child.sendline('exit')
-    ssh = subprocess.Popen(["/usr/bin/ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@172.30.82.139", "ls -l"],
-                           shell=False,
-                           stdout=subprocess.PIPE,
-                           stderr=subprocess.PIPE)
-    result = ssh.stdout.readlines(
-    os.chdir("/var/lib/stbt/test-pack/tests/")
-    child = pexpect.spawn('bash', ['-c',' exec /var/lib/stbt/test-pack/tests/mototerm 30.255.240.82'])
-    child.expect('cmd2k mode is off',timeout=20)
-    child.sendline('osdiag rebootnow')
-    child.sendcontrol('c')
-    try:
-        s = pxssh.pxssh()
-        #hostname = raw_input(host)
-        #username = raw_input(user)
-        #password = getpass.getpass(passwd)
-        s.login('172.30.82.139', 'root', 'Charter1')
-        print("*****************************************************************************************")
-        s.sendline('python dvr_status.py 30.255.240.82')   # run a command
-        s.prompt()             # match the prompt
-        print(s.before)       # print everything before the prompt.
-        s.sendline('ls -l')
-        s.prompt()
-        print(s.before)
-        s.sendline('df')
-        s.prompt()
-        print(s.before)
-        s.logout()
-    except pxssh.ExceptionPxssh as e:
-        print("pxssh failed on login.")
-        print(e)
     count = 0
     while True:
      if stbt.is_screen_black(): break
      count += 1
+     sleep(3)
      assert count < 10, \
-     "STB did not reboot within 30 seconds with osdiag RebootNow"     
-    stbt.press('KEY_POWER')
-    assert stbt.wait_until(lambda: stbt.match('images/menu/stick_around.png')), \
-    "Stick Around screen not found after hard reboot"
-    time.sleep(30)
-    stbt.press('KEY_EXIT')
-    assert stbt.wait_for_motion()
-    guide_launch()
-    stbt.press('KEY_EXIT')
-    mydvr_launch()
+     "STB did not reboot within 30 seconds with osdiag RebootNow"  
     count = 0
     while True:
-     if stbt.wait_for_match('images/watch_cta.png'): break
-     stbt.press('KEY_ENTER')
+     stbt.press('KEY_POWER')
+     if stbt.match('images/menu/stick_around.png'): break
+     sleep(10)
      count += 1
-     if count > 10: break
-    stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
-    "DVR asset did not play back"
-    stbt.press('KEY_EXIT')
-    miniguide_launch()
+     asset count < 18, \
+     "Stick Around screen is not shown after reboot within 3 minutes"
+    stbt.wait_for_motion(timeout_secs=300, consecutive_frames=None, noise_threshold=None, mask=None, region=Region.ALL)
     stbt.press('KEY_RECORD')
-    while True:
-     if stbt.wait_for_match('images/edit_ep_rec.png'): break 
-     assert stbt.wait_until(lambda: stbt.match("images/miniguide/miniguide_rec_icon.png")), \
-     "Recording not set with RECORD press in miniguide"
-    stbt.press('KEY_EXIT')  
-    guide_launch()
-    stbt.press('KEY_RECORD')
-    while True:
-     if stbt.wait_for_match('images/in_progress.png'): break
-     assert stbt.wait_until(lambda: stbt.match("images/guide/guide_rec_icon.png")), \
-     "Recording not set with RECORD press in guide"
-     '''
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or lambda: stbt.match("images/dvr/ch_bar_rec")), \
+    "RECORD press on live TV did not set recording, or prompt for edit recording"
+    mydvr_launch()
+    
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
