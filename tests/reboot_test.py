@@ -41,6 +41,7 @@ def test_DVR_on_reboot():
     assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or stbt.match("images/dvr/ch_bar_rec.png")), \
     "RECORD press on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
+    sleep(120)
     count = 0
     while True:
         stbt.press('KEY_ENTER')
