@@ -69,14 +69,15 @@ def test_DVR_on_reboot():
     count = 0
     while True:
      stbt.press('KEY_POWER')
-     if stbt.match('images/menu/stick_around.png'): break
-     sleep(10)
+     sleep(5)
+     if stbt.match('images/menu/stick_around.png') or stbt.match('images/menu/reboot_logo.png'): break
+     sleep(5)
      count += 1
-     asset count < 18, \
+     assert count < 18, \
      "Stick Around screen is not shown after reboot within 3 minutes"
-    stbt.wait_for_motion(timeout_secs=300, consecutive_frames=None, noise_threshold=None, mask=None, region=Region.ALL)
+    stbt.wait_for_motion(timeout_secs=300)
     stbt.press('KEY_RECORD')
-    assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or lambda: stbt.match("images/dvr/ch_bar_rec")), \
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or stbt.match("images/dvr/ch_bar_rec.png")), \
     "RECORD press on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
     count = 0
@@ -87,7 +88,7 @@ def test_DVR_on_reboot():
         assert count < 16, \
         "Could not find recording to play in DVR page"
     stbt.press('KEY_ENTER')
-    assert stbt.wait_for_motion(timeout_secs=20, consecutive_frames=None, noise_threshold=None, mask=None, region=Region.ALL)
+    assert stbt.wait_for_motion(timeout_secs=20)
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
