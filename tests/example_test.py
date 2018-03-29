@@ -12,6 +12,13 @@ from pexpect import pxssh
 import getpass
 import shutil
 
+def reboot(ip_address):
+    subprocess.check_call([
+        "ssh", "-o", "StrictHostKeyChecking=no",
+        "-i", os.path.join(os.path.dirname(__file__), "id_rsa"),
+        "root@%s" % ip_address,
+        "osdiag rebootnow"])
+
 def test_stb_reboot():
     command0 = "osdiag RebootNow"
     timeout = 10.0
