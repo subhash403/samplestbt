@@ -26,7 +26,7 @@ def test_DVR_on_reboot():
      if stbt.match('images/menu/stick_around.png'): break
      sleep(10)
      count += 1
-     asset count < 18, \
+     assert count < 18, \
      "Stick Around screen is not shown after reboot within 3 minutes"
     stbt.wait_for_motion(timeout_secs=300, consecutive_frames=None, noise_threshold=None, mask=None, region=Region.ALL)
     stbt.press('KEY_RECORD')
