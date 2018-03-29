@@ -176,7 +176,7 @@ def test_VOD_ME_4434_check_VODpage_not_in_Recently_Watched():
     my_library_launch()
     while True:
      stbt.press('KEY_DOWN')
-     if stbt.wait_for_match('images/vod/recently_watched.png'): break      
+     if stbt.wait_for_match('images/lane/recently_watched.png'): break      
     stbt.press('KEY_ENTER')
     
 def my_library_launch():
