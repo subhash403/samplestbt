@@ -79,7 +79,15 @@ def test_DVR_on_reboot():
     assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or lambda: stbt.match("images/dvr/ch_bar_rec")), \
     "RECORD press on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
-    
+    count = 0
+    while True:
+        stbt.press('KEY_ENTER')
+        if stbt.match('images/cta/watch.png'): break
+        count += 1
+        assert count < 16, \
+        "Could not find recording to play in DVR page"
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_for_motion(timeout_secs=20, consecutive_frames=None, noise_threshold=None, mask=None, region=Region.ALL)
     
 def guide_launch():
     stbt.press('KEY_GUIDE')
