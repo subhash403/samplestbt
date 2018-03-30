@@ -43,6 +43,7 @@ def test_DVR_on_reboot():
     if not stbt.match('images/dvr/edit_ep_rec.png') and not stbt.match('images/dvr/ch_bar_rec.png'):
         sleep(120)
     stbt.press('KEY_EXIT')
+    stbt.press('KEY_RECORD')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png") or stbt.match("images/dvr/ch_bar_rec.png")), \
     "RECORD press after 60 seconds on live TV did not set recording, or prompt for edit recording"
     mydvr_launch()
