@@ -1,4 +1,4 @@
-import VOD_Methods.py
+import /tests/VOD_Methods.py
 
 def test_VOD_ME_6119_tv_shows_launch():
     init()
