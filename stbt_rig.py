@@ -366,7 +366,7 @@ def iter_portal_auth_tokens(portal_url, portal_auth_file, mode):
         token = sys.stdin.readline().strip()
         if token:
             if keyring is not None:
-                keyring.set_password(portal_url, "prayfran2018", token)
+                keyring.set_password(portal_url, "", token)
             else:
                 logger.warning(
                     'Failed to save access token in system keyring. '
