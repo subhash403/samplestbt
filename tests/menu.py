@@ -16,21 +16,19 @@ class MainMenu(stbt.FrameObject):
 
     @property
     def is_visible(self):
-        return stbt.match("images/menu/menu_logo.png",
-                          frame=self._frame,
-                          region=stbt.Region(x=0, y=0, right=300, bottom=180))
+        return (
+            stbt.match("images/menu/menu_logo.png",
+                       frame=self._frame,
+                       region=stbt.Region(x=0, y=0, right=300, bottom=180)) and
+            self.selection in self.MENU_ITEMS)
 
     @property
     def selection(self):
-        selected_text = stbt.ocr(
+        return stbt.ocr(
             frame=self._frame,
             region=stbt.Region(x=0, y=180, right=300, bottom=720),
             text_color=(241, 235, 230),
             tesseract_user_words=self.MENU_ITEMS)
-        assert selected_text in self.MENU_ITEMS, \
-            "Read unexpected menu item %r; expected one of %r" % (
-                selected_text, self.MENU_ITEMS)
-        return selected_text
 
     @staticmethod
     def open():
