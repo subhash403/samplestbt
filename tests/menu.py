@@ -41,6 +41,12 @@ class MainMenu(stbt.FrameObject):
 
         stbt.press("KEY_MENU")
         menu = wait_until(MainMenu)
+        if not menu:
+            # Maybe the previous test left us watching vod content, so pressing
+            # MENU shows the "Exit?" dialog.
+            if ExitDialog():
+                ExitDialog().exit()
+                menu = wait_until(MainMenu)
         assert menu, "Failed to find main menu after pressing KEY_MENU"
         return menu
 
@@ -69,3 +75,16 @@ class MainMenu(stbt.FrameObject):
                 MainMenu.MENU_ITEMS.index(source))
         key = "KEY_DOWN" if diff > 0 else "KEY_UP"
         return [key] * abs(diff)
+
+
+class ExitDialog(stbt.FrameObject):
+    """The "Exit?" dialog when you try to stop watching a vod asset."""
+
+    @property
+    def is_visible(self):
+        return stbt.match_text(
+            "Exit?", frame=self._frame,
+            region=stbt.Region(x=270, y=240, right=1000, bottom=320))
+
+    def exit(self):
+        stbt.press("KEY_ENTER")
