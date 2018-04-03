@@ -3,4 +3,4 @@
 # Install Ubuntu packages
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update
-sudo apt-get install -y sshpass
+sudo apt-get install -y make sshpass
