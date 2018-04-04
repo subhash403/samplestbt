@@ -17,7 +17,7 @@ def movies_launch():
     assert stbt.wait_until(lambda: stbt.match("images/vod/movies_logo.png")), \
     "Movies not launched"
     
-def video_store_launch():
+def video_store_launch(self):
     menu_launch()
     stbt.press('KEY_CHANNELUP')
     for _ in " "*5: stbt.press('KEY_DOWN')
