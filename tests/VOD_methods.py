@@ -1,6 +1,6 @@
 from Menu_methods import menu_launch
 import stbt
-
+from time import sleep
 def tv_shows_launch():
     menu_launch()
     stbt.press('KEY_CHANNELUP')
@@ -22,5 +22,5 @@ def video_store_launch():
     stbt.press('KEY_CHANNELUP')
     for _ in " "*5: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
-    print stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64))
+    sleep 2
     assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store"
