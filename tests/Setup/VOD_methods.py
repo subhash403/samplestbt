@@ -1,3 +1,5 @@
+from Menu_methods import menu_launch
+
 def tv_shows_launch():
     menu_launch()
     stbt.press('KEY_CHANNELUP')
