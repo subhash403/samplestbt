@@ -1,4 +1,4 @@
-from VOD_Methods import tv_shows_launch
+from VOD_methods import tv_shows_launch
 
 
 def test_run():
