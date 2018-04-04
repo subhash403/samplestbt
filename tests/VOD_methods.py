@@ -22,5 +22,4 @@ def video_store_launch():
     stbt.press('KEY_CHANNELUP')
     for _ in " "*5: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
-    assert stbt.wait_until(lambda: stbt.match("images/vod/video_store_logo.png")), \
-    "Video Store not launched"
+    assert stbt.ocr(frame=self._frame,region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store"
