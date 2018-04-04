@@ -48,6 +48,10 @@ def auto_selftest_ExitDialog():
 
 def auto_selftest_MainMenu():
     r"""
+    >>> MainMenu(frame=f("New box/Menu/Guide.png"))
+    MainMenu(is_visible=True, selection=u'Guide')
+    >>> MainMenu(frame=f("New box/Menu/My Library.png"))
+    MainMenu(is_visible=True, selection=u'My Library')
     >>> MainMenu(frame=f("Worldbox/Menu/My Library.png"))
     MainMenu(is_visible=True, selection=u'My Library')
     >>> MainMenu(frame=f("Worldbox/Menu/Video Store.png"))

@@ -1,6 +1,6 @@
 [MASTER]
 persistent=no
-extension-pkg-whitelist=cv2
+extension-pkg-whitelist=cv2,numpy
 
 [REPORTS]
 msg-template={path}:{line}:{column}: [{msg_id}({symbol}), {obj}] {msg}

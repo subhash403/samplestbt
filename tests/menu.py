@@ -24,10 +24,10 @@ class MainMenu(stbt.FrameObject):
 
     @property
     def selection(self):
-        return stbt.ocr(
+        return _ocr(
             frame=self._frame,
             region=stbt.Region(x=0, y=180, right=300, bottom=720),
-            text_color=(241, 235, 230),
+            text_color=(220, 219, 214), text_color_threshold=50,
             tesseract_user_words=self.MENU_ITEMS)
 
     @staticmethod
@@ -86,3 +86,49 @@ class ExitDialog(stbt.FrameObject):
 
     def exit(self):
         stbt.press("KEY_ENTER")
+
+
+def _ocr(frame, text_color, text_color_threshold,
+         region=stbt.Region.ALL,
+         mode=stbt.OcrMode.PAGE_SEGMENTATION_WITHOUT_OSD,
+         lang=None, tesseract_config=None, tesseract_user_words=None,
+         tesseract_user_patterns=None):
+
+    """This implements custom thresholding because stbt.ocr doesn't allow you to
+    specify a custom text_color threshold.
+
+    This can be removed when Stb-tester v29 is released.
+
+    Accepts the same parameters as stbt.ocr:
+    <https://stb-tester.com/manual/python-api#stbt.ocr>
+    """
+
+    import cv2
+    import numpy
+
+    frame = stbt.crop(frame, region)
+
+    # We scale image up 3x before feeding it to tesseract as this
+    # significantly reduces the error rate by more than 6x in tests.  This
+    # uses bilinear interpolation which produces the best results.  See
+    # http://stb-tester.com/blog/2014/04/14/improving-ocr-accuracy.html
+    #
+    # This must be done before thresholding.
+    outsize = (frame.shape[1] * 3, frame.shape[0] * 3)
+    frame = cv2.resize(frame, outsize, interpolation=cv2.INTER_LINEAR)
+
+    # Calculate distance of each pixel from `text_color`, then discard
+    # everything further than `text_color_threshold` distance away.
+    diff = numpy.subtract(frame, text_color, dtype=numpy.int32)
+    frame = numpy.sqrt((diff[:, :, 0] ** 2 +
+                        diff[:, :, 1] ** 2 +
+                        diff[:, :, 2] ** 2) / 3) \
+                 .astype(numpy.uint8)
+    _, frame = cv2.threshold(frame, text_color_threshold, 255,
+                             cv2.THRESH_BINARY)
+
+    return stbt.ocr(frame, mode=mode, lang=lang,
+                    tesseract_config=tesseract_config,
+                    tesseract_user_words=tesseract_user_words,
+                    tesseract_user_patterns=tesseract_user_patterns,
+                    upsample=False)
