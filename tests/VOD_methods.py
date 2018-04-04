@@ -22,5 +22,5 @@ def video_store_launch():
     stbt.press('KEY_CHANNELUP')
     for _ in " "*5: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
-    sleep 2
+    sleep(2)
     assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store"
