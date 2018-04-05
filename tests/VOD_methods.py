@@ -24,7 +24,7 @@ def video_store_launch():
     stbt.press('KEY_ENTER')
     sleep(2)
     count =0
-    while TRUE or count < 15:
+    while count < 15:
         if stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store":
             break
         else:
