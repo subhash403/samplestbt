@@ -23,4 +23,11 @@ def video_store_launch():
     for _ in " "*5: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
     sleep(2)
-    assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store"
+    count =0
+    while TRUE or count < 15:
+        if stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store":
+            break
+        else:
+            count +=1
+   assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store", \
+    "Video Store not launched"
