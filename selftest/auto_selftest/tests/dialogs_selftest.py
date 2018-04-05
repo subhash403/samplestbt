@@ -64,6 +64,8 @@ def auto_selftest_ModalDialog():
 
 def auto_selftest_SelectedButton():
     r"""
+    >>> SelectedButton(frame=f("New box/Still There.png"))
+    SelectedButton(is_visible=True, text=u'DISMISS')
     >>> SelectedButton(frame=f("New box/Video Store/Unable to Play.png"))
     SelectedButton(is_visible=True, text=u'OK')
     >>> SelectedButton(frame=f("Worldbox/Video Store/Asset - Moonlight - Rent.png"))
@@ -78,6 +80,14 @@ def auto_selftest_SelectedButton():
     SelectedButton(is_visible=True, text=u'CANCEL')
     >>> SelectedButton(frame=f("Worldbox/Video Store/Confirm Rental - Confirm.png"))
     SelectedButton(is_visible=True, text=u'CONFIRM')
+    """
+    pass
+
+
+def auto_selftest_StillThereDialog():
+    r"""
+    >>> StillThereDialog(frame=f("New box/Still There.png"))
+    StillThereDialog(is_visible=True)
     """
     pass
 

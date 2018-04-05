@@ -4,7 +4,8 @@ from stbt import wait_until
 
 def detect_dialog():
     """Returns a `ModalDialog` sub-class, or None if no dialog is detected."""
-    for klass in [ExitDialog, ConfirmRentalDialog, UnableToPlayDialog]:
+    for klass in [StillThereDialog, ExitDialog, ConfirmRentalDialog,
+                  UnableToPlayDialog]:
         d = klass()
         if d.is_visible:
             return d
@@ -23,6 +24,25 @@ class ModalDialog(stbt.FrameObject):
     def dismiss(self):
         """Sub-classes must implement this method."""
         raise NotImplementedError()
+
+
+class StillThereDialog(ModalDialog):
+    """The "Still There?" dialog with a 30-second countdown timer."""
+
+    @property
+    def is_visible(self):
+        return stbt.match_text("Still There?", frame=self._frame,
+                               region=self.TITLE_REGION)
+
+    def dismiss(self):
+        # There's a slight race condition here: If we detect the dialog when
+        # there's like 1 second left in the countdown, by the time the script
+        # calls `dismiss()` the dialog might have disappeared already. In that
+        # case pressing EXIT will dump us back to live TV. This may not be a
+        # problem in practice.
+        stbt.press("KEY_EXIT")
+        assert wait_until(lambda: not StillThereDialog()), \
+            "'Still There?' dialog didn't disappear after pressing EXIT"
 
 
 class ExitDialog(ModalDialog):
