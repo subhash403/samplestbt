@@ -29,6 +29,7 @@ def test_asset_rental():
             try:
                 stbt.wait_for_motion(timeout_secs=30,
                                      mask="images/vod/mask-out-playbar.png")
+                print "Successfully rented: %s" % title
                 break
             except stbt.MotionTimeout:
                 # Beau says:

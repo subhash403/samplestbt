@@ -50,8 +50,8 @@ class MyLibrary(stbt.FrameObject):
                 break
             press_and_wait("KEY_DOWN")
         else:
-            assert False, "Didn't find lane %r after pressing down 5 times" % (
-                lane)
+            assert False, \
+                "Didn't find lane %r after pressing down 5 times" % lane
 
         for _ in range(20):
             if MyLibrary().selection == title:
@@ -59,4 +59,5 @@ class MyLibrary(stbt.FrameObject):
                 break
             press_and_wait("KEY_RIGHT")
         else:
-            assert False, "Didn't find title %r after pressing right 20 times"
+            assert False, \
+                "Didn't find title %r after pressing right 20 times" % title
