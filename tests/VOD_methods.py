@@ -29,5 +29,5 @@ def video_store_launch():
             break
         else:
             count +=1
-   assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store", \
+    assert stbt.ocr(region=stbt.Region(x=508, y=54, width=263, height=64)) == "Video Store", \
     "Video Store not launched"
