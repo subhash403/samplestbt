@@ -1,7 +1,7 @@
-import time
-
 import stbt
 from stbt import wait_until
+
+from transition import press_and_wait
 
 
 class MainMenu(stbt.FrameObject):
@@ -13,6 +13,7 @@ class MainMenu(stbt.FrameObject):
 
     MENU_ITEMS = ["Search", "Guide", "My Library", "TV Shows", "Movies",
                   "Video Store", "Settings & Support"]
+    MENU_ITEMS_REGION = stbt.Region(x=0, y=180, right=300, bottom=720)
 
     @property
     def is_visible(self):
@@ -26,7 +27,7 @@ class MainMenu(stbt.FrameObject):
     def selection(self):
         return _ocr(
             frame=self._frame,
-            region=stbt.Region(x=0, y=180, right=300, bottom=720),
+            region=self.MENU_ITEMS_REGION,
             text_color=(220, 219, 214), text_color_threshold=50,
             tesseract_user_words=self.MENU_ITEMS)
 
@@ -53,8 +54,7 @@ class MainMenu(stbt.FrameObject):
             "Invalid target %r; expected one of %r" % (target, self.MENU_ITEMS)
 
         for key in self._navigate_keys(self.selection, target):
-            stbt.press(key)
-            time.sleep(1)
+            press_and_wait(key, region=self.MENU_ITEMS_REGION)
         new_frame = wait_until(lambda: MainMenu().selection == target)
         assert new_frame, "Failed to reach menu target %r" % target
         return new_frame
