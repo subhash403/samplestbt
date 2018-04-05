@@ -52,7 +52,8 @@ class MyLibrary(stbt.FrameObject):
             stbt.press("KEY_DOWN")
             time.sleep(1)
         else:
-            assert False, "Didn't find lane %r after pressing down 5 times"
+            assert False, "Didn't find lane %r after pressing down 5 times" % (
+                lane)
 
         for _ in range(20):
             if MyLibrary().selection == title:
