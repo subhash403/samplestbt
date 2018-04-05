@@ -1,7 +1,8 @@
-import time
-
 import stbt
 from stbt import wait_until
+
+from dialogs import detect_dialog, ModalDialog
+from transition import press_and_wait
 
 
 class MainMenu(stbt.FrameObject):
@@ -13,6 +14,7 @@ class MainMenu(stbt.FrameObject):
 
     MENU_ITEMS = ["Search", "Guide", "My Library", "TV Shows", "Movies",
                   "Video Store", "Settings & Support"]
+    MENU_ITEMS_REGION = stbt.Region(x=0, y=180, right=300, bottom=720)
 
     @property
     def is_visible(self):
@@ -26,7 +28,7 @@ class MainMenu(stbt.FrameObject):
     def selection(self):
         return _ocr(
             frame=self._frame,
-            region=stbt.Region(x=0, y=180, right=300, bottom=720),
+            region=self.MENU_ITEMS_REGION,
             text_color=(220, 219, 214), text_color_threshold=50,
             tesseract_user_words=self.MENU_ITEMS)
 
@@ -38,13 +40,15 @@ class MainMenu(stbt.FrameObject):
             return menu
 
         stbt.press("KEY_MENU")
-        menu = wait_until(MainMenu)
-        if not menu:
-            # Maybe the previous test left us watching vod content, so pressing
-            # MENU shows the "Exit?" dialog.
-            if ExitDialog():
-                ExitDialog().exit()
+        menu_or_dialog = wait_until(lambda: MainMenu() or detect_dialog())
+        if isinstance(menu_or_dialog, ModalDialog):
+            menu_or_dialog.dismiss()
+            menu = wait_until(MainMenu)
+            if not menu:
+                stbt.press("KEY_MENU")
                 menu = wait_until(MainMenu)
+        else:
+            menu = menu_or_dialog
         assert menu, "Failed to find main menu after pressing KEY_MENU"
         return menu
 
@@ -53,8 +57,7 @@ class MainMenu(stbt.FrameObject):
             "Invalid target %r; expected one of %r" % (target, self.MENU_ITEMS)
 
         for key in self._navigate_keys(self.selection, target):
-            stbt.press(key)
-            time.sleep(1)
+            press_and_wait(key, region=self.MENU_ITEMS_REGION)
         new_frame = wait_until(lambda: MainMenu().selection == target)
         assert new_frame, "Failed to reach menu target %r" % target
         return new_frame
@@ -73,19 +76,6 @@ class MainMenu(stbt.FrameObject):
                 MainMenu.MENU_ITEMS.index(source))
         key = "KEY_DOWN" if diff > 0 else "KEY_UP"
         return [key] * abs(diff)
-
-
-class ExitDialog(stbt.FrameObject):
-    """The "Exit?" dialog when you try to stop watching a vod asset."""
-
-    @property
-    def is_visible(self):
-        return stbt.match_text(
-            "Exit?", frame=self._frame,
-            region=stbt.Region(x=270, y=240, right=1000, bottom=320))
-
-    def exit(self):
-        stbt.press("KEY_ENTER")
 
 
 def _ocr(frame, text_color, text_color_threshold,

@@ -1,9 +1,8 @@
-import time
-
 import stbt
 from stbt import wait_until
 
 from menu import MainMenu
+from transition import press_and_wait
 
 
 class MyLibrary(stbt.FrameObject):
@@ -49,16 +48,16 @@ class MyLibrary(stbt.FrameObject):
             if MyLibrary().lane == lane:
                 print "Found lane %s" % lane
                 break
-            stbt.press("KEY_DOWN")
-            time.sleep(1)
+            press_and_wait("KEY_DOWN")
         else:
-            assert False, "Didn't find lane %r after pressing down 5 times"
+            assert False, \
+                "Didn't find lane %r after pressing down 5 times" % lane
 
         for _ in range(20):
             if MyLibrary().selection == title:
                 print "Found title %r" % title
                 break
-            stbt.press("KEY_RIGHT")
-            time.sleep(1)
+            press_and_wait("KEY_RIGHT")
         else:
-            assert False, "Didn't find title %r after pressing right 20 times"
+            assert False, \
+                "Didn't find title %r after pressing right 20 times" % title
