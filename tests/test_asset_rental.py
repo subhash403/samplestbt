@@ -17,7 +17,7 @@ def test_asset_rental():
 
         print "Checking asset to see if we can rent it: %s" % title
         stbt.press("KEY_ENTER")
-        asset = wait_until(Asset)
+        asset = wait_until(Asset, timeout_secs=20)
         assert asset, "Didn't detect asset page"
         assert asset.title == title, \
             "Loaded asset page for %r but expected %r" % (asset.title, title)
