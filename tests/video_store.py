@@ -101,6 +101,21 @@ class ConfirmRentalDialog(stbt.FrameObject):
             stbt.press("KEY_ENTER")
 
 
+class UnableToPlayDialog(stbt.FrameObject):
+    """The "Unable to Play" modal dialog (with error code and "OK" button)."""
+
+    @property
+    def is_visible(self):
+        return stbt.match_text(
+            "Unable to Play", frame=self._frame,
+            region=stbt.Region(x=300, y=170, right=900, bottom=280))
+
+    def dismiss(self):
+        stbt.press("KEY_EXIT")
+        assert wait_until(lambda: not UnableToPlayDialog()), \
+            "'Unable to Play' dialog didn't disappear after pressing EXIT"
+
+
 class SelectedButton(stbt.FrameObject):
     """Finds the selected (solid) button by matching the left & right edges."""
 
