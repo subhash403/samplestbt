@@ -38,14 +38,6 @@ def f(name):
     return img
 
 
-def auto_selftest_ExitDialog():
-    r"""
-    >>> ExitDialog(frame=f("Worldbox/Video Store/Exit.png"))
-    ExitDialog(is_visible=True)
-    """
-    pass
-
-
 def auto_selftest_MainMenu():
     r"""
     >>> MainMenu(frame=f("New box/Menu/Guide.png"))

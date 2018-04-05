@@ -52,44 +52,6 @@ def auto_selftest_Asset():
     pass
 
 
-def auto_selftest_ConfirmRentalDialog():
-    r"""
-    >>> ConfirmRentalDialog(frame=f("Worldbox/Video Store/Confirm Rental - Cancel.png"))
-    ConfirmRentalDialog(is_visible=True, selection=u'CANCEL')
-    >>> ConfirmRentalDialog(frame=f("Worldbox/Video Store/Confirm Rental - Confirm.png"))
-    ConfirmRentalDialog(is_visible=True, selection=u'CONFIRM')
-    """
-    pass
-
-
-def auto_selftest_SelectedButton():
-    r"""
-    >>> SelectedButton(frame=f("New box/Video Store/Unable to Play.png"))
-    SelectedButton(is_visible=True, text=u'OK')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Asset - Moonlight - Rent.png"))
-    SelectedButton(is_visible=True, text=u'RENT $2.99')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Asset - Moonlight - Restart.png"))
-    SelectedButton(is_visible=True, text=u'RESTART')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Asset - Moonlight - Watch.png"))
-    SelectedButton(is_visible=True, text=u'WATCH')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Asset - Rogue One.png"))
-    SelectedButton(is_visible=True, text=u'RENT $2.99')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Confirm Rental - Cancel.png"))
-    SelectedButton(is_visible=True, text=u'CANCEL')
-    >>> SelectedButton(frame=f("Worldbox/Video Store/Confirm Rental - Confirm.png"))
-    SelectedButton(is_visible=True, text=u'CONFIRM')
-    """
-    pass
-
-
-def auto_selftest_UnableToPlayDialog():
-    r"""
-    >>> UnableToPlayDialog(frame=f("New box/Video Store/Unable to Play.png"))
-    UnableToPlayDialog(is_visible=True)
-    """
-    pass
-
-
 def auto_selftest_VideoStore():
     r"""
     >>> VideoStore(frame=f("Worldbox/Video Store/Top Picks - Rogue One.png"))

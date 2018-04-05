@@ -1,8 +1,9 @@
 import stbt
 from stbt import wait_until
 
+from dialogs import UnableToPlayDialog
 from my_library import MyLibrary
-from video_store import Asset, UnableToPlayDialog, VideoStore
+from video_store import Asset, VideoStore
 
 
 def test_asset_rental():
