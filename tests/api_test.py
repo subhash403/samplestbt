@@ -65,8 +65,8 @@ def video_store_parser(string):
 	for num in m:
 		str = num[3:-1]
 		id = str.split("'")
-		if 'ctec' in st and 'exit' not in st:
-			assets.append(st)
+		if 'ctec' in id and 'exit' not in id:
+			assets.append(str)
 	asset = np.unique(assets)
 	ids = []
 	for a in asset:
