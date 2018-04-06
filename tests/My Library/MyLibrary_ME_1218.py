@@ -15,4 +15,3 @@ def test_MyLib_ME_1218
   press('KEY_ENTER')
   assert stbt.wait_until(lambda: stbt.match("images/vod/adp_blankspace.png")), \
   "ADP of asset in Watchlist not reached"
-#
