@@ -1,7 +1,7 @@
 import stbt
 from my_library import MyLibrary
 
-def test_MyLib_ME_1218
+def test_MyLib_ME_1218():
   # Step 1: valdiate session and liveTV, add asset to Expiring Soon if none
   init()
   ensure_expiring_soon()
