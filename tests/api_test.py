@@ -37,7 +37,7 @@ def moviescatalog():
 
 def videostorecatalog():
 	token = get_auth_token()
-	url = "http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_a3h4/features/video_store/catalog?depth=20&folderContentLimit=100&channelLineupId=CA34-11&folderId=0&startIndex=0&maxResults=100")
+	url = "http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_a3h4/features/video_store/catalog?depth=20&folderContentLimit=100&channelLineupId=CA34-11&folderId=0&startIndex=0&maxResults=100"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.get(url, auth=('charternet', 'Chart3rn3t'),headers=headers)
 	assert req.status_code == 200
