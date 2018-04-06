@@ -49,6 +49,7 @@ def test_DVR_on_reboot():
     count = 0
     while True:
         stbt.press('KEY_ENTER')
+	sleep(1)
         if stbt.match('images/cta/watch.png'): break
         count += 1
         assert count < 16, \
