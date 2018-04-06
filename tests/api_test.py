@@ -74,7 +74,7 @@ def video_store_parser(string):
 		ids.append(st[0][0:-4])
 	return ids
 
-def Rent():
+def Rent(n):
 	assets = videostorecatalog()
 	token = get_auth_token()
 	count =0
