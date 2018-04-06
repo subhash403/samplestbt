@@ -61,3 +61,14 @@ class MyLibrary(stbt.FrameObject):
         else:
             assert False, \
                 "Didn't find title %r after pressing right 20 times" % title
+
+    def find_lane(self, lane):
+        # Find the target lane. This assumes we're starting from the top lane.
+        for _ in range(6):
+            if MyLibrary().lane == lane:
+                print "Found lane %s" % lane
+                break
+            press_and_wait("KEY_DOWN")
+        else:
+            assert False, \
+                "Didn't find lane %r after pressing down 5 times" % lane
