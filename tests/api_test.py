@@ -13,6 +13,16 @@ def get_auth_token():
      token = str(t[0])[0:len(str(t[0]))-1]
      return token
 
+def test_get_auth_token():
+     url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
+     req = requests.post(url, data={"macAddress":"000006982E1B"}, auth=('charternet', 'Chart3rn3t'))
+     assert req.status_code == 200
+     res=req.text.split("Token")
+     r= res[1].decode('utf-8')
+     t = str(r)[3:len(str(r))].split(",")
+     token = str(t[0])[0:len(str(t[0]))-1]
+     return token
+
 def HDAT_setting(value):
 	token = get_auth_token()
 	if value == "Off":
