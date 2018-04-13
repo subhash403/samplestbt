@@ -56,4 +56,11 @@ def test_play_VOD_50plus_times():
     else:
         assert False, "Didn't find rentable playable asset after 20 attempts"
 
-    
+    for _ in range(50):
+        stbt.press('KEY_EXIT')
+        MyLibrary.open().navigate_to("Expiring Soon", title)
+        stbt.press("KEY_ENTER")
+        assert wait_until(lambda: Asset().title == title)
+        assert Asset().selected_button.text == "RESTART"
+        stbt.press("KEY_ENTER")
+        assert stbt.wait_for_motion()
