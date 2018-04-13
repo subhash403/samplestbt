@@ -2,6 +2,7 @@ import stbt
 from stbt import wait_until
 from my_library import MyLibrary
 from video_store import Asset, VideoStore
+from dialogs import UnableToPlayDialog
 
 def test_tuning_channels_200plus_times():
     stbt.press('KEY_EXIT')
