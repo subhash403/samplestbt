@@ -39,7 +39,7 @@ def GNarration_setting(value):
 	token = get_auth_token()
 	if value == "Off":
 		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
-	elsif value == "On":
+	elif value == "On":
 		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
@@ -131,4 +131,4 @@ def test_parser():
 	HDAT_setting("Off")
 	Add_watchlist(7)
 	Rent(1)
-
+	GNarration_setting("Off")
