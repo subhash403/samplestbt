@@ -78,7 +78,7 @@ def test_play_VOD_50plus_times():
         
 def test_DVR_playback_50plus_times_yes_TTS():
     # Turn on TTS
-    GNarration_setting("On")
+    #GNarration_setting("On")
     for _ in range(51):
         mydvr_launch()
         while True:
@@ -93,7 +93,7 @@ def test_DVR_playback_50plus_times_yes_TTS():
     
 def test_DVR_playback_50plus_times_no_TTS(): 
     # Turn off TTS
-    GNarration_setting("Off")
+   # GNarration_setting("Off")
     for _ in range(51):
         mydvr_launch()
         while True:
