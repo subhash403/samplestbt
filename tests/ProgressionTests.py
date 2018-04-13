@@ -23,7 +23,7 @@ def test_tuning_channels_200plus_times():
             for x in list(str(ch)): 
                 stbt.press("KEY_" + x)
             sleep(10)
-            assert stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png") || stbt.wait_for_motion()), \
+            assert stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png") or stbt.wait_for_motion()), \
     "New channel " + str(ch) + " not reached"              
         
 def test_play_VOD_50plus_times():
