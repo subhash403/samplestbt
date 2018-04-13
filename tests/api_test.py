@@ -35,6 +35,19 @@ def HDAT_setting(value):
 	print req
 	assert req.status_code == 200
 	
+def GNarration_setting(value):
+	token = get_auth_token()
+	if value == "Off":
+		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
+	elsif value == "On":
+		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
+	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
+	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
+	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
+	print req
+	assert req.status_code == 200	
+
+	
 def moviescatalog():
 	token = get_auth_token()
 	url = "http://spectrum.engprod-charter.net/api/pub/videocatalogedge/services/v1/vod/ctec_a3h4/features/movie_vod/catalog?depth=20&folderContentLimit=100&channelLineupId=CA34-11&folderId=0&startIndex=0&maxResults=100"
