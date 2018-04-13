@@ -16,7 +16,7 @@ def get_auth_token():
 
 def test_get_auth_token():
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-     req = requests.post(url, data={"macAddress":'"'+mac+'"'}, auth=('charternet', 'Chart3rn3t'))
+     req = requests.post(url, data={"macAddress":"00000481561D"}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
      r= res[1].decode('utf-8')
@@ -37,7 +37,6 @@ def HDAT_setting(value):
 	assert req.status_code == 200
 	
 def GNarration_setting(value):
-	mac = stbt.get_config("sst", "macAddress")
 	token = get_auth_token()
 	if value == "Off":
 		newAcctJson ='{"settings":{"groups":[{"id":"STB00000481561D","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
