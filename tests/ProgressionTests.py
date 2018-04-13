@@ -1,5 +1,5 @@
 import stbt
-import api_test
+from api_test import GNarration_setting
 from time import sleep
 from stbt import wait_until
 from my_library import MyLibrary
