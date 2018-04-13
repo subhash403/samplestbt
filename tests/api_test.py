@@ -38,9 +38,9 @@ def HDAT_setting(value):
 def GNarration_setting(value):
 	token = get_auth_token()
 	if value == "Off":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB000006982E1B","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
 	elif value == "On":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac_id+'","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB000006982E1B","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
