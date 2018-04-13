@@ -7,6 +7,7 @@ def get_auth_token():
      	mac = stbt.get_config("sst", "macAddress")
      	url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
      	req = requests.post(url, data={"macAddress":"00000481561D"}, auth=('charternet', 'Chart3rn3t'))
+	print req
      	assert req.status_code == 200
      	res=req.text.split("Token")
      	print res
