@@ -17,7 +17,7 @@ def test_tuning_channels_200plus_times():
     stbt.press('KEY_EXIT')
     for _ in range(50):
         channels = [1,2,3,4,5,6,7,8,9]
-        for ch in channels
+        for ch in channels:
             for x in list(str(ch)): 
                 key = "'KEY_" + "str(x)'"
                 stbt.press(key)
