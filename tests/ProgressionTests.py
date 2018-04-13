@@ -19,8 +19,7 @@ def test_tuning_channels_200plus_times():
         channels = [1,2,3,4,5,6,7,8,9]
         for ch in channels:
             for x in list(str(ch)): 
-                key = "'KEY_" + "str(x)'"
-                stbt.press(key)
+                stbt.press("'KEY_" + x + "'")
             assert stbt.wait_for_motion()               
         
 def test_play_VOD_50plus_times():
