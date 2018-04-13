@@ -5,8 +5,9 @@ import numpy as np
 from stbt import sst
 
 def get_auth_token():
+     mac = stbt.get_config("sst", "macAddress")
      url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
-     req = requests.post(url, data={"macAddress":'"'+sst.macAddress+'"'}, auth=('charternet', 'Chart3rn3t'))
+     req = requests.post(url, data={"macAddress":'"'mac'"'}, auth=('charternet', 'Chart3rn3t'))
      assert req.status_code == 200
      res=req.text.split("Token")
      r= res[1].decode('utf-8')
@@ -37,11 +38,12 @@ def HDAT_setting(value):
 	assert req.status_code == 200
 	
 def GNarration_setting(value):
+	mac = stbt.get_config("sst", "macAddress")
 	token = get_auth_token()
 	if value == "Off":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+sst.macAddress+'","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac+'","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
 	elif value == "On":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+sst.macAddress+'","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac+'","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
