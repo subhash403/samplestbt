@@ -16,7 +16,7 @@ def test_tuning_channels_200plus_times():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.wait_for_motion(timeout_secs=60)
-    channels = [200,300,400,500]
+    channels = [93,130,95,98]
     for _ in range(50):
         for ch in channels:
             for x in list(str(ch)): 
