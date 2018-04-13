@@ -1,8 +1,15 @@
 import stbt
+import api_test
 from stbt import wait_until
 from my_library import MyLibrary
 from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
+
+def mydvr_launch():
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_MYDVR')
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
+    "MyDVR not launched"
 
 def test_tuning_channels_200plus_times():
     stbt.press('KEY_EXIT')
@@ -11,7 +18,7 @@ def test_tuning_channels_200plus_times():
     for _ in range(50):
         channels = [1,2,3,4,5,6,7,8,9]
         for ch in channels:
-            for x in list(ch): stbt.press('KEY_'+'x')
+            for x in list(ch): stbt.press('KEY_'+'str(x)')
             assert stbt.wait_for_motion()               
         
 def test_play_VOD_50plus_times():
@@ -61,8 +68,38 @@ def test_play_VOD_50plus_times():
         stbt.press('KEY_EXIT')
         MyLibrary.open().navigate_to("Expiring Soon", title)
         #MyLibrary.open().navigate_to("Expiring Soon")        
-        stbt.press("KEY_ENTER")
+        stbt.press('KEY_ENTER')
         assert wait_until(lambda: Asset().title == title)
         assert Asset().selected_button.text == "RESTART"
-        stbt.press("KEY_ENTER")
-        assert stbt.wait_for_motion()
+        stbt.press('KEY_ENTER')
+        assert stbt.wait_for_motion(timeout_sec=20)
+        
+def test_DVR_playback_50plus_times_yes_TTS():
+    # Turn on TTS
+    
+    for _ in range(51):
+        mydvr_launch()
+        while True:
+            stbt.press('KEY_ENTER')
+        sleep(1)
+            if stbt.match('images/cta/watch.png'): break
+            count += 1
+            assert count < 16, \
+            "Could not find recording to play in DVR page"
+        stbt.press('KEY_ENTER')
+        assert stbt.wait_for_motion(timeout_secs=20)
+    
+def test_DVR_playback_50plus_times_no_TTS(): 
+    # Turn off TTS
+    
+    for _ in range(51):
+        mydvr_launch()
+        while True:
+            stbt.press('KEY_ENTER')
+        sleep(1)
+            if stbt.match('images/cta/watch.png'): break
+            count += 1
+            assert count < 16, \
+            "Could not find recording to play in DVR page"
+        stbt.press('KEY_ENTER')
+        assert stbt.wait_for_motion(timeout_secs=20)
