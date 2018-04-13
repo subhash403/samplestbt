@@ -27,9 +27,9 @@ def test_get_auth_token():
 def HDAT_setting(value):
 	token = get_auth_token()
 	if value == "Off":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac+'","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB0000071CE4AE","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
 	elif value == "On":
-		newAcctJson ='{"settings":{"groups":[{"id":"STB'+mac+'","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
+		newAcctJson ='{"settings":{"groups":[{"id":"STB0000071CE4AE","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
 	url = "http://spectrum.engprod-charter.net/api/pub/networksettingsedge/v1/settings"
 	headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 	req = requests.post(url, data=newAcctJson, auth=('charternet', 'Chart3rn3t'),headers=headers)
@@ -107,7 +107,6 @@ def Rent(n):
 		url = "http://spectrum.engprod-charter.net/api/pub/rentalsedge/rentals/purchase?type=arris&deliveryId="+asset
 		headers={'X-CHARTER-SESSION':token, 'Content-Type':'application/json'}
 		req = requests.post(url ,auth=('charternet', 'Chart3rn3t'),headers=headers)
-		#print req.status_code
 		assert req.status_code == 200
 		count +=1
 		if count >= int(n):
