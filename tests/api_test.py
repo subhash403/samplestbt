@@ -129,7 +129,6 @@ def Add_watchlist(n):
 			break
 	
 def test_parser():
-	HDAT_setting("Off")
 	Add_watchlist(7)
 	Rent(1)
 	GNarration_setting("Off")
