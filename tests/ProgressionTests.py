@@ -29,10 +29,20 @@ def test_modify_DVR_options_50plus_times():
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
         "Cannot edit recording setting"
+            stbt.press('KEY_UP')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')
         elif stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
         "Cannot edit recording setting"
+            stbt.press('KEY_UP')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')
         else:
             assert False, "Unable to Edit Episode Recording on Live TV"
     
