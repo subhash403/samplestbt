@@ -20,15 +20,16 @@ def test_modify_DVR_options_50plus_times():
         sleep(5)
         stbt.press('KEY_RECORD')
         sleep(2)
-        if stbt.wait_until('images/dvr/ch_bar_rec.png'):
+        if stbt.match('images/dvr/ch_bar_rec.png'):
             stbt.press('KEY_EXIT')
             stbt.press('KEY_RECORD')
             sleep(2)
-        if stbt.wait_until('images/dvr/edit_ep_rec.png'):
+        sleep(3)
+        if stbt.match('images/dvr/edit_ep_rec.png'):
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
         "Cannot edit recording setting"
-        elif stbt.wait_until('images/dvr/edit_ep_deleted.png'):
+        elif stbt.match('images/dvr/edit_ep_deleted.png'):
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
         "Cannot edit recording setting"
