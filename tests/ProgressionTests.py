@@ -13,19 +13,31 @@ def mydvr_launch():
     "MyDVR not launched"
     
 def test_modify_DVR_options_50plus_times():
+    counter = 1
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
+    sleep(5)
+    stbt.press('KEY_RECORD')
+    sleep(2)
+    if stbt.wait_until(lambda: stbt.match("images/dvr/ch_bar_rec.png")):
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_RECORD')
+        sleep(2)
+    if stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
+        stbt.press('KEY_RIGHT')
+        stbt.press('KEY_UP')
+        stbt.press('KEY_LEFT')
+        stbt.press('KEY_LEFT')
+        stbt.press('KEY_LEFT')
+        stbt.press('KEY_ENTER')
     for _ in range(50):
         stbt.press('KEY_EXIT')
         stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
-        sleep(5)
         stbt.press('KEY_RECORD')
         sleep(2)
-        if stbt.wait_until(lambda: stbt.match("images/dvr/ch_bar_rec.png")):
-            stbt.press('KEY_EXIT')
-            stbt.press('KEY_RECORD')
-            sleep(2)
-        sleep(3)
-        if stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")):
+        counter += 1
+        if counter%2 == 0:
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
         "Cannot edit recording setting"
@@ -34,7 +46,7 @@ def test_modify_DVR_options_50plus_times():
             stbt.press('KEY_LEFT')
             stbt.press('KEY_LEFT')
             stbt.press('KEY_ENTER')
-        elif stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
+        else:
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
         "Cannot edit recording setting"
@@ -43,8 +55,6 @@ def test_modify_DVR_options_50plus_times():
             stbt.press('KEY_LEFT')
             stbt.press('KEY_LEFT')
             stbt.press('KEY_ENTER')
-        else:
-            assert False, "Unable to Edit Episode Recording on Live TV"
     
 
 def test_tuning_channels_200plus_times():
