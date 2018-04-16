@@ -20,7 +20,7 @@ def test_modify_DVR_options_50plus_times():
         sleep(5)
         stbt.press('KEY_RECORD')
         sleep(1)
-        if stbt.match('images/dvr/miniguide_rec_icon.png'):
+        if stbt.match('images/miniguide/miniguide_rec_icon.png'):
             stbt.press('KEY_EXIT')
             stbt.press('KEY_RECORD')
             sleep(1)
