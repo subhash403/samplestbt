@@ -26,7 +26,7 @@ def test_tuning_channels_200plus_times():
             t += 1
             for x in list(str(ch)): 
                 stbt.press("KEY_" + x)
-            sleep(3)
+            sleep(6)
             print (t)
             if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/channel_unavailable.png")) or stbt.wait_until(lambda: stbt.match("images/begin_shortly.png")):
                 assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
