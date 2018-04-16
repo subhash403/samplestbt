@@ -11,12 +11,36 @@ def mydvr_launch():
     stbt.press('KEY_MYDVR')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
     "MyDVR not launched"
+    
+def test_modify_DVR_options_50plus_times():
+    for _ in range(50):
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_EXIT')
+        sleep(5)
+        stbt.press('KEY_RECORD')
+        sleep(1)
+        if stbt.match('images/dvr/miniguide_rec_icon.png'):
+            stbt.press('KEY_EXIT')
+            stbt.press('KEY_RECORD')
+            sleep(1)
+        if stbt.match('images/dvr/edit_ep_rec.png'):
+            stbt.press('KEY_RIGHT')
+            assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
+        "Cannot edit recording setting"
+        elif stbt.match('images/dvr/edit_ep_deleted.png'):
+            stbt.press('KEY_RIGHT')
+            assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
+        "Cannot edit recording setting"
+        else:
+            assert False, "Unable to Edit Episode Recording on Live TV"
+    
 
 def test_tuning_channels_200plus_times():
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
     stbt.press('KEY_EXIT')
-    if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/channel_unavailable.png")):
+    if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
         assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "Live TV not reached at test start"
     channels = [25,24,18,13]
