@@ -25,6 +25,13 @@ def test_modify_DVR_options_50plus_times():
         stbt.press('KEY_EXIT')
         sleep(2)
         stbt.press('KEY_RECORD')
+        if counter == 1 and stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_UP')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')
         sleep(2)
         counter += 1
         if counter%2 == 0:
