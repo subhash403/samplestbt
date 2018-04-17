@@ -129,6 +129,9 @@ def test_play_VOD_50plus_times():
         
 def test_DVR_playback_50plus_times_yes_TTS():
     # Turn on TTS
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
     GNarration_setting("On")
     count = 0
     for _ in range(51):
@@ -145,6 +148,9 @@ def test_DVR_playback_50plus_times_yes_TTS():
     
 def test_DVR_playback_50plus_times_no_TTS(): 
     # Turn off TTS
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
     count = 0
     GNarration_setting("Off")
     for _ in range(51):
