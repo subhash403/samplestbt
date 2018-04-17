@@ -136,7 +136,7 @@ def test_DVR_playback_50plus_times_yes_TTS():
         while True:
             stbt.press('KEY_ENTER')
         sleep(1)
-        if stbt.match('images/cta/watch.png'): break
+        if stbt.match('images/cta/watch.png') or stbt.match('images/cta/resume.png'): break
         count += 1
         assert count < 16, \
         "Could not find recording to play in DVR page"
@@ -152,7 +152,7 @@ def test_DVR_playback_50plus_times_no_TTS():
         while True:
             stbt.press('KEY_ENTER')
             sleep(1)
-            if stbt.match('images/cta/watch.png'): break
+            if stbt.match('images/cta/watch.png') or stbt.match('images/cta/resume.png'): break
             count += 1
             assert count < 16, \
             "Could not find recording to play in DVR page"
