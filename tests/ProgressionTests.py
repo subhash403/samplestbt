@@ -82,6 +82,9 @@ def test_tuning_channels_200plus_times():
     "New channel " + str(ch) + " not reached on channel change number " + t              
         
 def test_play_VOD_50plus_times():
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
+    stbt.press('KEY_EXIT')
     VideoStore.open()
 
     # Find an asset that hasn't been rented yet.
