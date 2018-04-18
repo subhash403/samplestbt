@@ -68,7 +68,7 @@ def test_tuning_channels_200plus_times():
             t += 1
             for x in list(str(ch)): 
                 stbt.press("KEY_" + x)
-            sleep(10)
+            sleep(4)
             if stbt.match('images/dvr/continue_to_miniguide.png') and t == 1: 
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_RIGHT')
