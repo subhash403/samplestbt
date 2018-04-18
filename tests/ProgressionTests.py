@@ -72,10 +72,10 @@ def test_tuning_channels_200plus_times():
             if stbt.match('images/dvr/continue_to_miniguide.png') and t == 1: 
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_RIGHT')
-                stbt.press('KEY_SELECT')
-                stbt.press('KEY_SELECT')
+                stbt.press('KEY_ENTER')
+                stbt.press('KEY_ENTER')
                 stbt.press('KEY_RIGHT')
-                stbt.press('KEY_SELECT')
+                stbt.press('KEY_ENTER')
             print (t)
             if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/channel_unavailable.png")):
                 assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
@@ -148,10 +148,10 @@ def test_DVR_playback_50plus_times_yes_TTS():
         if stbt.match('images/dvr/cancel_a_recording.png'):
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_RIGHT')
-            stbt.press('KEY_SELECT')
-            stbt.press('KEY_SELECT')
+            stbt.press('KEY_ENTER')
+            stbt.press('KEY_ENTER')
             stbt.press('KEY_RIGHT')
-            stbt.press('KEY_SELECT')
+            stbt.press('KEY_ENTER')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
         "MyDVR not launched"
         while True:
@@ -178,10 +178,10 @@ def test_DVR_playback_50plus_times_no_TTS():
         if stbt.match('images/dvr/cancel_a_recording.png'):
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_RIGHT')
-            stbt.press('KEY_SELECT')
-            stbt.press('KEY_SELECT')
+            stbt.press('KEY_ENTER')
+            stbt.press('KEY_ENTER')
             stbt.press('KEY_RIGHT')
-            stbt.press('KEY_SELECT')
+            stbt.press('KEY_ENTER')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
         "MyDVR not launched"
         while True:
