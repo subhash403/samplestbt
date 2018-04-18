@@ -64,7 +64,7 @@ def test_tuning_channels_200plus_times():
     if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
         assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "Live TV not reached at test start"
-    channels = [25,24,18,13]
+    channels = [16,19,18,20]
     t = 0
     for _ in range(50):
         for ch in channels:
