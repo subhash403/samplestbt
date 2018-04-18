@@ -167,6 +167,7 @@ def test_DVR_playback_50plus_times_yes_TTS():
         assert count < 16, \
         "Could not find recording to play in DVR page"
         stbt.press('KEY_ENTER')
+        sleep(3)
         assert stbt.wait_for_motion(timeout_secs=20)
     
 def test_DVR_playback_50plus_times_no_TTS(): 
@@ -199,4 +200,5 @@ def test_DVR_playback_50plus_times_no_TTS():
             assert count < 16, \
             "Could not find recording to play in DVR page"
         stbt.press('KEY_ENTER')
+        sleep(3)
         assert stbt.wait_for_motion(timeout_secs=20)
