@@ -146,6 +146,8 @@ def test_DVR_playback_50plus_times_yes_TTS():
     count = 0
     for _ in range(51):
         stbt.press('KEY_EXIT')
+        stbt.press('KEY_EXIT')
+        sleep(1)
         stbt.press('KEY_MYDVR')
         sleep(3)
         if stbt.match('images/dvr/cancel_a_recording.png'):
@@ -176,6 +178,8 @@ def test_DVR_playback_50plus_times_no_TTS():
     GNarration_setting("Off")
     for _ in range(51):
         stbt.press('KEY_EXIT')
+        stbt.press('KEY_EXIT')
+        sleep(1)
         stbt.press('KEY_MYDVR')
         sleep(3)
         if stbt.match('images/dvr/cancel_a_recording.png'):
