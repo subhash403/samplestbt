@@ -69,6 +69,13 @@ def test_tuning_channels_200plus_times():
             for x in list(str(ch)): 
                 stbt.press("KEY_" + x)
             sleep(10)
+            if stbt.match('images/dvr/continue_to_miniguide.png'): 
+                stbt.press('KEY_RIGHT')
+                stbt.press('KEY_RIGHT')
+                stbt.press('KEY_SELECT')
+                stbt.press('KEY_SELECT')
+                stbt.press('KEY_RIGHT')
+                stbt.press('KEY_SELECT')
             print (t)
             if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) or stbt.wait_until(lambda: stbt.match("images/channel_unavailable.png")):
                 assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
@@ -135,7 +142,18 @@ def test_DVR_playback_50plus_times_yes_TTS():
     GNarration_setting("On")
     count = 0
     for _ in range(51):
-        mydvr_launch()
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_MYDVR')
+        sleep(3)
+        if stbt.match('images/dvr/cancel_a_recording'):
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_SELECT')
+            stbt.press('KEY_SELECT')
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_SELECT')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
+        "MyDVR not launched"
         while True:
             stbt.press('KEY_ENTER')
         sleep(1)
@@ -154,7 +172,18 @@ def test_DVR_playback_50plus_times_no_TTS():
     count = 0
     GNarration_setting("Off")
     for _ in range(51):
-        mydvr_launch()
+        stbt.press('KEY_EXIT')
+        stbt.press('KEY_MYDVR')
+        sleep(3)
+        if stbt.match('images/dvr/cancel_a_recording'):
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_SELECT')
+            stbt.press('KEY_SELECT')
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_SELECT')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
+        "MyDVR not launched"
         while True:
             stbt.press('KEY_ENTER')
             sleep(1)
