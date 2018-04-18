@@ -69,7 +69,7 @@ def test_tuning_channels_200plus_times():
             for x in list(str(ch)): 
                 stbt.press("KEY_" + x)
             sleep(10)
-            if stbt.match('images/dvr/continue_to_miniguide.png'): 
+            if stbt.match('images/dvr/continue_to_miniguide.png') and t == 1: 
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_SELECT')
@@ -175,7 +175,7 @@ def test_DVR_playback_50plus_times_no_TTS():
         stbt.press('KEY_EXIT')
         stbt.press('KEY_MYDVR')
         sleep(3)
-        if stbt.match('images/dvr/cancel_a_recording'):
+        if stbt.match('images/dvr/cancel_a_recording.png'):
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_SELECT')
