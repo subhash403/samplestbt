@@ -149,6 +149,10 @@ def test_DVR_playback_50plus_times_yes_TTS():
         stbt.press('KEY_EXIT')
         stbt.press('KEY_EXIT')
         stbt.press('KEY_EXIT')
+        sleep(2)
+        if stbt.match('images/env/exit_overlay.png'):
+            stbt.press('KEY_ENTER')
+            sleep(2)
         sleep(3)
         stbt.press('KEY_MYDVR')
         sleep(3)
