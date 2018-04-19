@@ -29,15 +29,15 @@ def test_spectrum_ui():
         stbt.press('KEY_UP')
         if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
             break
-   stbt.press('KEY_ENTER')
-   stbt.press('1')
-   stbt.press('2')
-   count =0
-   while True:
+    stbt.press('KEY_ENTER')
+    stbt.press('1')
+    stbt.press('2')
+    count =0
+    while True:
         sleep(1)
         count +=1
         if stbt.wait_until(lambda: stbt.wait_for_motion()) or count == 3
             break
-   assert count != 3
+    assert count != 3
 
     
