@@ -34,15 +34,14 @@ def test_spectrum_ui():
     sleep(10)
     stbt.press('KEY_1')
     stbt.press('KEY_2')
-    count =0
-    while True:
-        sleep(1)
-        count +=1
-        if stbt.wait_until(lambda: stbt.wait_for_motion()) or count == 3:
-            break
-    assert count != 3
+    sleep(2)
+    assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
+    "Video not displayed within time constrant on channel 12"
     stbt.press('KEY_1')
     stbt.press('KEY_7')
+    sleep(2)
+    assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
+    "Video not displayed within time constrant on channel 17"
     count =0
     while True:
         sleep(1)
