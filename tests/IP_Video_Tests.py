@@ -22,7 +22,7 @@ def test_apis():
     assert stbt.wait_until(lambda: stbt.match("images/Led_Down_True.png"))
     assert stbt.wait_until(lambda: stbt.match("images/Led_Up_True.png"))
 
-def test_spectrum_ui
+def test_spectrum_ui():
     stbt.press('KEY_RECORD')
     sleep(3)
     while True:
