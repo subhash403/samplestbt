@@ -34,5 +34,5 @@ def test_apis():
     assert stbt.wait_until(lambda: stbt.match("images/JS_SDK_Page_Loaded.png"))
     while True:
         stbt.press('KEY_LAST')
-        if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
+        if stbt.wait_until(lambda: stbt.match("images/up_selected.png")):
             break
