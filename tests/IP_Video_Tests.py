@@ -26,9 +26,10 @@ def test_spectrum_ui():
     stbt.press('KEY_RECORD')
     sleep(3)
     while True:
-        stbt.press('KEY_UP')
         if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
             break
+        else:
+            stbt.press('KEY_UP')
     sleep(3)
     stbt.press('KEY_ENTER')
     sleep(10)
