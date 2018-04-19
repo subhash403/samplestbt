@@ -61,3 +61,5 @@ def test_spectrum_ui():
     stbt.press('KEY_UP')
     assert stbt.wait_until(lambda: stbt.match("images/Lib_Highlight.png")), \
     "Scrolling up on the main menu failed"
+    stbt.press('KEY_DOWN')
+    stbt.press('KEY_ENTER')
