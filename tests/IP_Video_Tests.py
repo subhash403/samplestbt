@@ -1,5 +1,5 @@
-
 import stbt
+from time import sleep
 
 def test_apis():
     stbt.press('KEY_REPLAY')
