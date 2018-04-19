@@ -8,4 +8,4 @@ def test_apis():
             break
            
     for _ in " "*3: stbt.press('KEY_DOWN')
-    stbt.press('ENTER')
+    stbt.press('KEY_ENTER')
