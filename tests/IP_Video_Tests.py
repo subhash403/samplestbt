@@ -1,7 +1,7 @@
 import stbt
 from time import sleep
 import itertools
-
+from Menu_methods import menu_launch
 def test_apis():
     stbt.press('KEY_RECORD')
     sleep(3)
