@@ -1,7 +1,5 @@
 import stbt
 from time import sleep
-import itertools
-from Menu_methods import menu_launch
 
 def test_apis():
     stbt.press('KEY_RECORD')
@@ -52,6 +50,8 @@ def test_spectrum_ui():
         if stbt.wait_until(lambda: stbt.wait_for_motion()) or count == 3:
             break
     assert count != 3
-    menu_launch()
+    stbt.press('KEY_MENU')
+    assert stbt.wait_until(lambda: stbt.match("images/IP_Video_Menu.png")), \
+    "Menu not launched"
 
     
