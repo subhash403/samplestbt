@@ -31,7 +31,7 @@ def test_spectrum_ui():
             break
     sleep(3)
     stbt.press('KEY_ENTER')
-    sleep(3)
+    sleep(10)
     stbt.press('KEY_1')
     stbt.press('KEY_2')
     count =0
