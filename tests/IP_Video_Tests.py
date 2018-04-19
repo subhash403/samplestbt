@@ -11,9 +11,10 @@ def test_apis():
             break
            
     stbt.press('KEY_DOWN')
-    sleep(3)
+    sleep(1)
     stbt.press('KEY_DOWN')
-    sleep(3)
+    sleep(1)
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
+    sleep(1)
     stbt.press('KEY_REPLAY')
