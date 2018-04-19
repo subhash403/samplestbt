@@ -9,3 +9,4 @@ def test_apis():
            
     for _ in " "*3: stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
+    stbt.press('KEY_BACK')
