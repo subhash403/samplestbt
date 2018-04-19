@@ -1,5 +1,6 @@
 import stbt
 from time import sleep
+import itertools
 
 def test_apis():
     stbt.press('KEY_RECORD')
@@ -30,7 +31,6 @@ def test_apis():
     sleep(1)
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/JS_SDK_Page_Loaded.png"))
-    while True:
+    for _ in itertools.repeat(None, 7)
         stbt.press('KEY_LAST')
-        if stbt.wait_until(lambda: stbt.match("images/up_selected.png")):
-            break
+        sleep(1)
