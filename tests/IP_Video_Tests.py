@@ -15,6 +15,7 @@ def test_apis():
     stbt.press('KEY_DOWN')
     sleep(1)
     stbt.press('KEY_DOWN')
-    stbt.press('KEY_ENTER')
     sleep(1)
+    stbt.press('KEY_ENTER')
+    sleep(10)
     stbt.press('KEY_REPLAY')
