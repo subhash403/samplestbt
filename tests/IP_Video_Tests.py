@@ -4,6 +4,7 @@ import stbt
 def test_apis():
     stbt.press('KEY_REPLAY')
     stbt.press('KEY_REPLAY')
+    sleep(3)
     while True:
         stbt.press('KEY_UP')
         if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
