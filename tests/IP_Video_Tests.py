@@ -63,3 +63,12 @@ def test_spectrum_ui():
     "Scrolling up on the main menu failed"
     stbt.press('KEY_DOWN')
     stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/IP_Video_TV_Shows.png")), \
+    "TV Shows not launched"
+    stbt.press('KEY_UP')
+    stbt.press('KEY_RIGHT')
+    assert stbt.wait_until(lambda: stbt.match("images/hbo_highlighted.png")), \
+    "Scrolling right inside of TV Shows failed"
+    stbt.press('KEY_LEFT')
+    assert stbt.wait_until(lambda: stbt.match("images/all_sub_highlighted.png")), \
+    "Scrolling left inside of TV Shows failed"
