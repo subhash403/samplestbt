@@ -56,7 +56,7 @@ def test_spectrum_ui():
     assert stbt.wait_until(lambda: stbt.match("images/Lib_Highlight.png")), \
     "Scrolling down on the main menu failed"
     stbt.press('KEY_DOWN')
-    assert stbt.wait_until(lambda: stbt.match("images/TV_Highlight.png")), \
+    assert stbt.wait_until(lambda: stbt.match("images/TV_highlight.png")), \
     "Scrolling down on the main menu failed"
     stbt.press('KEY_UP')
     assert stbt.wait_until(lambda: stbt.match("images/Lib_Highlight.png")), \
