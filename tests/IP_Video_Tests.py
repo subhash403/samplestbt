@@ -31,6 +31,6 @@ def test_apis():
     sleep(1)
     stbt.press('KEY_ENTER')
     assert stbt.wait_until(lambda: stbt.match("images/JS_SDK_Page_Loaded.png"))
-    for _ in itertools.repeat(None, 7)
+    for _ in itertools.repeat(None, 7):
         stbt.press('KEY_LAST')
         sleep(1)
