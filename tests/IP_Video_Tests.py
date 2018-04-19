@@ -42,5 +42,14 @@ def test_spectrum_ui():
         if stbt.wait_until(lambda: stbt.wait_for_motion()) or count == 3:
             break
     assert count != 3
+    stbt.press('KEY_1')
+    stbt.press('KEY_7')
+    count =0
+    while True:
+        sleep(1)
+        count +=1
+        if stbt.wait_until(lambda: stbt.wait_for_motion()) or count == 3:
+            break
+    assert count != 3
 
     
