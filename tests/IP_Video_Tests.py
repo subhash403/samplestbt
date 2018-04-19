@@ -22,3 +22,15 @@ def test_apis():
     assert stbt.wait_until(lambda: stbt.match("images/Led_Down_True.png"))
     assert stbt.wait_until(lambda: stbt.match("images/Led_Up_True.png"))
 
+def test_spectrum_ui
+    stbt.press('KEY_RECORD')
+    sleep(3)
+    while True:
+        stbt.press('KEY_UP')
+        if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
+            break
+   stbt.press('KEY_ENTER')
+   stbt.press('1')
+   stbt.press('2')
+   sleep(1)
+    
