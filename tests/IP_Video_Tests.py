@@ -8,12 +8,10 @@ def test_apis():
         stbt.press('KEY_UP')
         if stbt.wait_until(lambda: stbt.match("images/env/ip_video_top_option.png")):
             break
-    stbt.press('KEY_DOWN')
-    sleep(1)
-    stbt.press('KEY_DOWN')
-    sleep(1)
-    stbt.press('KEY_DOWN')
-    sleep(1)
+    while True:
+        stbt.press('KEY_DOWN')
+        if stbt.wait_until(lambda: stbt.match("images/JS_API_Highlight.png")):
+            break
     stbt.press('KEY_ENTER')
     sleep(3)
     assert stbt.wait_until(lambda: stbt.match("images/Select_True.png"))
