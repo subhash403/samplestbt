@@ -77,7 +77,31 @@ def test_modify_DVR_from_miniG_50plus_times():
         "Cannot edit recording setting"
             stbt.press('KEY_UP')
             for _ in " "*3: stbt.press('KEY_LEFT')
-            stbt.press('KEY_ENTER')    
+            stbt.press('KEY_ENTER')
+            
+def test_tuning_channels_5_times():
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
+        assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
+    "Live TV not reached at test start"
+    channels = [21,24,27,29,30]
+    t = 0
+    for ch in channels:
+        t += 1
+        for x in list(str(ch)): 
+            stbt.press("KEY_" + x)
+            sleep(0.6)
+        sleep(4)
+        if stbt.match('images/dvr/continue_to_miniguide.png') and t == 1: 
+            for _ in " "*2: stbt.press('KEY_RIGHT')
+            for _ in " "*2: stbt.press('KEY_ENTER')
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_ENTER')
+        print (t)
+        sleep(20)
+        if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
+            assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
+"New channel " + str(ch) + " not reached on channel change number " + t 
 
 def test_tuning_channels_200plus_times():
     for _ in " "*3: stbt.press('KEY_EXIT')
