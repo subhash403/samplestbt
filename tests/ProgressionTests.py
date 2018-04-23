@@ -81,7 +81,7 @@ def test_modify_DVR_from_miniG_50plus_times():
             
 def test_tuning_channels_5_times():
     for _ in " "*3: stbt.press('KEY_EXIT')
-    if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
+    if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")) and not stbt.wait_until(lambda: stbt.match("images/env/title_blocked.png")):
         assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "Live TV not reached at test start"
     channels = [25,31,27,29,30]
@@ -99,7 +99,7 @@ def test_tuning_channels_5_times():
             stbt.press('KEY_ENTER')
         print (t)
         sleep(20)
-        if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
+        if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")) and not stbt.wait_until(lambda: stbt.match("images/env/title_blocked.png")):
             assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
 "New channel " + str(ch) + " not reached on channel change number " + t 
 
