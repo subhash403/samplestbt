@@ -7,9 +7,7 @@ from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
 
 def mydvr_launch():
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(1)
     stbt.press('KEY_MYDVR')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
@@ -17,23 +15,18 @@ def mydvr_launch():
     
 def test_modify_DVR_options_50plus_times():
     counter = 1
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(5)
     stbt.press('KEY_RECORD')
     sleep(2)
     for _ in range(50):
-        stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
+        for _ in " "*2: stbt.press('KEY_EXIT')
         sleep(2)
         stbt.press('KEY_RECORD')
         if counter == 1 and stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_UP')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
+            for _ in " "*3: stbt.press('KEY_LEFT')
             stbt.press('KEY_ENTER')
         sleep(2)
         counter += 1
@@ -42,25 +35,52 @@ def test_modify_DVR_options_50plus_times():
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
         "Cannot edit recording setting"
             stbt.press('KEY_UP')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
+            for _ in " "*3: stbt.press('KEY_LEFT')
             stbt.press('KEY_ENTER')
         else:
             stbt.press('KEY_RIGHT')
             assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
         "Cannot edit recording setting"
             stbt.press('KEY_UP')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
-            stbt.press('KEY_LEFT')
+            for _ in " "*3: stbt.press('KEY_LEFT')
             stbt.press('KEY_ENTER')
-    
+            
+def test_modify_DVR_from_miniG_50plus_times():
+    counter = 1
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    sleep(5)
+    stbt.press('KEY_RECORD')
+    sleep(2)
+    for _ in range(50):
+        for _ in " "*2: stbt.press('KEY_EXIT')
+        sleep(3)
+        for _ in " "*2: stbt.press('KEY_ENTER')
+        sleep(1)
+        stbt.press('KEY_RECORD')
+        if counter == 1 and stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
+            stbt.press('KEY_RIGHT')
+            stbt.press('KEY_UP')
+            for _ in " "*3: stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')
+        sleep(2)
+        counter += 1
+        if counter%2 == 0:
+            stbt.press('KEY_RIGHT')
+            assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")), \
+        "Cannot edit recording setting"
+            stbt.press('KEY_UP')
+            for _ in " "*3: stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')
+        else:
+            stbt.press('KEY_RIGHT')
+            assert stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")), \
+        "Cannot edit recording setting"
+            stbt.press('KEY_UP')
+            for _ in " "*3: stbt.press('KEY_LEFT')
+            stbt.press('KEY_ENTER')    
 
 def test_tuning_channels_200plus_times():
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
         assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "Live TV not reached at test start"
@@ -74,10 +94,8 @@ def test_tuning_channels_200plus_times():
                 sleep(0.6)
             sleep(4)
             if stbt.match('images/dvr/continue_to_miniguide.png') and t == 1: 
-                stbt.press('KEY_RIGHT')
-                stbt.press('KEY_RIGHT')
-                stbt.press('KEY_ENTER')
-                stbt.press('KEY_ENTER')
+                for _ in " "*2: stbt.press('KEY_RIGHT')
+                for _ in " "*2: stbt.press('KEY_ENTER')
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_ENTER')
             print (t)
@@ -86,9 +104,7 @@ def test_tuning_channels_200plus_times():
     "New channel " + str(ch) + " not reached on channel change number " + t              
         
 def test_play_VOD_50plus_times():
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     VideoStore.open()
 
     # Find an asset that hasn't been rented yet.
@@ -140,15 +156,11 @@ def test_play_VOD_50plus_times():
         
 def test_DVR_playback_50plus_times_yes_TTS():
     # Turn on TTS
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     GNarration_setting("On")
     count = 0
     for _ in range(51):
-        stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
+        for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(2)
         if stbt.match('images/env/exit_overlay.png'):
             stbt.press('KEY_ENTER')
@@ -157,10 +169,8 @@ def test_DVR_playback_50plus_times_yes_TTS():
         stbt.press('KEY_MYDVR')
         sleep(3)
         if stbt.match('images/dvr/cancel_a_recording.png'):
-            stbt.press('KEY_RIGHT')
-            stbt.press('KEY_RIGHT')
-            stbt.press('KEY_ENTER')
-            stbt.press('KEY_ENTER')
+            for _ in " "*2: stbt.press('KEY_RIGHT')
+            for _ in " "*2: stbt.press('KEY_ENTER')
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_ENTER')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
@@ -179,23 +189,17 @@ def test_DVR_playback_50plus_times_yes_TTS():
     
 def test_DVR_playback_50plus_times_no_TTS(): 
     # Turn off TTS
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
-    stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     count = 0
     GNarration_setting("Off")
     for _ in range(51):
-        stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
-        stbt.press('KEY_EXIT')
+        for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(3)
         stbt.press('KEY_MYDVR')
         sleep(3)
         if stbt.match('images/dvr/cancel_a_recording.png'):
-            stbt.press('KEY_RIGHT')
-            stbt.press('KEY_RIGHT')
-            stbt.press('KEY_ENTER')
-            stbt.press('KEY_ENTER')
+            for _ in " "*2: stbt.press('KEY_RIGHT')
+            for _ in " "*2: stbt.press('KEY_ENTER')
             stbt.press('KEY_RIGHT')
             stbt.press('KEY_ENTER')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
