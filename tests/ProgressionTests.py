@@ -81,7 +81,7 @@ def test_tuning_channels_200plus_times():
                 stbt.press('KEY_RIGHT')
                 stbt.press('KEY_ENTER')
             print (t)
-            if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/channel_unavailable.png")):
+            if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
                 assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "New channel " + str(ch) + " not reached on channel change number " + t              
         
