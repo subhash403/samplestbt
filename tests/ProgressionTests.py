@@ -223,6 +223,7 @@ def test_DVR_playback_50plus_times_no_TTS():
     count = 0
     #GNarration_setting("Off")
     for _ in range(51):
+        count = 0
         for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(3)
         stbt.press('KEY_MYDVR')
