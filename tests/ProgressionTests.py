@@ -280,7 +280,8 @@ def test_random_presses_multiple_session():
                 stbt.press('KEY_CHANNELUP')
             else: break
             count += 1
-            assert count < 4            
+            assert count < 4, \
+            "No motion found on Live after 4 channel changes"
         menu_launch()
         for _ in " "*5: stbt.press('KEY_UP')
         for _ in " "*2: stbt.press('KEY_DOWN')
