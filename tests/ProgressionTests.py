@@ -275,6 +275,13 @@ def test_random_presses_multiple_session():
         sleep(1)
         for _ in " "*3: stbt.press('KEY_EXIT')
         assert stbt.wait_for_motion(timeout_secs=20)
+        count = 0
+        while True:
+            if not stbt.wait_until(lambda: stbt.wait_for_motion(timeout_secs=10)
+                stbt.press('KEY_CHANNELUP')
+            else: break
+            count += 1
+            assert count < 4            
         menu_launch()
         for _ in " "*5: stbt.press('KEY_UP')
         for _ in " "*2: stbt.press('KEY_DOWN')
