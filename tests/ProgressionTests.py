@@ -315,17 +315,20 @@ def test_20_trickplay_buttons_on_TSB():
     stbt.press('KEY_PLAYPAUSE')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
         "Unable to pause Live"
-    sleep(250)
+    sleep(50)
     for _ in range(5):
         stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/play.png")), \
-            "Unable to play Live  pause"    
+            "Unable to play Live after pause"    
         stbt.press('KEY_LEFT')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/rewind.png")), \
             "Unable to rewind Live"
         for _ in " "*2: stbt.press('KEY_RIGHT')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/fastforward.png")), \
             "Unable to fastforward Live"
+        stbt.press('KEY_PLAYPAUSE')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/play.png")), \
+            "Unable to play Live"
         stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
             "Unable to pause Live"
