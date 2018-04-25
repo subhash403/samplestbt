@@ -265,6 +265,7 @@ def test_random_presses_multiple_session():
         for _ in " "*3: stbt.press('KEY_RIGHT')
         for _ in " "*3: stbt.press('KEY_LEFT')
         menu_launch()
+        stbt.press('KEY_UP')
         stbt.press('KEY_ENTER')
         sleep(1)
         stbt.press('KEY_INFO')
