@@ -301,6 +301,8 @@ def test_random_presses_multiple_session():
 
 def test_20_trickplay_buttons_on_TSB():
     for _ in " "*3: stbt.press('KEY_EXIT')
+    if stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")):
+        stbt.press('KEY_PLAYPAUSE')
     count = 0
     while True:
         if not stbt.wait_until(lambda: stbt.wait_for_motion(timeout_secs=10)):
@@ -317,7 +319,7 @@ def test_20_trickplay_buttons_on_TSB():
     for _ in range(5):
         stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/play.png")), \
-            "Unable to play Live after 5min pause"    
+            "Unable to play Live  pause"    
         stbt.press('KEY_LEFT')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/rewind.png")), \
             "Unable to rewind Live"
