@@ -23,7 +23,7 @@ def test_modify_DVR_options_50plus_times():
         for _ in " "*2: stbt.press('KEY_EXIT')
         sleep(2)
         stbt.press('KEY_RECORD')
-        if not stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")) and not stbt.wait_until_lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
+        if not stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_rec.png")) and not stbt.wait_until(lambda: stbt.match("images/dvr/edit_ep_deleted.png")):
             for _ in " "*2: stbt.press('KEY_EXIT')
             sleep(2)
             stbt.press('KEY_RECORD')
