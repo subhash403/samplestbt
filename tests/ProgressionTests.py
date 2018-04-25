@@ -310,20 +310,20 @@ def test_20_trickplay_buttons_on_TSB():
         assert count < 4, \
         "No motion found on Live after 4 channel changes"
     sleep(2)
-    stbt.press('KEY_PAUSE')
+    stbt.press('KEY_PLAYPAUSE')
     assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
         "Unable to pause Live"
     sleep(300)
     for _ in range(5):
-        stbt.press('KEY_PLAY')
+        stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/play.png")), \
             "Unable to play Live after 5min pause"    
-        stbt.press('KEY_REWIND')
+        stbt.press('KEY_LEFT')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/rewind.png")), \
             "Unable to rewind Live"
-        stbt.press('KEY_FASTFORWARD')
+        stbt.press('KEY_RIGHT')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/fastforward.png")), \
             "Unable to fastforward Live"
-        stbt.press('KEY_PAUSE')
+        stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
             "Unable to pause Live"
