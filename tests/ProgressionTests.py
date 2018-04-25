@@ -271,3 +271,5 @@ def test_random_presses_multiple_session():
         sleep(2)
         stbt.press('KEY_LAST')
         for _ in " "*2: stbt.press('KEY_OPTIONS')
+        sleep(1)
+        for _ in " "*3: stbt.press('KEY_EXIT')
