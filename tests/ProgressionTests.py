@@ -245,3 +245,29 @@ def test_DVR_playback_50plus_times_no_TTS():
         stbt.press('KEY_ENTER')
         sleep(3)
         assert stbt.wait_for_motion(timeout_secs=20)
+        
+def guide_launch():
+    stbt.press('KEY_GUIDE')
+    assert stbt.wait_until(lambda: stbt.match("images/guide/guide_options.png")), \
+    "Guide not launched"
+    
+def menu_launch():
+    for _ in " "*2: stbt.press('KEY_EXIT')
+    stbt.press('KEY_MENU')
+    assert stbt.wait_until(lambda: stbt.match("images/menu/menu_logo.png")), \
+    "Menu not launched"
+
+def test_random_presses_multiple_session():
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    for _ in " "*50:
+        guide_launch()
+        for _ in " "*3: stbt.press('KEY_DOWN')
+        for _ in " "*3: stbt.press('KEY_RIGHT')
+        for _ in " "*3: stbt.press('KEY_LEFT')
+        menu_launch()
+        stbt.press('KEY_ENTER')
+        sleep(1)
+        stbt.press('KEY_INFO')
+        sleep(2)
+        stbt.press('KEY_LAST')
+        for _ in " "*2: stbt.press('KEY_OPTIONS')
