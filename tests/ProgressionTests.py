@@ -298,3 +298,32 @@ def test_random_presses_multiple_session():
         stbt.press('KEY_ENTER')
         for _ in " "*3: stbt.press('KEY_EXIT')
         assert stbt.wait_for_motion(timeout_secs=20)
+
+def test_20_trickplay_buttons_on_TSB():
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    count = 0
+    while True:
+        if not stbt.wait_until(lambda: stbt.wait_for_motion(timeout_secs=10)):
+            stbt.press('KEY_CHANNELUP')
+        else: break
+        count += 1
+        assert count < 4, \
+        "No motion found on Live after 4 channel changes"
+    sleep(2)
+    stbt.press('KEY_PAUSE')
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
+        "Unable to pause Live"
+    sleep(300)
+    for _ in range(5):
+        stbt.press('KEY_PLAY')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/play.png")), \
+            "Unable to play Live after 5min pause"    
+        stbt.press('KEY_REWIND')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/rewind.png")), \
+            "Unable to rewind Live"
+        stbt.press('KEY_FASTFORWARD')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/fastforward.png")), \
+            "Unable to fastforward Live"
+        stbt.press('KEY_PAUSE')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
+            "Unable to pause Live"
