@@ -221,7 +221,7 @@ def test_DVR_playback_50plus_times_no_TTS():
     # Turn off TTS
     for _ in " "*3: stbt.press('KEY_EXIT')
     count = 0
-    GNarration_setting("Off")
+    #GNarration_setting("Off")
     for _ in range(51):
         for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(3)
