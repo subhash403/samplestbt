@@ -1,5 +1,6 @@
 import requests, subprocess
 import json
+import job_init
 my_sha = subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip()
 response = requests.post(
     "https://charter.stb-tester.com/api/v2/run_tests",
@@ -10,4 +11,5 @@ response = requests.post(
         "test_cases": ["tests/example_test.py::test_VOD_ME_6119_tv_shows_launch"],
         "remote_control": "Moto_Worldbox1",
         }))
+job_init.myJob = response.job_uid
 print response.json()
