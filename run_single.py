@@ -11,5 +11,5 @@ response = requests.post(
         "test_cases": ["tests/example_test.py::test_VOD_ME_6119_tv_shows_launch"],
         "remote_control": "Moto_Worldbox1",
         }))
-job_init.myJob = response.job_uid
+#job_init.myJob = response.job_uid
 print response.json()
