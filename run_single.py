@@ -8,7 +8,7 @@ response = requests.post(
     data=json.dumps({
         "node_id": "stb-tester-00044b80f5f9",
         "test_pack_revision": my_sha,
-        "test_cases": ["tests/example_test.py::test_VOD_ME_6119_tv_shows_launch"],
+        "test_cases": ["tests/example_test.py::test_VOD_ME_6119_tv_shows_launch","tests/example_test.py::test_VOD_ME_6120_check_tv_shows_filter"],
         "remote_control": "Moto_Worldbox1",
         }))
 print response.json()
