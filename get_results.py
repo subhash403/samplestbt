@@ -7,4 +7,4 @@ response = requests.get(
     params={"filter": "job:/stb-tester-00044b80f5f9/74Vf/3747"})
     #params={"sort": "2018-04-25"})
 r = response.json()
-print r['result']
+print r["result"]
