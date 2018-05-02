@@ -109,14 +109,14 @@ def test_tuning_channels_5_times():
             assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
 "New channel " + str(ch) + " not reached on channel change number " + t 
 
-def test_tuning_channels_200plus_times():
+def test_tuning_channels_20plus_times():
     for _ in " "*3: stbt.press('KEY_EXIT')
     if not stbt.wait_until(lambda: stbt.match("images/env/do_you_want_to_upgrade.png")) and not stbt.wait_until(lambda: stbt.match("images/env/channel_unavailable.png")):
         assert stbt.wait_until(lambda: stbt.wait_for_motion()), \
     "Live TV not reached at test start"
     channels = [21,24,27,29]
     t = 0
-    for _ in range(50):
+    for _ in range(5):
         for ch in channels:
             t += 1
             for x in list(str(ch)): 
@@ -184,12 +184,12 @@ def test_play_VOD_50plus_times():
         stbt.press('KEY_ENTER')
         assert stbt.wait_for_motion(timeout_sec=20)
         
-def test_DVR_playback_50plus_times_yes_TTS():
+def test_DVR_playback_10plus_times_yes_TTS():
     # Turn on TTS
     for _ in " "*3: stbt.press('KEY_EXIT')
     GNarration_setting("On")
     count = 0
-    for _ in range(51):
+    for _ in range(10):
         for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(2)
         if stbt.match('images/env/exit_overlay.png'):
@@ -260,7 +260,7 @@ def menu_launch():
 
 def test_random_presses_multiple_session():
     for _ in " "*3: stbt.press('KEY_EXIT')
-    for _ in " "*50:
+    for _ in " "*10:
         guide_launch()
         for _ in " "*3: stbt.press('KEY_DOWN')
         for _ in " "*3: stbt.press('KEY_RIGHT')
