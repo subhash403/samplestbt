@@ -188,8 +188,8 @@ def test_DVR_playback_10plus_times_yes_TTS():
     # Turn on TTS
     for _ in " "*3: stbt.press('KEY_EXIT')
     GNarration_setting("On")
-    count = 0
     for _ in range(10):
+        count = 0
         for _ in " "*3: stbt.press('KEY_EXIT')
         sleep(2)
         if stbt.match('images/env/exit_overlay.png'):
