@@ -14,7 +14,7 @@ def settings_launch():
     "Settings not launched"
 
 def enter_pin():
-	for _ in " "*3: stbt.press('KEY_0')
+	for _ in " "*4: stbt.press('KEY_0')
 	stbt.press('KEY_ENTER')
 
 def test_DVR_after_changing_settings():
