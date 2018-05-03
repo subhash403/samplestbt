@@ -6,6 +6,74 @@ from my_library import MyLibrary
 from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
 
+def settings_launch():
+    menu_launch()
+    stbt.press('KEY_CHANNELDOWN')
+    stbt.press('KEY_ENTER')
+    assert stbt.wait_until(lambda: stbt.match("images/menu/settings_logo.png")), \
+    "Settings not launched"
+
+def enter_pin():
+	for _ in " "*3: stbt.press('KEY_0')
+    stbt.press('KEY_ENTER')
+
+def test_DVR_after_changing_settings():
+	for _ in " "*3: stbt.press('KEY_EXIT')
+    sleep(1)
+    count = 1
+    for _ in " "*50:
+    	count += 1
+    	settings_launch()
+        for _ in " "*3: stbt.press('KEY_DOWN')
+        for _ in " "*2: stbt.press('KEY_ENTER')
+        sleep(1)
+        for _ in " "*2: stbt.press('KEY_RIGHT')
+        stbt.press('KEY_ENTER')
+        if count % 2 == 0
+        	stbt.press('KEY_UP')
+        	stbt.press('KEY_ENTER')
+        	for _ in " "*2: stbt.press('KEY_DOWN')
+        	stbt.press('KEY_ENTER')
+       	else
+       		stbt.press('KEY_UP')
+       		stbt.press('KEY_DOWN')
+       		stbt.press('KEY_ENTER')
+       		stbt.press('KEY_DOWN')
+       		stbt.press('KEY_ENTER')
+       	stbt.press('KEY_RIGHT')
+        stbt.press('KEY_ENTER')
+        enter_pin()
+        for _ in " "*2: stbt.press('KEY_RIGHT')
+        stbt.press('KEY_DOWN')
+        stbt.press('KEY_ENTER')
+        stbt.press('KEY_LEFT')
+        stbt.press('KEY_ENTER')
+        stbt.press('KEY_RIGHT')
+        stbt.press('KEY_ENTER')
+        stbt.press('KEY_RIGHT')
+        stbt.press('KEY_ENTER')
+        enter_pin()
+        stbt.press('KEY_RIGHT')
+        stbt.press('KEY_DOWN')
+        stbt.press('KEY_ENTER')
+        stbt.press('KEY_LEFT')
+        stbt.press('KEY_DOWN')
+        stbt.press('KEY_ENTER')
+        stbt.press('KEY_RIGHT')
+        stbt.press('KEY_ENTER')
+    	mydvr_launch()
+		while True:
+            stbt.press('KEY_ENTER')
+            sleep(1)
+            if stbt.match('images/cta/watch.png') or stbt.match('images/cta/resume.png'): break
+            count += 1
+            assert count < 16, \
+            "Could not find recording to play in DVR page"
+	        sleep(2)
+	        stbt.press('KEY_ENTER')
+	        sleep(3)
+	        assert stbt.wait_for_motion(timeout_secs=30)
+
 def mydvr_launch():
     for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(1)
