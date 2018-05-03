@@ -86,13 +86,13 @@ def mydvr_launch():
     assert stbt.wait_until(lambda: stbt.match("images/dvr/my_dvr.png")), \
     "MyDVR not launched"
     
-def test_modify_DVR_options_50plus_times():
+def test_modify_DVR_options_10plus_times():
     counter = 1
     for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(5)
     stbt.press('KEY_RECORD')
     sleep(2)
-    for _ in range(50):
+    for _ in range(10):
         for _ in " "*2: stbt.press('KEY_EXIT')
         sleep(2)
         stbt.press('KEY_RECORD')
