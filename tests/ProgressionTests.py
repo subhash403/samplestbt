@@ -29,6 +29,7 @@ def test_DVR_after_changing_settings():
         sleep(1)
         for _ in " "*2: stbt.press('KEY_RIGHT')
         stbt.press('KEY_ENTER')
+	enter_pin()
         if count1 % 2 == 0:
         	stbt.press('KEY_UP')
         	stbt.press('KEY_ENTER')
