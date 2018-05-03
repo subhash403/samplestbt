@@ -21,7 +21,7 @@ def test_DVR_after_changing_settings():
     for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(1)
     count1 = 1
-    for _ in " "*50:
+    for _ in " "*1:
     	count1 += 1
     	settings_launch()
         for _ in " "*3: stbt.press('KEY_DOWN')
