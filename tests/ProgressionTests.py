@@ -20,16 +20,16 @@ def enter_pin():
 def test_DVR_after_changing_settings():
     for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(1)
-    count = 1
+    count1 = 1
     for _ in " "*50:
-    	count += 1
+    	count1 += 1
     	settings_launch()
         for _ in " "*3: stbt.press('KEY_DOWN')
         for _ in " "*2: stbt.press('KEY_ENTER')
         sleep(1)
         for _ in " "*2: stbt.press('KEY_RIGHT')
         stbt.press('KEY_ENTER')
-        if count % 2 == 0:
+        if count1 % 2 == 0:
         	stbt.press('KEY_UP')
         	stbt.press('KEY_ENTER')
         	for _ in " "*2: stbt.press('KEY_DOWN')
@@ -62,7 +62,8 @@ def test_DVR_after_changing_settings():
         stbt.press('KEY_RIGHT')
         stbt.press('KEY_ENTER')
     	mydvr_launch()
-		while True:
+	count = 0
+	while True:
             stbt.press('KEY_ENTER')
             sleep(1)
             if stbt.match('images/cta/watch.png') or stbt.match('images/cta/resume.png'): break
