@@ -70,10 +70,10 @@ def test_DVR_after_changing_settings():
             count += 1
             assert count < 16, \
             "Could not find recording to play in DVR page"
-	        sleep(2)
-	        stbt.press('KEY_ENTER')
-	        sleep(3)
-	        assert stbt.wait_for_motion(timeout_secs=30)
+	    sleep(2)
+	    stbt.press('KEY_ENTER')
+	    sleep(3)
+	    assert stbt.wait_for_motion(timeout_secs=30)
 
 def mydvr_launch():
     for _ in " "*3: stbt.press('KEY_EXIT')
