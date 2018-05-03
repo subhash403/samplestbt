@@ -15,10 +15,10 @@ def settings_launch():
 
 def enter_pin():
 	for _ in " "*3: stbt.press('KEY_0')
-    stbt.press('KEY_ENTER')
+	stbt.press('KEY_ENTER')
 
 def test_DVR_after_changing_settings():
-	for _ in " "*3: stbt.press('KEY_EXIT')
+    for _ in " "*3: stbt.press('KEY_EXIT')
     sleep(1)
     count = 1
     for _ in " "*50:
