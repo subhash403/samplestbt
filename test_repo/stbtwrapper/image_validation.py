@@ -20,8 +20,3 @@ def wait_for_match(image,fail_message,timeout=10):
     assert stbt.wait_for_match(str(image),timeout), \
     str(fail_message)
 
-#Method for pressing a key until an image shows
-def press_until_match(key,image):
-    stbt.press_until_match(key, image)
-    assert(lambda: match(str(image))), \
-    image +" did not appear after pressing "+key
