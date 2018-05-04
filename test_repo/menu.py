@@ -99,7 +99,7 @@ def _ocr(frame, text_color, text_color_threshold,
     frame = stbt.crop(frame, region)
 
     # We scale image up 3x before feeding it to tesseract as this
-    # significantly reduces the error rate by more than 6x in tests.  This
+    # significantly reduces the error rate by more than 6x in test_repo.  This
     # uses bilinear interpolation which produces the best results.  See
     # http://stb-tester.com/blog/2014/04/14/improving-ocr-accuracy.html
     #

@@ -7,7 +7,7 @@ def main():
     child.expect('cmd2k mode is off', timeout=20)
     child.sendline('osdiag rebootnow')
     time.sleep(3)
-    os.system("/Users/parkerfranks/Documents/GitHub/stb-tester-test-pack-charter/stbt_rig.py -v --node-id=stb-tester-00044b80f5f9 run tests/reboot_test.py::test_DVR_on_reboot > /Users/parkerfranks/Documents/results.txt")
+    os.system("/Users/parkerfranks/Documents/GitHub/stb-tester-test-pack-charter/stbt_rig.py -v --node-id=stb-tester-00044b80f5f9 run test_repo/reboot_test.py::test_DVR_on_reboot > /Users/parkerfranks/Documents/results.txt")
     while True:
         if os.path.isfile("results.txt"):
             break
