@@ -26,5 +26,5 @@ Lane = {
     "music": "MoviesScreen/Music.png",
     "espanol": "MoviesScreen/Espanol.png",
     "mature": "MoviesScreen/Mature.png",
-    "all_tv_shows": "MoviesScreen/All_TV_Shows.png"
+    "all_movies": "MoviesScreen/All_Movies.png"
 }
