@@ -1,4 +1,4 @@
-from stbtwrapper.key_press import press
+from tests.stbtwrapper.key_press import press
 from time import sleep
 import requests
 import stbt
