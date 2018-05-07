@@ -1,4 +1,4 @@
-from tests.stbtwrapper.key_press import press
+#from tests.stbtwrapper.key_press import press
 from time import sleep
 import requests
 import stbt
@@ -12,7 +12,7 @@ import getpass
 import shutil
 
 def test_press_check():
-    press('KEY_MENU')
+    stbt.press('KEY_MENU')
 
 def test_DVR_on_reboot():
     count = 0

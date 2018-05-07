@@ -5,6 +5,9 @@ from my_library import MyLibrary
 from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
 
+def test_press():
+    stbt.press('KEY_MENU')
+
 def settings_launch():
     menu_launch()
     stbt.press('KEY_CHANNELDOWN')
