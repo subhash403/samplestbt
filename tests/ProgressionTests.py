@@ -7,7 +7,7 @@ from dialogs import UnableToPlayDialog
 import stbt
 
 
-def test_press():
+def test_press_the_key():
     stbt.press('KEY_MENU')
 
 def settings_launch():
