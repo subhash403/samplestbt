@@ -1,5 +1,6 @@
 Movies_Logo = {
-    "logo": "MoviesScreen/Movies_Logo.png"
+    "logo": "MoviesScreen/Movies_Logo.png",
+    "subtitle": "MoviesScreen/Subtitle.png"
 }
 Filter = {
     "included_with": "MoviesScreen/Included_With.png",

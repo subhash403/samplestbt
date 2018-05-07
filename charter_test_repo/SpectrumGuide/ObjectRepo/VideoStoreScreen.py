@@ -1,5 +1,6 @@
 VideoStore_Logo = {
-    "logo": "VideoStoreScreen/Video_Store_Logo.png"
+    "logo": "VideoStoreScreen/Video_Store_Logo.png",
+    "subtitle": "VideoStoreScreen/Subtitle.png"
 }
 Lane = {
     "new_releases": "VideoStoreScreen/New_Releases.png",

@@ -1,5 +1,6 @@
 My_Library_Logo = {
-    "logo": "MyLibraryScreen/My_Library_Logo.png"
+    "logo": "MyLibraryScreen/My_Library_Logo.png",
+    "subtitle": "MyLibraryScreen/Subtitle.png"
 }
 Lane = {
     "recordings": "MyLibraryScreen/Recordings.png",

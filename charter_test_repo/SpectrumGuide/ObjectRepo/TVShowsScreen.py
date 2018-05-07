@@ -1,5 +1,6 @@
 TV_Shows_Logo = {
-    "logo": "TVShowsScreen/TV_Shows_Logo.png"
+    "logo": "TVShowsScreen/TV_Shows_Logo.png",
+    "subtitle": "TVShowsScreen/Subtitle.png"
 }
 Filter = {
     "included_with": "TVShowsScreen/Included_With.png",
