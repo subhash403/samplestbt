@@ -6,6 +6,7 @@ from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
 import stbt
 
+
 def test_press():
     stbt.press('KEY_MENU')
 
