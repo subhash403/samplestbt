@@ -1,6 +1,6 @@
 Apps_Logo = {
     "logo" : "Apps/Apps_Logo.png"
 }
-Apps{
+Apps = {
     "netflix" : "Apps/Netflix.png"
 }
