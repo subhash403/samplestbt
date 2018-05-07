@@ -9,22 +9,19 @@ Filter = {
     "all_subscriptions_and_rentals_selected": "MoviesScreen/All_Subscriptions_And_Rentals_Selected.png"
 }
 Lane = {
-    "all_networks": "MoviesScreen/All_Networks.png",
-    "top_picks": "MoviesScreen/Top_Picks.png",
-    "premium_networks": "MoviesScreen/Premium_Networks.png",
+    "recently_added": "MoviesScreen/Recently_Added.png",
+    "top_video_store_rentals": "MoviesScreen/Top_Video_Store_Rentals.png",
     "browse_by_genre": "MoviesScreen/Browse_By_Genre.png",
-    "toddler_and_kindergarten": "MoviesScreen/Toddler_And_Kindergarten.png",
-    "elementary_school": "MoviesScreen/Elementary_School.png",
+    "movie_networks": "MoviesScreen/Movie_Networks.png",
     "action_and_adventure": "MoviesScreen/Action_And_Adventure.png",
     "comedy": "MoviesScreen/Comedy.png",
-    "crime_and_mystery": "MoviesScreen/Crime_And_Mystery.png",
+    "horror": "MoviesScreen/Horror.png",
     "drama": "MoviesScreen/Drama.png",
-    "reality": "MoviesScreen/Reality.png",
     "scifi_and_fantasy": "MoviesScreen/Scifi_And_Fantasy.png",
-    "sports": "MoviesScreen/Sports.png",
-    "news_and_knowledge": "MoviesScreen/News_And_Knowledge.png",
-    "music": "MoviesScreen/Music.png",
-    "espanol": "MoviesScreen/Espanol.png",
+    "kids_and_family": "MoviesScreen/Kids_And_Family.png",
+    "thriller": "MoviesScreen/Thriller.png",
+    "romance": "MoviesScreen/Romance.png",
+    "documentary_and_history": "MoviesScreen/Documentary_And_History.png",
     "mature": "MoviesScreen/Mature.png",
     "all_movies": "MoviesScreen/All_Movies.png"
 }
