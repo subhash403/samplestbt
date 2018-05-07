@@ -49,11 +49,11 @@ into the docker container as "/var/lib/stbt/test-pack".
 
 Usage:
 
-    $ ./stbt-docker stbt lint --errors-only test_repo/roku.py
+    $ ./stbt-docker stbt lint --errors-only tests/roku.py
     ********** module roku
     E:284,12: "wait_until" return value not used (missing "assert"?) (stbt-unused-return-value)
 
-    $ ./stbt-docker python -m doctest test_repo/roku.py
+    $ ./stbt-docker python -m doctest tests/roku.py
     ...
 
     $ ./stbt-docker python

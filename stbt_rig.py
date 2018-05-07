@@ -76,7 +76,7 @@ def main(argv):
                 - jenkins/SVN_REVISION
               * Write test results in JUnit format to "stbt-results.xml" for
                 the Jenkins JUnit plugin.
-              * Stop the test_repo if you press the "stop" button in Jenkins.
+              * Stop the tests if you press the "stop" button in Jenkins.
 
               For instructions on how to configure your Jenkins job see
               https://stb-tester.com/manual/continuous-integration
@@ -138,13 +138,13 @@ def main(argv):
         the Stb-tester node is busy)""")
     run_parser.add_argument(
         "--test-pack-revision", metavar="GIT_SHA", help="""Git commit SHA in
-        the test-pack repository identifying the version of the test_repo to run.
+        the test-pack repository identifying the version of the tests to run.
         Can also be the name of a git branch or tag. In interactive mode this
         defaults to a snapshot of your current working directory. In jenkins
         mode this defaults to "master".""")
     run_parser.add_argument(
         "--remote-control", metavar="NAME", help="""The remote control infrared
-        configuration to use when running the test_repo. This should match the name
+        configuration to use when running the tests. This should match the name
         of a remote control configuration file in your test-pack git
         repository. For example if your test-pack has
         "config/remote-control/roku.lircd.conf" then you should specify "roku".
@@ -160,7 +160,7 @@ def main(argv):
         you interrupt them by pressing Control-C.""")
     run_parser.add_argument(
         "--shuffle", action="store_true", help="""Randomise the order in which
-        the test_repo are run. If "--soak" is also specified, this will prefer
+        the tests are run. If "--soak" is also specified, this will prefer
         to run the faster test cases more often.""")
     run_parser.add_argument(
         "-t", "--tag", action="append", dest="tags", default=[],
@@ -169,11 +169,11 @@ def main(argv):
         specified more than once.""")
     run_parser.add_argument(
         "test_cases", nargs='+', metavar="TESTCASE",
-        help="""One or more test_repo to run. Test names have the form
+        help="""One or more tests to run. Test names have the form
         FILENAME::FUNCTION_NAME where FILENAME is given relative to the root of
         the test-pack repository and FUNCTION_NAME identifies a Python function
         within that file; for example
-        "test_repo/my_test.py::test_that_blah_dee_blah".""")
+        "tests/my_test.py::test_that_blah_dee_blah".""")
 
     screenshot_parser = subcommands.add_parser(
         "screenshot", help="Save a screenshot to disk")
@@ -297,7 +297,7 @@ def cmd_run(args, node):
             die("Duplicate --tag name: %s" % name)
         tags[name] = value
 
-    logger.info("Running test_repo...")
+    logger.info("Running tests...")
 
     job = node.run_tests(
         commit_sha, args.test_cases, args.remote_control, category,

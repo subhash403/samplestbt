@@ -1,7 +1,7 @@
 import requests, subprocess
 import json
 
-test_array = ["test_repo/example_test.py::test_VOD_ME_6119_tv_shows_launch","test_repo/example_test.py::test_VOD_ME_6120_check_tv_shows_filter"]
+test_array = ["tests/example_test.py::test_VOD_ME_6119_tv_shows_launch","tests/example_test.py::test_VOD_ME_6120_check_tv_shows_filter"]
 node = "stb-tester-00044b80f5f9"
 remote = "Moto_Worldbox1"
 my_sha = subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip()
