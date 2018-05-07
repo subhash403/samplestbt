@@ -1,6 +1,6 @@
 Apps_Logo = {
-    "logo" : "Apps/Apps_Logo.png"
+    "logo" : "AppsScreen/Apps_Logo.png"
 }
 Apps = {
-    "netflix" : "Apps/Netflix.png"
+    "netflix" : "AppsScreen/Netflix.png"
 }
