@@ -1,3 +1,4 @@
+#from tests.stbtwrapper.key_press import press
 from time import sleep
 import requests
 import stbt
@@ -10,51 +11,8 @@ import subprocess
 import getpass
 import shutil
 
-def test_stb_reboot():
-    command0 = "osdiag RebootNow"
-    timeout = 10.0
-    result = ""
-    port = 65432
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.settimeout(timeout)
-    try:
-        sock.connect_ex("30.255.240.82", port)
-        sock.send(command0)          
-    except Exception as ex:
-        print(ex)
-    finally:
-        sock.close()
-        
-def send_command_internal(command, box_ip, timeout=10.0):
-        import os
-        cwd = os.getcwd()
-        print(cwd)
-        import socket
-        result = ""
-        port = 65432
-        print('Sending command "%s" to %s:%d' % (command, box_ip, port))
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        sock.settimeout(timeout)
-        try:
-            sock.connect((box_ip, port))
-            sock.send(command)
-            while True:
-                try:
-                    data = sock.recv(1024)
-                    if len(data) == 0:
-                        print('"%s" answer receiving finished' % command)
-                        break
-                    result += data
-                except Exception as ex:
-                    print(ex)
-                    break
-            #print('"%s" command result: %s' % (command, str(result)))
-        except Exception as ex:
-            print('"%s" command execution failed!' % command)
-            print(ex)
-        finally:
-            sock.close()
-        return str(result)
+def test_press_check():
+    stbt.press('KEY_MENU')
 
 def test_DVR_on_reboot():
     count = 0
