@@ -1,4 +1,4 @@
-from charter_test_repo.SpectrumGuide.stbtwrapper import press
+from charter_test_repo.SpectrumGuide import stbtwrapper
 
 def test_integration():
-    press('KEY_MENU')
+    stbtwrapper.press('KEY_MENU')
