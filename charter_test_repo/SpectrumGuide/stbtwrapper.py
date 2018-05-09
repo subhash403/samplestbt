@@ -19,6 +19,10 @@ def wait_for_motion(fail_message, timeout=10):
 
 # Method for waiting until an image appears
 # Optional variables: timeout which determines how long to wait defaults to 10 seconds
-def wait_for_match(image,fail_message,timeout=10):
+def wait_for_match(image,fail_message=nil,timeout=10):
     assert stbt.wait_for_match(str(image),timeout), \
+    str(fail_message)
+
+def match(image,fail_message=nil):
+    assert stbt.match(str(image),timeout), \
     str(fail_message)
