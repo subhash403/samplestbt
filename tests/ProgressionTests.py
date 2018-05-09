@@ -1,10 +1,14 @@
-import stbt
 from api_test import GNarration_setting
 from time import sleep
 from stbt import wait_until
 from my_library import MyLibrary
 from video_store import Asset, VideoStore
 from dialogs import UnableToPlayDialog
+import stbt
+
+
+def test_press_the_key():
+    stbt.press('KEY_MENU')
 
 def settings_launch():
     menu_launch()
