@@ -11,7 +11,7 @@ def _get_test_pack_root():
 sys.path.insert(0, _get_test_pack_root())
 
 from Astro.Video import Tester
-from charter_automation_repo.SpectrumGuide.ObjectRepo import AppsScreen
+from SpectrumGuide.ObjectRepo import AppsScreen
 
 def test_demo_framework():
     test = Tester()
