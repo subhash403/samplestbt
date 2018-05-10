@@ -10,7 +10,7 @@ class Tester:
     def press(self,key, times=1):
         for _ in " " * times: stbt.press(str(key))
 
-    def check_image(image_to_find,timeout_secs=10):
+    def check_image(self,image_to_find,timeout_secs=10):
         return stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs)
 
     def check_motion(self):
