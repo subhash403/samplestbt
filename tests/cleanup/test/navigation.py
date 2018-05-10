@@ -1,1 +1,0 @@
-from test.object_repo
