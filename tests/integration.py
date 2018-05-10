@@ -11,10 +11,10 @@ def _get_test_pack_root():
 sys.path.insert(0, _get_test_pack_root())
 
 from charter_automation_repo.Astro.Video import Tester
-from charter_automation_repo.SpectrumGuide.ObjectRepo import AppsScreen
+from charter_automation_repo.SpectrumGuide.ObjectRepo import MainMenuScreen
 
 def test_demo_framework():
     test = Tester()
     test.press("KEY_MENU")
-    test.check_image(AppsScreen.Apps_Logo["image"])
-    test.check_text(AppsScreen.Apps_Logo["ocr"])
+    test.check_image(MainMenuScreen.Spectrum_Logo["logo"])
+    #test.check_text(MainMenuScreen.Spectrum_Logo["ocr"])
