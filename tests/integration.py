@@ -10,8 +10,8 @@ def _get_test_pack_root():
     return d
 sys.path.insert(0, _get_test_pack_root())
 
-from Astro.Video import Tester
-from SpectrumGuide.ObjectRepo import AppsScreen
+from charter_automation_repo.Astro.Video import Tester
+from charter_automation_repo.SpectrumGuide.ObjectRepo import AppsScreen
 
 def test_demo_framework():
     test = Tester()
