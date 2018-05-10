@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="integration.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="integration.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/integration.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="16" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="23" />
+              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Video.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Video.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/charter_automation_repo/Astro/Video.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            <state relative-caret-position="336">
+              <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -37,8 +37,8 @@
       <file leaf-file-name="MainMenuScreen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charter_automation_repo/SpectrumGuide/ObjectRepo/MainMenuScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="8" column="46" lean-forward="true" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -67,6 +67,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -113,30 +114,6 @@
             <path>
               <item name="stb-tester-test-pack-charter" type="b2602c69:ProjectViewProjectNode" />
               <item name="stb-tester-test-pack-charter" type="462c0819:PsiDirectoryNode" />
-              <item name="charter_automation_repo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stb-tester-test-pack-charter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stb-tester-test-pack-charter" type="462c0819:PsiDirectoryNode" />
-              <item name="charter_automation_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="Astro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stb-tester-test-pack-charter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stb-tester-test-pack-charter" type="462c0819:PsiDirectoryNode" />
-              <item name="charter_automation_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="SpectrumGuide" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stb-tester-test-pack-charter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stb-tester-test-pack-charter" type="462c0819:PsiDirectoryNode" />
-              <item name="charter_automation_repo" type="462c0819:PsiDirectoryNode" />
-              <item name="SpectrumGuide" type="462c0819:PsiDirectoryNode" />
-              <item name="ObjectRepo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stb-tester-test-pack-charter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stb-tester-test-pack-charter" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -150,15 +127,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/SampleFramework/Project1/ImageRepo" />
+      <recent name="$PROJECT_DIR$/SampleFramework/Project2" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/charter_automation_repo/SpectrumGuide/ImageRepo/MainMenu" />
       <recent name="$PROJECT_DIR$/charter_test_repo/Astro" />
       <recent name="$PROJECT_DIR$/charter_test_repo/SpectrumGuide/ImageRepo/MainMenu" />
       <recent name="$PROJECT_DIR$/SampleFramework/Project1" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/SampleFramework/Project1/ImageRepo" />
-      <recent name="$PROJECT_DIR$/SampleFramework/Project2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -310,19 +288,26 @@
       <option name="project" value="LOCAL" />
       <updated>1525985580345</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge branch 'master' of https://github.com/stb-tester/stb-tester-test-pack-charter&#10;&#10;# Conflicts:&#10;#&#9;tests/integration.py">
+      <created>1525986135192</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1525986135192</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1260" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16787732" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16787732" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.03125" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3296875" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3296875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3296875" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -577,27 +562,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/integration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/charter_automation_repo/SpectrumGuide/ObjectRepo/MainMenuScreen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="120">
+          <caret line="8" column="46" lean-forward="true" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/charter_automation_repo/Astro/Video.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/integration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
         </state>
       </provider>
     </entry>
