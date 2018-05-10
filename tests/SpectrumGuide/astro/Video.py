@@ -13,7 +13,7 @@ class Tester:
     def check_image(self,image_to_find,timeout_secs=10):
         return stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs)
 
-    def check_motion(self):
+    def check_motion(self,timeout):
         return stbt.wait_for_motion(timeout)
 
     def check_text(self,text_to_check,region=None):
