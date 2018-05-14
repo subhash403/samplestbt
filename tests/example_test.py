@@ -59,7 +59,7 @@ def miniguide_launch():
     assert stbt.wait_until(lambda: stbt.match("images/miniguide/miniguide.png")), \
     "Miniguide not launched"
     
-def mydvr_launch():
+def test_mydvr_launch():
     f = open("testFile.txt","w+")
     stbt.press('KEY_EXIT')
     f.write("Step 1: press exit: Passed")
