@@ -1,27 +1,29 @@
 import os
+IMG_ABS_PATH = str(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print IMG_ABS_PATH
 
 Spectrum_Logo = {
-    "logo": "/ImageRepo/MainMenu/Spectrum_Logo.png"
+    "logo": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png"
 }
 Search = {
-    "selected": "/ImageRepo/MainMenu/Search_Menu_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/Search_Menu_Not_Selected.png"
+    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Search_Menu_Selected.png",
+    "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Search_Menu_Not_Selected.png"
 }
 Guide = {
-    "selected": "/SpecGuide/ImageRepo/MainMenu/Guide_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/Guide_Not_Selected.png"
+    "selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Selected.png",
+    "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Not_Selected.png"
 }
 My_Library = {
-    "selected": "/SpecGuide/ImageRepo/MainMenu/My_Library_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/My_Library_Not_Selected.png"
+    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Selected.png",
+    "not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Not_Selected.png"
 }
 TV_Shows = {
-    "selected": "/SpecGuide/ImageRepo/MainMenu/TV_Shows_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/TV_Shows_Not_Selected.png"
+    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Selected.png",
+    "not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Not_Selected.png"
 }
 Movies = {
-    "selected": "/SpecGuide/ImageRepo/MainMenu/Movies_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/Movies_Not_Selected.png"
+    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Movies_Selected.png",
+    "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Movies_Not_Selected.png"
 }
 Video_Store = {
     "selected": "/SpecGuide/ImageRepo/MainMenu/Video_Store_Selected.png",
