@@ -34,7 +34,7 @@ def remote_control_press_untill_image_match(image_to_find, maximum_key_press=5):
 
 
 def remote_control_press(key, times=1):
-    LogResults.info("Remote Control Key <{}> pressed {} times".format(key, times))
+    LogResults.info("Remote Control Key <{}> pressed {} time(s)".format(key, times))
     for _ in " " * times: stbt.press(str(key))
 
 
@@ -64,13 +64,11 @@ class LogResults:
 
     @staticmethod
     def passed(message):
-
         print("PASS: {}".format(message))
 
     @staticmethod
     def failed(message):
-        #print("{} : Failed".format(message))
-        assert False, "Reason - {} failed assertion".format(message)
+        assert False, "Reason - {}".format(message)
 
     @staticmethod
     def error(message):

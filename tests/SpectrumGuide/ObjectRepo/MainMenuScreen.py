@@ -1,6 +1,5 @@
 import os
 IMG_ABS_PATH = str(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-print IMG_ABS_PATH
 
 Spectrum_Logo = {
     "image": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png",
