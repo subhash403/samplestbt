@@ -409,3 +409,37 @@ def test_20_trickplay_buttons_on_TSB():
         stbt.press('KEY_PLAYPAUSE')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/pause.png")), \
             "Unable to pause Live"
+
+def test_20_trickplay_buttons_on_TSB_iguide():
+    for _ in " "*3: stbt.press('KEY_EXIT')
+    if stbt.wait_until(lambda: stbt.match("images/dvr/i_pause.png")):
+        stbt.press('KEY_PLAYPAUSE')
+    count = 0
+    while True:
+        if not stbt.wait_until(lambda: stbt.wait_for_motion(timeout_secs=10)):
+            stbt.press('KEY_CHANNELUP')
+        else: break
+        count += 1
+        assert count < 4, \
+        "No motion found on Live after 4 channel changes"
+    sleep(2)
+    stbt.press('KEY_PLAYPAUSE')
+    assert stbt.wait_until(lambda: stbt.match("images/dvr/i_pause.png")), \
+        "Unable to pause Live"
+    sleep(50)
+    for _ in range(5):
+        stbt.press('KEY_PLAYPAUSE')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/i_play.png")), \
+            "Unable to play Live after pause"    
+        stbt.press('KEY_LEFT')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/i_rewind.png")), \
+            "Unable to rewind Live"
+        for _ in " "*2: stbt.press('KEY_RIGHT')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/i_fastforward.png")), \
+            "Unable to fastforward Live"
+        stbt.press('KEY_PLAYPAUSE')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/i_play.png")), \
+            "Unable to play Live"
+        stbt.press('KEY_PLAYPAUSE')
+        assert stbt.wait_until(lambda: stbt.match("images/dvr/i_pause.png")), \
+            "Unable to pause Live"
