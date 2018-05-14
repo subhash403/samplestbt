@@ -1,9 +1,39 @@
+import logging
+import os
+import time
 import stbt
 
-def press_untill_image_match(image_to_find, maximum_key_press=5):
+logger = logging.getLogger(__name__)
+logger.setLevel("INFO")
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+def get_current_date_time_stamp():
+    return time.strftime("%Y:%m:%d-%I:%M:%S%p")
+
+def file_exists(file_path):
+    return os.path.isfile(file_path)
+
+def write_to_file(file_path, text):
+    try:
+        if file_exists(file_path) :
+            file_obj = open(file_path, 'a')
+        else :
+            file_obj = open(file_path, 'w')
+        if file_obj:
+            file_obj.write(text)
+            file_obj.close()
+            return True
+        else:
+            return False
+    except:
+        return False
+
+
+def remote_control_press_untill_image_match(image_to_find, maximum_key_press=5):
     return stbt.press_until_match(image_to_find, max_presses=maximum_key_press)
 
-def press(key, times=1):
+def remote_control_press(key, times=1):
+    LogResults.info("Remote Control Key <{}> pressed {} times".format(key, times))
     for _ in " " * times: stbt.press(str(key))
 
 def check_image(image_to_find,timeout_secs=10):
@@ -21,3 +51,27 @@ def check_text(text_to_check,region=None):
             return True
         else:
             return False
+
+
+class LogResults:
+
+    @staticmethod
+    def passed(message):
+        print("{} - {} : Passed".format(get_current_date_time_stamp(), message))
+
+    @staticmethod
+    def failed(message):
+        print("{} - {} : Failed".format(get_current_date_time_stamp(), message))
+
+    @staticmethod
+    def error(message):
+        print("{} - {} : Error".format(get_current_date_time_stamp(), message))
+
+    @staticmethod
+    def info(message):
+        print("{} : Info".format(get_current_date_time_stamp(), message))
+
+    @staticmethod
+    def warning(message):
+        print("{} - {} : Warning".format(get_current_date_time_stamp(), message))
+

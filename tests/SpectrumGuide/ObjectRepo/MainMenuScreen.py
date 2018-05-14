@@ -3,7 +3,8 @@ IMG_ABS_PATH = str(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 print IMG_ABS_PATH
 
 Spectrum_Logo = {
-    "logo": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png"
+    "image": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png",
+    "region" : {"x" : 2,"y" : 5 ,"width" : 10,"height" : 10}
 }
 Search = {
     "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Search_Menu_Selected.png",
