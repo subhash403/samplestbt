@@ -32,12 +32,19 @@ def write_to_file(file_path, text):
 def remote_control_press_untill_image_match(image_to_find, maximum_key_press=5):
     return stbt.press_until_match(image_to_find, max_presses=maximum_key_press)
 
+
 def remote_control_press(key, times=1):
     LogResults.info("Remote Control Key <{}> pressed {} times".format(key, times))
     for _ in " " * times: stbt.press(str(key))
 
+
 def check_image(image_to_find,timeout_secs=10):
-    return stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs)
+    if stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs):
+        return True
+    else:
+        LogResults.warning("Image check failed using: {}".format(image_to_find))
+        return False
+
 
 def check_motion(timeout):
     return stbt.wait_for_motion(timeout)
@@ -57,21 +64,23 @@ class LogResults:
 
     @staticmethod
     def passed(message):
-        print("{} - {} : Passed".format(get_current_date_time_stamp(), message))
+
+        print("PASS: {}".format(message))
 
     @staticmethod
     def failed(message):
-        print("{} - {} : Failed".format(get_current_date_time_stamp(), message))
+        #print("{} : Failed".format(message))
+        assert False, "Reason - {} failed assertion".format(message)
 
     @staticmethod
     def error(message):
-        print("{} - {} : Error".format(get_current_date_time_stamp(), message))
+        print("ERRO: {}".format(message))
 
     @staticmethod
     def info(message):
-        print("{} : Info".format(get_current_date_time_stamp(), message))
+        print("INFO: {}".format(message))
 
     @staticmethod
     def warning(message):
-        print("{} - {} : Warning".format(get_current_date_time_stamp(), message))
+        print("WARN: {}".format(message))
 
