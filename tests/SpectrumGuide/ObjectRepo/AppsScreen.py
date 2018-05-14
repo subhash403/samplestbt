@@ -5,6 +5,7 @@ Apps_Logo = {
 
     "subtitle": "AppsScreen/Subtitle.png"
 }
+
 Apps = {
     "netflix" : "AppsScreen/Netflix.png"
 }
