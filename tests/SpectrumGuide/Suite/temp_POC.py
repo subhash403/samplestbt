@@ -34,7 +34,7 @@ def test_page_up_down_nav():
     last_channel = Tester.get_text(GuideScreen.last_Channel["region"])
     Tester.LogResults.info("Channel " + last_channel + " is at bottom of guide")
     Tester.remote_control_press('KEY_PAGEDOWN')
-    sleep(2)
+    sleep(3)
     first_channel = Tester.get_text(GuideScreen.first_Channel["region"])
     Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
     assert last_channel == first_channel, \
