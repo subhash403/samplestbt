@@ -14,7 +14,7 @@ first_cell_selected = {
 
 first_cell_not_selected = {
     "not_selected": IMG_ABS_PATH + "/ImageRepo/Guide/first_cell_not_selected.png",
-    "region": {"x": 256, "y": 293, "width": 79, "height": 12}
+    "region": {"x": 271, "y": 295, "width": 66, "height": 13}
 }
 
 first_channel = {
