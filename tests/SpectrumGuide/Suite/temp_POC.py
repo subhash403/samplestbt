@@ -23,5 +23,4 @@ def test_logging():
     Tester.LogResults.passed("Step 1 did a thing")
     Tester.remote_control_press('KEY_MENU')
     sleep(3)
-    assert Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]), \
-        "Main Menu logo not found"
+    Tester.check_image(MainMenuScreen.Spectrum_Logo["image"])
