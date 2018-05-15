@@ -29,6 +29,7 @@ def test_logging():
 def test_page_up_down_nav():
     # Launch guide
     Tester.remote_control_press('KEY_EXIT', 3)
+    sleep(1)
     assert LiveTV.to_guide(), \
         "Guide not reached from Live TV"
     # Verify 'PAGE_DOWN' press shifts down the list by 5, and 'PAGE_UP' shifts back up 5
