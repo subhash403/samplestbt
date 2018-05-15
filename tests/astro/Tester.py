@@ -45,7 +45,7 @@ def check_image(image_to_find, timeout_secs=10):
     if stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs):
         return True
     else:
-        LogResults.warning("Image check failed using: {}".format(image_to_find))
+        LogResults.failed("Image check failed using: {}".format(image_to_find))
         return False
 
 
