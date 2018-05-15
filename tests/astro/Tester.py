@@ -63,6 +63,7 @@ def check_text(text_to_check, region=None):
         else:
             return False
 
+
 def get_text(region=None):
     if region is not None:
         txt_region = stbt.Region(region["x"], region["y"], region["width"], region["height"])
