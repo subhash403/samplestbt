@@ -66,7 +66,7 @@ def check_text(text_to_check, region=None):
 
 def get_text(region=None):
     if region is not None:
-        txt_region = stbt.Region(region["x"], region["y"], region["width"], region["height"])
+        txt_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
         ocr_txt = stbt.ocr(txt_region)
         ocr_txt.strip()
         return ocr_txt

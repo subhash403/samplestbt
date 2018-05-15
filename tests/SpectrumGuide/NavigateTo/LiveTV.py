@@ -33,7 +33,7 @@ def to_main_menu():
 def to_guide():
     Tester.LogResults.info("Navigating to Guide from Live TV")
     Tester.remote_control_press("KEY_GUIDE")
-    if Tester.check_image(GuideScreen.Guide_Options["image"]):
+    if Tester.check_image(GuideScreen.guide_Options["image"]):
         Tester.LogResults.passed("Expected - Guide is Displayed, Actual - Displayed")
         return True
     else:
