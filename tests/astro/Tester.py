@@ -72,7 +72,7 @@ class LogResults:
 
     @staticmethod
     def error(message):
-        print("ERRO: {}".format(message))
+        print("ERROR: {}".format(message))
 
     @staticmethod
     def info(message):
