@@ -14,7 +14,9 @@ sys.path.insert(0, _get_test_pack_root())
 
 
 from tests.astro import Tester
+from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 
 def test_logging():
     Tester.LogResults.passed("Step 1 did a thing")
     Tester.remote_control_press('KEY_MENU')
+    Tester.check_image(MainMenuScreen.Spectrum_Logo)
