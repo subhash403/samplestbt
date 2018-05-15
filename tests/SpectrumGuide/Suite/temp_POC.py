@@ -28,7 +28,7 @@ def test_logging():
 
 def test_page_up_down_nav():
     # Launch guide
-    Tester.remote_control_press('KEY_EXIT', 3)
+    Tester.remote_control_press('KEY_EXIT')
     sleep(1)
     assert LiveTV.to_guide(), \
         "Guide not reached from Live TV"
