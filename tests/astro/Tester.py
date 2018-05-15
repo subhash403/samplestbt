@@ -49,6 +49,16 @@ def check_image(image_to_find, timeout_secs=10):
         return False
 
 
+def check_image_in_region(image_to_find, region=None, timeout_secs=10):
+    if region is not None:
+        img_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
+        if stbt.wait_until(lambda: stbt.match(image_to_find, region=img_region), timeout_secs=timeout_secs):
+            return True
+        else:
+            LogResults.failed("Image check failed using: {}".format(image_to_find))
+            return False
+
+
 def check_motion(timeout):
     return stbt.wait_for_motion(timeout)
 
