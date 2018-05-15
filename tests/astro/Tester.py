@@ -56,7 +56,7 @@ def check_motion(timeout):
 def check_text(text_to_check, region=None):
     if region is not None:
         txt_region = stbt.Region(region["x"], region["y"], region["width"], region["height"])
-        ocr_txt = stbt.ocr(txt_region)
+        ocr_txt = stbt.ocr(region=txt_region)
         ocr_txt.strip()
         if text_to_check in ocr_txt:
             return True
