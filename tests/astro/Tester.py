@@ -29,7 +29,7 @@ def write_to_file(file_path, text):
         return False
 
 
-def remote_control_press_untill_image_match(image_to_find, maximum_key_press=5):
+def remote_control_press_until_image_match(image_to_find, maximum_key_press=5):
     return stbt.press_until_match(image_to_find, max_presses=maximum_key_press)
 
 

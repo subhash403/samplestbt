@@ -16,4 +16,5 @@ sys.path.insert(0, _get_test_pack_root())
 from tests.astro import Tester
 
 def test_logging():
-    Tester.LogResults.passed("Step 1 did a thing and passed")
+    Tester.LogResults.passed("Step 1 did a thing")
+    Tester.remote_control_press('KEY_MENU')
