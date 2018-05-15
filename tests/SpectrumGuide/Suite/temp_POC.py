@@ -1,5 +1,6 @@
 import os
 import sys
+from time import sleep
 
 # Workaround for import path behaviour; can be removed once stb-tester v29 is released.
 def _get_test_pack_root():
