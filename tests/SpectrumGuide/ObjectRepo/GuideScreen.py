@@ -8,9 +8,9 @@ guide_Options = {
 }
 
 first_Channel = {
-    "region": {"x": 100, "y": 309, "width": 76, "height": 31}
+    "region": {"x": 100, "y": 309, "width": 71, "height": 29}
 }
 
 last_Channel = {
-    "region": {"x": 100, "y": 668, "width": 76, "height": 31}
+    "region": {"x": 96, "y": 669, "width": 76, "height": 27}
 }
