@@ -40,3 +40,8 @@ def test_page_up_down_nav():
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
     Tester.remote_control_press('KEY_PAGEUP')
+    sleep(2)
+    last_channel = Tester.get_text_numeric(GuideScreen.last_Channel["region"])
+    assert last_channel == first_channel, \
+        "PAGEUP press did not shift guide list by 5"
+
