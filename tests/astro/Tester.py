@@ -77,7 +77,7 @@ def get_text(region=None):
 def get_text_numeric(region=None):
     if region is not None:
         txt_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
-        ocr_txt = stbt.ocr(region=txt_region, tesseract_user_patterns="\d")
+        ocr_txt = stbt.ocr(region=txt_region, tesseract_user_patterns='\c')
         ocr_txt.strip()
         return ocr_txt
     else:
