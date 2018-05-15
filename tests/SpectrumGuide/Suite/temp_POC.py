@@ -32,11 +32,11 @@ def test_page_up_down_nav():
         "Guide not reached from Live TV"
     # Verify 'PAGE_DOWN' press shifts down the list by 5, and 'PAGE_UP' shifts back up 5
     last_channel = Tester.get_text(GuideScreen.last_Channel["region"])
-    print last_channel + "#$%^&^%$#$%^&*(*&^%$EWE$%^&*^%$%^&"
+    Tester.LogResults.info("Channel " + last_channel + "is at bottom of guide")
     Tester.remote_control_press('KEY_PAGEDOWN')
     sleep(2)
     first_channel = Tester.get_text(GuideScreen.first_Channel["region"])
-    print first_channel + "%^&*&^%^&^%$%^%$#C$%^"
+    Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
     Tester.remote_control_press('KEY_PAGEUP')
