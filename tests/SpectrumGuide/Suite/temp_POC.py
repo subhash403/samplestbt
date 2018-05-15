@@ -46,6 +46,7 @@ def test_page_up_down_nav():
     assert last_channel == first_channel, \
         "PAGEUP press did not shift guide list by 5"
     Tester.remote_control_press('KEY_RIGHT')
+    sleep(1)
     assert Tester.check_image(GuideScreen.first_cell_not_selected["image"],
                               GuideScreen.first_cell_not_selected["region"]), \
         "RIGHT press in guide did not move highlight to future program"
