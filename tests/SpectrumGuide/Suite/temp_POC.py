@@ -15,6 +15,7 @@ sys.path.insert(0, _get_test_pack_root())
 
 from tests.astro import Tester
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
+from tests.SpectrumGuide.NavigateTo import LiveTV
 
 
 def test_logging():
@@ -26,11 +27,13 @@ def test_logging():
 
 def test_page_up_down_nav():
     # Launch guide
-    Tester.launch_guide()
+    assert LiveTV.to_guide(), \
+        "Guide not reached from Live TV"
     # Verify 'PAGE_DOWN' press shifts down the list by 5, and 'PAGE_UP' shifts back up 5
-    last_channel = test.get_text()
-    test.press('KEY_PAGEDOWN')
-    first_channel = test.get_text()
+    last_channel = Tester.get_text([101,670,70,28])
+    print last_channel
+    Tester.remote_control_press('KEY_PAGEDOWN')
+    first_channel = Tester.get_text([96,309,76,31])
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
-    test.press('KEY_PAGEUP')
+    Tester.remote_control_press('KEY_PAGEUP')

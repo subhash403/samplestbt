@@ -17,6 +17,7 @@ import sys
 
 from tests.astro import Tester
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
+from tests.SpectrumGuide.ObjectRepo import GuideScreen
 
 
 def to_main_menu():
@@ -32,4 +33,9 @@ def to_main_menu():
 def to_guide():
     Tester.LogResults.info("Navigating to Guide from Live TV")
     Tester.remote_control_press("KEY_GUIDE")
-    if Tester.check_image()
+    if Tester.check_image(GuideScreen.Guide_Options["image"]):
+        Tester.LogResults.passed("Expected - Guide is Displayed, Actual - Displayed")
+        return True
+    else:
+        Tester.LogResults.failed("Expected - Guide is Displayed, Actual - Not Displayed")
+        return False
