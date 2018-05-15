@@ -28,3 +28,8 @@ def to_main_menu():
     else:
         Tester.LogResults.failed("Expected - Main Menu is Displayed, Actual- Not Displayed")
         return False
+
+def to_guide():
+    Tester.LogResults.info("Navigating to Guide from Live TV")
+    Tester.remote_control_press("KEY_GUIDE")
+    if Tester.check_image()
