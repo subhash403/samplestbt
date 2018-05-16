@@ -18,6 +18,7 @@ from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.NavigateTo import LiveTV
 from tests.SpectrumGuide.ObjectRepo import GuideScreen
 from tests.SpectrumGuide.NavigateTo import MainMenu
+from time import sleep
 
 def test_logging():
     Tester.LogResults.passed("Step 1 did a thing")
@@ -34,7 +35,12 @@ def test_add_adult_and_nonadult_to_watchlist():
         "Main Menu not launched from Live TV"
     assert MainMenu.to_tv_shows(), \
         "TV Shows not launched from Main Menu"
-
+    Tester.remote_control_press('KEY_EXIT')
+    sleep(2)
+    assert LiveTV.to_main_menu(), \
+        "check 1"
+    assert MainMenu.to_my_library(), \
+        "check 2"
     # Exit session, re-open, verify in Watchlist
     # Press 'A'/'Settings' on adult asset
     # Exit session, re-open, verify in Watchlist
