@@ -29,7 +29,7 @@ def test_logging():
 def test_page_up_down_nav():
     Tester.remote_control_press('KEY_EXIT')
     Tester.LogResults.passed("Step 1: Live TV reached")
-    sleep(2)
+    sleep(4)
     # Launch guide
     assert LiveTV.to_guide(), \
         "Guide not reached from Live TV"
