@@ -23,6 +23,7 @@ def to_tv_shows():
 def to_my_library():
     Tester.LogResults.info("Navigating to My Library from Main Menu")
     Tester.remote_control_press('KEY_CHANNELUP')
+    sleep(1)
     Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.my_library["image"], 7, menu_region)
     Tester.remote_control_press('KEY_ENTER')
     sleep(1)
