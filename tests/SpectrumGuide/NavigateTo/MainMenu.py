@@ -2,6 +2,7 @@ from tests.astro import Tester
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
 from tests.SpectrumGuide.ObjectRepo import MyLibraryScreen
+from time import sleep
 
 menu_region = MainMenuScreen.area["region"]
 
