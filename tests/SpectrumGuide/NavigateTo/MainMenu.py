@@ -9,7 +9,7 @@ def to_tv_shows():
     Tester.remote_control_press('KEY_CHANNELUP')
     Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7)
     Tester.remote_control_press('KEY_ENTER')
-    if Tester.check_image(TvShowsScreen.logo["image"])
+    if Tester.check_image(TvShowsScreen.logo["image"]):
         Tester.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
         return True
     else:
@@ -22,7 +22,7 @@ def to_my_library():
     Tester.remote_control_press('KEY_CHANNELUP')
     Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.my_library["image"], 7)
     Tester.remote_control_press('KEY_ENTER')
-    if Tester.check_image(MyLibraryScreen.logo["image"]) and not Tester.check_image(MainMenuScreen.Spectrum_Logo["image"])
+    if Tester.check_image(MyLibraryScreen.logo["image"]) and not Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
         Tester.LogResults.passed("Expected - My Library is Displayed, Actual- Displayed")
         return True
     else:
