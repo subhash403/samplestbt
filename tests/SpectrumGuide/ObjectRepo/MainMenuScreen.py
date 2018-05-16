@@ -13,13 +13,13 @@ Guide = {
     "selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Selected.png",
     "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Not_Selected.png"
 }
-My_Library = {
-    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Selected.png",
-    "not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Not_Selected.png"
+my_library = {
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Selected.png",
+    #"not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Not_Selected.png"
 }
-TV_Shows = {
-    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Selected.png",
-    "not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Not_Selected.png"
+tv_shows = {
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Selected.png",
+    #"not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Not_Selected.png"
 }
 Movies = {
     "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Movies_Selected.png",

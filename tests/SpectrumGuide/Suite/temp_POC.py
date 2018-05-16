@@ -17,13 +17,28 @@ from tests.astro import Tester
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.NavigateTo import LiveTV
 from tests.SpectrumGuide.ObjectRepo import GuideScreen
-
+from tests.SpectrumGuide.NavigateTo import MainMenu
 
 def test_logging():
     Tester.LogResults.passed("Step 1 did a thing")
     Tester.remote_control_press('KEY_MENU')
     sleep(3)
     Tester.check_image(MainMenuScreen.Spectrum_Logo["image"])
+
+
+def test_add_adult_and_nonadult_to_watchlist():
+    # Turn off 'Hide Adult Content'
+    # Clear Watchlist
+    # Press 'A'/'Settings' on non-adult asset
+    assert LiveTV.to_main_menu(), \
+        "Main Menu not launched from Live TV"
+    assert MainMenu.to_tv_shows(), \
+        "TV Shows not launched from Main Menu"
+
+    # Exit session, re-open, verify in Watchlist
+    # Press 'A'/'Settings' on adult asset
+    # Exit session, re-open, verify in Watchlist
+
 
 
 def test_page_up_down_nav():
@@ -81,7 +96,7 @@ def test_page_up_down_nav():
     Tester.remote_control_press('KEY_PAGEDOWN')
     sleep(2)
     first_channel = Tester.get_text(GuideScreen.first_channel["region"])
-    Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
+    # Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
     Tester.LogResults.passed("Step 8: Page_Down press moves down the guide by 5 channels from center of guide")

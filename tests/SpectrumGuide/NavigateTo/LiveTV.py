@@ -39,3 +39,4 @@ def to_guide():
     else:
         Tester.LogResults.failed("Expected - Guide is Displayed, Actual - Not Displayed")
         return False
+
