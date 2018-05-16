@@ -32,8 +32,12 @@ def write_to_file(file_path, text):
         return False
 
 
-def remote_control_press_until_image_match(key, image_to_find, maximum_key_press=5):
-    return stbt.press_until_match(key, image_to_find, max_presses=maximum_key_press)
+def remote_control_press_until_image_match(key, image_to_find, maximum_key_press=5, region=None):
+    if region is not None:
+        img_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
+        return stbt.press_until_match(key, image_to_find, max_presses=maximum_key_press, region=img_region)
+    else:
+        return stbt.press_until_match(key, image_to_find, max_press=maximum_key_press)
 
 
 def remote_control_press(key, times=1):
