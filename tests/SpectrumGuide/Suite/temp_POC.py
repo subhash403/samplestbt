@@ -35,18 +35,18 @@ def test_page_up_down_nav():
         "Guide not reached from Live TV"
     Tester.LogResults.passed("Step 2: Guide launched")
     # Verify 'PAGE_DOWN' press shifts down the list by 5, and 'PAGE_UP' shifts back up 5
-    last_channel = Tester.get_text_numeric(GuideScreen.last_channel["region"])
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
     Tester.LogResults.info("Channel " + last_channel + " is at bottom of guide")
     Tester.remote_control_press('KEY_PAGEDOWN')
     sleep(2)
-    first_channel = Tester.get_text_numeric(GuideScreen.first_channel["region"])
+    first_channel = Tester.get_text(GuideScreen.first_channel["region"])
     Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
     Tester.LogResults.passed("Step 3: Page_Down press moves down the guide by 5 channels")
     Tester.remote_control_press('KEY_PAGEUP')
     sleep(2)
-    last_channel = Tester.get_text_numeric(GuideScreen.last_channel["region"])
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
     Tester.LogResults.info("After PAGEUP press, " + last_channel + " is at bottom of guide")
     assert last_channel == first_channel, \
         "PAGEUP press did not shift guide list by 5"
@@ -57,4 +57,38 @@ def test_page_up_down_nav():
                               GuideScreen.first_cell_not_selected["region"]), \
         "RIGHT press in guide did not move highlight to future program"
     Tester.LogResults.passed("Step 5: Right press moves to next future program in guide")
-
+    # Checking page up/down from future program cell
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
+    Tester.LogResults.info("Channel " + last_channel + " is at bottom of guide")
+    Tester.remote_control_press('KEY_PAGEDOWN')
+    sleep(2)
+    first_channel = Tester.get_text(GuideScreen.first_channel["region"])
+    Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
+    assert last_channel == first_channel, \
+        "PAGEDOWN press did not shift guide list by 5"
+    Tester.LogResults.passed("Step 6: Page_Down press moves down the guide by 5 channels on future program cell")
+    Tester.remote_control_press('KEY_PAGEUP')
+    sleep(2)
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
+    Tester.LogResults.info("After PAGEUP press, " + last_channel + " is at bottom of guide")
+    assert last_channel == first_channel, \
+        "PAGEUP press did not shift guide list by 5"
+    Tester.LogResults.passed("Step 7: Page_Up press moves up the guide by 5 channels on future program cell")
+    # Check page up/down from center of guide
+    Tester.remote_control_press('KEY_DOWN', 2)
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
+    Tester.LogResults.info("Channel " + last_channel + " is at bottom of guide")
+    Tester.remote_control_press('KEY_PAGEDOWN')
+    sleep(2)
+    first_channel = Tester.get_text(GuideScreen.first_channel["region"])
+    Tester.LogResults.info("After PAGEDOWN press, " + first_channel + " is at top of guide")
+    assert last_channel == first_channel, \
+        "PAGEDOWN press did not shift guide list by 5"
+    Tester.LogResults.passed("Step 8: Page_Down press moves down the guide by 5 channels from center of guide")
+    Tester.remote_control_press('KEY_PAGEUP')
+    sleep(2)
+    last_channel = Tester.get_text(GuideScreen.last_channel["region"])
+    Tester.LogResults.info("After PAGEUP press, " + last_channel + " is at bottom of guide")
+    assert last_channel == first_channel, \
+        "PAGEUP press did not shift guide list by 5"
+    Tester.LogResults.passed("Step 9: Page_Up press moves up the guide by 5 channels from center of guide")
