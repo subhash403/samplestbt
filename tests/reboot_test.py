@@ -18,6 +18,7 @@ def mydvr_launch():
     "MyDVR not launched"
 
 def test_DVR_on_reboot():
+#test comment
     count = 0
     while True:
      if stbt.is_screen_black(): break
@@ -56,4 +57,3 @@ def test_DVR_on_reboot():
         "Could not find recording to play in DVR page"
     stbt.press('KEY_ENTER')
     assert stbt.wait_for_motion(timeout_secs=20)
-#
