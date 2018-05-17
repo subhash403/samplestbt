@@ -48,6 +48,8 @@ def test_add_adult_and_nonadult_to_watchlist():
 
 
 def test_page_up_down_nav():
+    start_time = time.time()
+    Tester.LogResults.info("Test beginning at " + start_time)
     Tester.remote_control_press('KEY_EXIT')
     Tester.LogResults.passed("Step 1: Live TV reached")
     sleep(4)
@@ -113,3 +115,5 @@ def test_page_up_down_nav():
     assert last_channel == first_channel, \
         "PAGEUP press did not shift guide list by 5"
     Tester.LogResults.passed("Step 9: Page_Up press moves up the guide by 5 channels from center of guide")
+    end_time = time.time()
+    Tester.LogResults.info("Test ending at " + end_time)
