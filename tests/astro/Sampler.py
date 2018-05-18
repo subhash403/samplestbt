@@ -136,5 +136,6 @@ class UserWrapper:
             print("WARN: {}".format(message))
 
     @staticmethod
-    def clean_up():
+    def clean_up(assertion_flag,test_name):
+        assert assertion_flag, "Test case : {} failed".format(test_name)
         return True
