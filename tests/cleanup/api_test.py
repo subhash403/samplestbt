@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import stbt
 import numpy as np
-
+'''
 def get_auth_token():
      	mac = stbt.get_config("sst", "macAddress")
      	url = "http://spectrum.engprod-charter.net/api/pub/loginedge/login/v1/auth/login"
@@ -17,8 +17,8 @@ def get_auth_token():
      	return token
 
 def test_get_auth_token():
-	token = get_auth_token()
-
+	#token = get_auth_token()
+'''
 def HDAT_setting(value):
 	token = get_auth_token()
 	if value == "Off":
