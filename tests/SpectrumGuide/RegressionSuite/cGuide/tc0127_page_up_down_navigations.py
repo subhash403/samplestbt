@@ -31,7 +31,7 @@ def test_tc0127_page_up_down_nav():
         user.clean_up()
         return
 
-    if not fromLiveTV.to_guide("Step 2"):
+    if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
         user.clean_up()
         return
