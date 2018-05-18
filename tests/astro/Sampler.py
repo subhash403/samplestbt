@@ -56,19 +56,21 @@ class UserWrapper:
         for _ in " " * number_of_times: stbt.press(str(key))
 
     def check_image(self, image_to_find, region=None, timeout_secs=configuration.image_check_time_out_secs):
+        image_name = image_to_find.split("/")[-1:][0]
         if region is not None:
             img_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
             if stbt.wait_until(lambda: stbt.match(image_to_find, region=img_region), timeout_secs=timeout_secs):
+                self.LogResults.info("Image check passed using: {}".format(image_name))
                 return True
             else:
-                self.LogResults.warning("Image check failed using: {}".format(image_to_find))
+                self.LogResults.warning("Image check failed using: {}".format(image_name))
                 return False
         else:
             if stbt.wait_until(lambda: stbt.match(image_to_find), timeout_secs=timeout_secs):
-                self.LogResults.info("Image check passed using: {}".format(image_to_find))
+                self.LogResults.info("Image check passed using: {}".format(image_name))
                 return True
             else:
-                self.LogResults.warning("Image check failed using: {}".format(image_to_find))
+                self.LogResults.warning("Image check failed using: {}".format(image_name))
                 return False
 
     def check_motion(self, motion_timeout):
