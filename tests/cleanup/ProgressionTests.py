@@ -454,7 +454,7 @@ def test_20_trickplay_buttons_on_TSB_iguide():
     assert stbt.wait_until(lambda: stbt.match("images/dvr/i_pause.png")), \
         "Unable to pause Live"
     sleep(50)
-    for _ in range(5):
+    for _ in range(10):
         stbt.press('KEY_PLAY')
         assert stbt.wait_until(lambda: stbt.match("images/dvr/i_play.png")), \
             "Unable to play Live after pause"
