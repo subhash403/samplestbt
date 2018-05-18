@@ -7,7 +7,7 @@ area = {
 
 Spectrum_Logo = {
     "image": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png",
-    "region": {"x" : 2,"y" : 5 ,"width" : 10,"height" : 10}
+    "region": {}
 }
 Search = {
     "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Search_Menu_Selected.png",
