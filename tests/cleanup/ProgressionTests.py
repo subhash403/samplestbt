@@ -437,7 +437,6 @@ def test_20_trickplay_buttons_on_TSB():
 
 
 def test_20_trickplay_buttons_on_TSB_iguide():
-    for _ in " " * 3: stbt.press('KEY_EXIT')
     if stbt.wait_until(lambda: stbt.match("images/dvr/i_pause.png")):
         stbt.press('KEY_PLAY')
     count = 0
