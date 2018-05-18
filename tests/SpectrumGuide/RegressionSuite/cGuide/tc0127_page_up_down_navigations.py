@@ -31,12 +31,12 @@ def test_tc0127_page_up_down_nav():
     # We can also check if there are any action panels and see if we can get out it to a Live channel, for now we will
     # exit the test.
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2,wait_after_key_press_secs=5):
-        user.clean_up(test_name,test_name)
+        user.clean_up(test_id, test_name)
         return
 
     if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
-        user.clean_up(test_name,test_name)
+        user.clean_up(test_id, test_name)
         return
 
     # Event if this step fails proceed to check if Page down works.
@@ -50,7 +50,7 @@ def test_tc0127_page_up_down_nav():
         # call any other teardown if necessary
         assertion_flag = False
         # clean up user object
-        user.clean_up(test_name,test_name)
+        user.clean_up(test_id, test_name)
         return
 
     # Event if this step fails proceed to check if Page down works.
