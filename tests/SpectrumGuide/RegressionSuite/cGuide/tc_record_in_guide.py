@@ -19,12 +19,12 @@ from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.Navigate import fromCloudGuide
 
 
-def test_tc0127_page_up_down_nav():
+def test_record_in_guide():
     # Initialize test
     user = UserWrapper()
     user.start()
-    test_id = "TC0127"
-    test_name = "test_page_up_down_nav"
+    test_id = "TCxyz"
+    test_name = "test_record_in_guide"
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
 
@@ -34,13 +34,13 @@ def test_tc0127_page_up_down_nav():
         user.clean_up(test_id, test_name)
         return
 
-    if not fromLiveTV.to_guide("Step 2", user):
+    if not fromLiveTV.to_guide("Step 2 - 3", user):
         # call any other teardown if necessary
         user.clean_up(test_id, test_name)
         return
 
     # Event if this step fails proceed to check if Page down works.
-    fromCloudGuide.check_page_down_channel_scrolling("Step 3", user)
+    fromCloudGuide.record_in_program_cell("Step 4", user)
 
     # Event if this step fails proceed to check if Page up works.
     fromCloudGuide.check_page_up_channel_scrolling("Step 4", user)
@@ -62,7 +62,7 @@ def test_tc0127_page_up_down_nav():
         assertion_flag = False
 
     # Check page up/down from center of guide, no return value
-    if not fromCloudGuide.move_in_guide_using_down_arrow("Step 8",user, number_of_times_to_move_down=3):
+    if fromCloudGuide.move_in_guide_using_down_arrow("Step 8",user, number_of_times_to_move_down=3):
         assertion_flag = False
 
     # Event if this step fails proceed to check if Page down works.

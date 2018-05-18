@@ -28,3 +28,6 @@ def test_page_up_down_nav():
     assert last_channel == first_channel, \
         "PAGEDOWN press did not shift guide list by 5"
     test.press('KEY_PAGEUP')
+
+
+def test_record_in_guide():

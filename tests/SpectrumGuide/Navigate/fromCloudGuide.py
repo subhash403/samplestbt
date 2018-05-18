@@ -21,6 +21,19 @@ def move_in_guide_using_down_arrow(step_name, user, number_of_times_to_move_down
     return True
 
 
+def record_in_program_cell(step_name, user, number_of_presses=1, wait_after_action=1):
+    # Verify RECORD key in guide cell sets/edits recording
+    user.remote_control_press('KEY_RECORD', number_of_presses)
+    user.LogResults.info("{}: Record key pressed in Guide cell".format(step_name))
+    if user.check_image(GuideScreen.record_in_cell["image"], GuideScreen.record_in_cell["region"]) or
+        user.check_image(GuideScreen.edit_episode_recording["image"]):
+        user.LogResults.passed("{}: Record press in Guide program cell sets/edits recording".format(step_name))
+        return True
+    else:
+        user.LogResults.failed("{}: Record press in Guide program cell did not set/edit recording".format(step_name))
+        return False
+
+
 def check_page_down_channel_scrolling(step_name,user,wait_after_action=1):
     # Verify 'PAGE_DOWN' press shifts down the list by 5,
     sleep(wait_after_action)

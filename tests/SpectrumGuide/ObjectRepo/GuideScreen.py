@@ -24,3 +24,12 @@ first_channel = {
 last_channel = {
     "region": {"x": 96, "y": 669, "width": 76, "height": 27}
 }
+
+record_in_cell = {
+    "image": IMG_ABS_PATH + "/ImageRepo/Guide/record_in_cell.png",
+    "region": {"x": 220, "y": 302, "width": 1059, "height": 54}
+}
+
+edit_episode_recording = {
+    "image": IMG_ABS_PATH + "/ImageRepo/Guide/edit_episode_recording.png"
+}
