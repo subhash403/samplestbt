@@ -40,37 +40,11 @@ def test_record_in_guide():
         return
 
     # Event if this step fails proceed to check if Page down works.
-    fromCloudGuide.record_in_program_cell("Step 4", user)
-
-    # Event if this step fails proceed to check if Page up works.
-    fromCloudGuide.check_page_up_channel_scrolling("Step 4", user)
-
-    # Verify "RIGHT KEY" action to select future program
-    if not fromCloudGuide.select_future_program_using_right_arrow("Step 5", user):
-        # call any other teardown if necessary
-        assertion_flag = False
-        # clean up user object
-        user.clean_up(test_id, test_name)
-        return
-
-    # Event if this step fails proceed to check if Page down works.
-    if not fromCloudGuide.check_page_down_channel_scrolling("Step 6", user):
+    if not fromCloudGuide.record_in_program_cell("Step 4", user):
         assertion_flag = False
 
     # Event if this step fails proceed to check if Page up works.
-    if not fromCloudGuide.check_page_up_channel_scrolling("Step 7", user):
-        assertion_flag = False
-
-    # Check page up/down from center of guide, no return value
-    if fromCloudGuide.move_in_guide_using_down_arrow("Step 8",user, number_of_times_to_move_down=3):
-        assertion_flag = False
-
-    # Event if this step fails proceed to check if Page down works.
-    if not fromCloudGuide.check_page_down_channel_scrolling("Step 9", user):
-        assertion_flag = False
-
-    # Event if this step fails proceed to check if Page up works.
-    if not  fromCloudGuide.check_page_up_channel_scrolling("Step 10", user):
+    if not fromCloudGuide.error_check_for_record("Step 5", user):
         assertion_flag = False
 
     # Clean up User Wrapper
