@@ -6,7 +6,6 @@ from time import sleep
 menu_region = MainMenuScreen.area["region"]
 
 def to_tv_shows(step_name,Tester):
-
     Tester.remote_control_press('KEY_CHANNELUP')
     if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region) :
         Tester.LogResults.passed("{} : Navigating to TV Shows options in  Main Menu".format(step_name))
