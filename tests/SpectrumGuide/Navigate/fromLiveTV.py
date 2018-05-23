@@ -30,4 +30,3 @@ def to_guide(step_name, tester):
         tester.LogResults.failed("{} : Navigating to Guide from Live TV".format(step_name))
         tester.LogResults.info("Expected - Guide <guide-options> should be displayed, Actual - Not Displayed")
         return False
-

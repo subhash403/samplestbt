@@ -1,7 +1,6 @@
 
 import os
 import sys
-from time import sleep
 
 # Workaround for import path behaviour; can be removed once stb-tester v29 is released.
 def _get_test_pack_root():
@@ -10,33 +9,44 @@ def _get_test_pack_root():
         d = os.path.dirname(d)
     return d
 
-sys.path.insert(0, _get_test_pack_root())
+sys.path.insert(0,_get_test_pack_root())
 
 from tests.astro.Sampler import UserWrapper
-
 from tests.SpectrumGuide.Navigate import fromLiveTV
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.Navigate import fromCloudGuide
 
 
-def test_tc0127_page_up_down_nav():
+"""
+======================================================================================================================
+Function Test Coverage : <ALM_Functional_Test_Name>
+Author      : Beau Yoder 
+Description : Test to check page up and pae down functions of a silver remote in cloud guide screen.
+Reviewed By : SivaRam Kumar Mani
+======================================================================================================================
+"""
+
+
+def test_01_sr_page_up_down_navigation():
     # Initialize test
     user = UserWrapper()
     user.start()
-    test_id = "TC0127"
-    test_name = "test_page_up_down_nav"
-    user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
+    test_name = "01_sr_page_up_down_navigation"
+    user.LogResults.info("Test Name :{}".format(test_name))
     assertion_flag = True
 
-    # We can also check if there are any action panels and see if we can get out it to a Live channel, for now we will
-    # exit the test.
-    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2,wait_after_key_press_secs=5):
-        user.clean_up(test_id, test_name)
+    # Pre-Requisites
+
+    # Check if STB is ON
+    # <TODO>
+    # Check if STB is in live TB
+    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
+        user.clean_up(test_name)
         return
 
     if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
-        user.clean_up(test_id, test_name)
+        user.clean_up(test_name)
         return
 
     # Event if this step fails proceed to check if Page down works.
@@ -50,7 +60,7 @@ def test_tc0127_page_up_down_nav():
         # call any other teardown if necessary
         assertion_flag = False
         # clean up user object
-        user.clean_up(test_id, test_name)
+        user.clean_up(test_name)
         return
 
     # Event if this step fails proceed to check if Page down works.

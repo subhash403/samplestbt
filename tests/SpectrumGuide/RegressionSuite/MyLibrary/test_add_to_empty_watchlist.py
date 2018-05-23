@@ -46,11 +46,6 @@ def test_add_to_empty_watchlist():
         user.clean_up((test_id, test_name))
         return
 
-    if not fromTvShows.add_to_watchlist_with_a("Step 3", user)
-        assertion_flag = False
-
-
-
 
 
     # Clean up User Wrapper
