@@ -11,6 +11,8 @@ class MakeApiCall:
         self.mac_address    =   self.get_config_values('sst_demo','macAddress')
         self.spec_endpoint  = self.get_config_values('sst_demo','spec_endpoint')
         self.pin_value       = self.get_config_values('pin','pin_value')
+        self.doc_fav_array = self.get_config_values('favorites','doc_fav_array')
+        self.qam_fav_array = self.get_config_values('favorites', 'qam_fav_array')
 
     def get_config_values(self,ParentKey,ChildKey):
         absFilePath = Path(__file__).parent
@@ -223,8 +225,7 @@ class MakeApiCall:
                         if (retry_count > 0):
                             network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
                         else:
-                            print(
-                                "NetworkSettingsEdge call failed to reset the box setting for the mac:" + self.mac_address + "even after 3 attempts")
+                            print("NetworkSettingsEdge call failed to reset the box setting for the mac:" + self.mac_address + "even after 3 attempts")
                             # Code to fail the test case
                             break
                         retry_count = retry_count - 1
@@ -264,10 +265,202 @@ class MakeApiCall:
                         retry_count = retry_count - 1
                 else:
                     print("*********Info Banner Duration setting API Call successful*********")
+    def Chbar_time(self, toggle):
+                print("*********Triggering channel bar duration API*********")
+                login_edge_response = self.execute_spec_endpoint()
+                if (int(toggle) > 15 or int(toggle) < 5):
+                    raise Exception("Channel bar can not be set outside the range of 5 to 15 seconds please change the value")
+                payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Channel Bar Duration","value":["'+str(toggle)+'"]}]}]}}'
+                try:
+                    url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                    if network_edge_response.status_code != 200:
+                        raise Exception
+                except Exception:
+                    print("Exception Occured in Network Edge Call")
+                    retry_count = 3
+                    while (network_edge_response.status_code != 200):
+                        if (retry_count > 0):
+                            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                        else:
+                            print(
+                                "NetworkSettingsEdge call failed to update channel bar duration for the mac:" + self.mac_address + "even after 3 attempts")
+                            # Code to fail the test case
+                            break
+                        retry_count = retry_count - 1
+                else:
+                    print("*********channel bar duration setting API Call successful*********")
 
+    def HideAdultTitle(self, toggle):
+        print("*********Triggering Hide Adult title API*********")
+        login_edge_response = self.execute_spec_endpoint()
+        if (toggle == "Off"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Hide Adult Content","value":["Off"]}]}]}}'
+        elif (toggle == "On"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Hide Adult Content","value":["On"]}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to update Hide Adult titles for the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Hide Adult title API Call successful*********")
+    def GuideNarration(self, toggle):
+                print("*********Guide Narration API*********")
+                login_edge_response = self.execute_spec_endpoint()
+                if (toggle == "Off"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Guide Narration","value":["Off"]}]}]}}'
+                elif (toggle == "On"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Guide Narration","value":["On"]}]}]}}'
+                try:
+                    url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                    if network_edge_response.status_code != 200:
+                        raise Exception
+                except Exception:
+                    print("Exception Occured in Network Edge Call")
+                    retry_count = 3
+                    while (network_edge_response.status_code != 200):
+                        if (retry_count > 0):
+                            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                        else:
+                            print(
+                                "NetworkSettingsEdge call failed to update Guide Narration ON/OFF for the mac:" + self.mac_address + "even after 3 attempts")
+                            # Code to fail the test case
+                            break
+                        retry_count = retry_count - 1
+                else:
+                    print("*********Guide Narration API Call successful*********")
+
+    def ChbarPos(self, toggle):
+        print("*********Channel Bar position API*********")
+        login_edge_response = self.execute_spec_endpoint()
+        if (toggle == "Top"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Channel Bar Position","value":["Top"]}]}]}}'
+        elif (toggle == "Bottom"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Channel Bar Position","value":["Bottom"]}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to change Channel Bar position for the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Channel Bar position API Call successful*********")
+
+    def DocFav(self, toggle):
+        print("*********Favorites API for DOCSIS*********")
+        login_edge_response = self.execute_spec_endpoint()
+        if (toggle == "Clear"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":[]}]}]}}'
+        elif (toggle == "Apply"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":"'+str(self.doc_fav_array)+'"}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to set/clear favorites in docsis for the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Favorites API for DOCSIS successful*********")
+    def QamFav(self, toggle):
+        print("*********Favorites API for QAM*********")
+        login_edge_response = self.execute_spec_endpoint()
+        if (toggle == "Clear"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":[]}]}]}}'
+        elif (toggle == "Apply"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":"'+str(self.qam_fav_array)+'"}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to set/clear favorites in QAM for the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Favorites API for QAM successful*********")
+
+    def Purchase(self, toggle):
+        print("*********Purchase Pin API for QAM*********")
+        login_edge_response = self.execute_spec_endpoint()
+        self.set_pin("Purchase", login_edge_response)
+        if (toggle == "Off"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Purchase PIN Active","value":["Off"]}]}]}}'
+        elif (toggle == "On"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Purchase PIN Active","value":["On"]}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to update purchase pin ON/OFFfor the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Purchase Pin successful*********")
 abc = MakeApiCall()
 #login_edge_response = abc.execute_spec_endpoint()
 #abc.set_pin("Parental",login_edge_response)
 #abc.HDAT("On")
 #abc.ResetBox("Yes")
-abc.Info("15")
+#abc.Info("30")
+#abc.Chbar_time("6")
+#abc.HideAdultTitle("On")
+#abc.GuideNarration("Off")
+#abc.ChbarPos("Bottom")
+#abc.DocFav("Apply")
+#abc.QamFav("Apply")
+abc.Purchase("On")
