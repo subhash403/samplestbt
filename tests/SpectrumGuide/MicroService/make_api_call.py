@@ -13,6 +13,7 @@ class MakeApiCall:
         self.pin_value       = self.get_config_values('pin','pin_value')
         self.doc_fav_array = self.get_config_values('favorites','doc_fav_array')
         self.qam_fav_array = self.get_config_values('favorites', 'qam_fav_array')
+        self.fav_array = self.get_config_values('favorites', 'fav_array')
 
     def get_config_values(self,ParentKey,ChildKey):
         absFilePath = Path(__file__).parent
@@ -423,6 +424,34 @@ class MakeApiCall:
                 retry_count = retry_count - 1
         else:
             print("*********Favorites API for QAM successful*********")
+    def Fav(self, toggle):
+        print("*********Favorites API*********")
+        login_edge_response = self.execute_spec_endpoint()
+        if (toggle == "Clear"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":[]}]}]}}'
+        elif (toggle == "Apply"):
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":"'+str(self.fav_array)+'"}]}]}}'
+        else:
+            payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Favorites","value":["'+str(toggle)+'"]}]}]}}'
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+            if network_edge_response.status_code != 200:
+                raise Exception
+        except Exception:
+            print("Exception Occured in Network Edge Call")
+            retry_count = 3
+            while (network_edge_response.status_code != 200):
+                if (retry_count > 0):
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                else:
+                    print(
+                        "NetworkSettingsEdge call failed to set/clear favorites for the mac:" + self.mac_address + "even after 3 attempts")
+                    # Code to fail the test case
+                    break
+                retry_count = retry_count - 1
+        else:
+            print("*********Favorites API successful*********")
 
     def Purchase(self, toggle):
         print("*********Purchase Pin API for QAM*********")
@@ -463,4 +492,5 @@ abc = MakeApiCall()
 #abc.ChbarPos("Bottom")
 #abc.DocFav("Apply")
 #abc.QamFav("Apply")
-abc.Purchase("On")
+#abc.Purchase("On")
+abc.Fav("Set")
