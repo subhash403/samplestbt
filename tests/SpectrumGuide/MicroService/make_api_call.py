@@ -177,5 +177,34 @@ class MakeApiCall:
         else:
             print("*********Parental PIN API Call successful*********")
 
+    def HDAT(self, toggle):
+                print("*********Triggering HD Auto Tune PIN API*********")
+                login_edge_response = self.execute_spec_endpoint()
+                if (toggle == "On"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"HD Auto Tune","value":["On"]}]}]}}'
+                elif (toggle == "Off"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"HD Auto Tune","value":["Off"]}]}]}}'
+                try:
+                    url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                    if network_edge_response.status_code != 200:
+                        raise Exception
+                except Exception:
+                    print("Exception Occured in Network Edge Call")
+                    retry_count = 3
+                    while (network_edge_response.status_code != 200):
+                        if (retry_count > 0):
+                            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                        else:
+                            print(
+                                "NetworkSettingsEdge call failed to update Hdat to ON/OFF setting for the mac:" + self.mac_address + "even after 3 attempts")
+                            # Code to fail the test case
+                            break
+                        retry_count = retry_count - 1
+                else:
+                    print("*********HD Auto Tune API Call successful*********")
+
 abc = MakeApiCall()
-abc.parental_pin("On")
+login_edge_response = abc.execute_spec_endpoint()
+abc.set_pin("Parental",login_edge_response)
+abc.HDAT("On")
