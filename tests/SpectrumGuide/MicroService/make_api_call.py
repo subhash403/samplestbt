@@ -230,9 +230,44 @@ class MakeApiCall:
                         retry_count = retry_count - 1
                 else:
                     print("*********reset the box API Call successful*********")
+    def Info(self, toggle):
+                print("*********Triggering Info Banner Duration API*********")
+                login_edge_response = self.execute_spec_endpoint()
+                if (toggle == "5"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["5"]}]}]}}'
+                elif (toggle == "10"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["10"]}]}]}}'
+                elif (toggle == "15"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["15"]}]}]}}'
+                elif (toggle == "20"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["20"]}]}]}}'
+                elif (toggle == "25"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["25"]}]}]}}'
+                elif (toggle == "30"):
+                    payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Info Banner Duration","value":["30"]}]}]}}'
+                try:
+                    url = "http://" + self.spec_endpoint + "/api/pub/networksettingsedge/v1/settings"
+                    network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                    if network_edge_response.status_code != 200:
+                        raise Exception
+                except Exception:
+                    print("Exception Occured in Network Edge Call")
+                    retry_count = 3
+                    while (network_edge_response.status_code != 200):
+                        if (retry_count > 0):
+                            network_edge_response = self.get_network_edge_response(url, payload, login_edge_response)
+                        else:
+                            print(
+                                "NetworkSettingsEdge call failed to set Info Banner Duration for the mac:" + self.mac_address + "even after 3 attempts")
+                            # Code to fail the test case
+                            break
+                        retry_count = retry_count - 1
+                else:
+                    print("*********Info Banner Duration setting API Call successful*********")
 
 abc = MakeApiCall()
 #login_edge_response = abc.execute_spec_endpoint()
 #abc.set_pin("Parental",login_edge_response)
 #abc.HDAT("On")
-abc.ResetBox("Yes")
+#abc.ResetBox("Yes")
+abc.Info("15")
