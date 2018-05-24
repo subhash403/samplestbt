@@ -501,7 +501,6 @@ class MakeApiCall:
                         for j in range(0,dvr_json['Recordings'][i]['RecordingCount']-1):
                             recId = dvr_json['Recordings'][i]['Recording'][j]['RecordingId']
                             url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
-                            print("rec count more than 1"+ url)
                             headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
                             dvr_del_response = requests.request("DELETE", url, headers=headers)
                             if dvr_del_response.status_code != 200:
@@ -509,7 +508,6 @@ class MakeApiCall:
                     else:
                         recId = dvr_json['Recordings'][i]['Recording'][0]['RecordingId']
                         url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
-                        print("rec count less than 1" + url)
                         headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
                                'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
                         dvr_del_response = requests.request("DELETE", url, headers=headers)
@@ -521,6 +519,49 @@ class MakeApiCall:
         except Exception:
           print("Exception Occured in DVR Call")
           print("Status code is "+str(dvr_response.status_code))
+
+    def DeleteFutureRecording(self):
+        print("*********Delete Future Recording API for QAM*********")
+        login_edge_response = self.execute_spec_endpoint()
+        login_edge_json = login_edge_response.json()
+        token = login_edge_json['AuthResponse']['Token']
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings"
+            headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                       'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+            dvr_response = requests.request("GET", url, headers=headers)
+            if dvr_response.status_code != 200:
+                raise Exception
+            dvr_json = dvr_response.json()
+            recCount = dvr_json['RecordingsCount']
+            print("Recording count is " + str(recCount))
+            if (recCount != 0):
+                for i in range(0, recCount):
+                    if dvr_json['Recordings'][i]['RecordingCount'] > 1:
+                        for j in range(0, dvr_json['Recordings'][i]['RecordingCount'] - 1):
+                            recId = dvr_json['Recordings'][i]['Recording'][j]['RecordingId']
+                            url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                            print("rec count more than 1" + url)
+                            headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                                       'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                            dvr_del_response = requests.request("DELETE", url, headers=headers)
+                            if dvr_del_response.status_code != 200:
+                                raise Exception
+                    else:
+                        recId = dvr_json['Recordings'][i]['Recording'][0]['RecordingId']
+                        url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                        print("rec count less than 1" + url)
+                        headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                                   'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                        dvr_del_response = requests.request("DELETE", url, headers=headers)
+                        if dvr_del_response.status_code != 200:
+                            raise Exception
+            else:
+                print("No Recording available")
+
+        except Exception:
+            print("Exception Occured in DVR Call")
+            print("Status code is " + str(dvr_response.status_code))
 
 
 
