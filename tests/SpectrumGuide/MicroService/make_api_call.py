@@ -494,7 +494,7 @@ class MakeApiCall:
                 raise Exception
             dvr_json = dvr_response.json()
             recCount = dvr_json['RecordingsCount']
-            print("count"+str(recCount))
+            print("Recording count is "+str(recCount))
             if(recCount!=0):
                 for i in range(0,recCount):
                     if dvr_json['Recordings'][i]['RecordingCount'] > 1:
@@ -513,6 +513,8 @@ class MakeApiCall:
                         dvr_del_response = requests.request("DELETE", url, headers=headers)
                         if dvr_del_response.status_code != 200:
                             raise Exception
+            else:
+                print("No Recording available")
 
         except Exception:
           print("Exception Occured in DVR Call")
