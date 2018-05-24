@@ -501,6 +501,7 @@ class MakeApiCall:
                         for j in range(0,dvr_json['Recordings'][i]['RecordingCount']-1):
                             recId = dvr_json['Recordings'][i]['Recording'][j]['RecordingId']
                             url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                            print("rec count more than 1"+ url)
                             headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
                             dvr_del_response = requests.request("DELETE", url, headers=headers)
                             if dvr_del_response.status_code != 200:
@@ -508,6 +509,7 @@ class MakeApiCall:
                     else:
                         recId = dvr_json['Recordings'][i]['Recording'][0]['RecordingId']
                         url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                        print("rec count less than 1" + url)
                         headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
                                'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
                         dvr_del_response = requests.request("DELETE", url, headers=headers)
