@@ -556,7 +556,51 @@ class MakeApiCall:
                         if dvr_del_response.status_code != 200:
                             raise Exception
             else:
-                print("No Recording available")
+                print("Scheduled is already empty")
+
+        except Exception:
+            print("Exception Occured in DVR Call")
+            print("Status code is " + str(dvr_response.status_code))
+        else:
+            print("*********Delete Recording API successful*********")
+    def CancelFutureRecording(self):
+        print("*********Delete Recording API *********")
+        login_edge_response = self.execute_spec_endpoint()
+        login_edge_json = login_edge_response.json()
+        token = login_edge_json['AuthResponse']['Token']
+        try:
+            url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings-schedules"
+            headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                       'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+            dvr_response = requests.request("GET", url, headers=headers)
+            if dvr_response.status_code != 200:
+                raise Exception
+            json = dvr_response.json()
+            print(len(json['RecordingSchedules']))
+            if (len(json['RecordingSchedules'])!= 0):
+                print("cancelling Scheduled recordings")
+                for i in range(0, len(json['RecordingSchedules'])):
+                    if json['RecordingSchedules'][i]['RecordingCount'] > 1:
+                        for j in range(0, json['RecordingSchedules'][i]['RecordingCount'] - 1):
+                            schId = json['RecordingSchedules'][i]['Recording'][j]['ScheduleId']
+                            url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings-schedules/" + schId
+                            print(url)
+                            headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                                       'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                            dvr_del_response = requests.request("DELETE", url, headers=headers)
+                            if dvr_del_response.status_code != 200:
+                                raise Exception
+                    else:
+                        schId = json['RecordingSchedules'][i]['Recording'][0]['ScheduleId']
+                        url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings-schedules/" + schId
+                        print(url)
+                        headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                                   'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                        dvr_del_response = requests.request("DELETE", url, headers=headers)
+                        if dvr_del_response.status_code != 200:
+                            raise Exception
+            else:
+                print("Scheduled is already empty")
 
         except Exception:
             print("Exception Occured in DVR Call")
@@ -578,5 +622,6 @@ abc = MakeApiCall()
 #abc.QamFav("Apply")
 #abc.Purchase("On")
 #abc.Fav("Apply")
-abc.DeleteRecording()
-abc.DeleteFutureRecording()
+#abc.DeleteRecording()
+#abc.DeleteFutureRecording()
+#abc.CancelFutureRecording()
