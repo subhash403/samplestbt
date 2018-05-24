@@ -480,6 +480,46 @@ class MakeApiCall:
                 retry_count = retry_count - 1
         else:
             print("*********Purchase Pin successful*********")
+
+    def DeleteRecording(self):
+        print("*********Delete Recording API for QAM*********")
+        login_edge_response = self.execute_spec_endpoint()
+        login_edge_json = login_edge_response.json()
+        token = login_edge_json['AuthResponse']['Token']
+        try:
+            url = "http://"+self.spec_endpoint+"/api/pub/dvredge/v2/devices/"+self.mac_address+"/recordings"
+            headers = {'Content-Type': "application/json",'X-CHARTER-SESSION': token,'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+            dvr_response =requests.request("GET", url, headers=headers)
+            if dvr_response.status_code != 200:
+                raise Exception
+            dvr_json = dvr_response.json()
+            recCount = dvr_json['RecordingsCount']
+            print("count"+str(recCount))
+            if(recCount!=0):
+                for i in range(0,recCount):
+                    if dvr_json['Recordings'][i]['RecordingCount'] > 1:
+                        for j in range(0,dvr_json['Recordings'][i]['RecordingCount']-1):
+                            recId = dvr_json['Recordings'][i]['Recording'][j]['RecordingId']
+                            url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                            headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                            dvr_del_response = requests.request("DELETE", url, headers=headers)
+                            if dvr_del_response.status_code != 200:
+                                raise Exception
+                    else:
+                        recId = dvr_json['Recordings'][i]['Recording'][0]['RecordingId']
+                        url = "http://" + self.spec_endpoint + "/api/pub/dvredge/v2/devices/" + self.mac_address + "/recordings/" + recId
+                        headers = {'Content-Type': "application/json", 'X-CHARTER-SESSION': token,
+                               'Authorization': "Basic Y2hhcnRlcm5ldDpDaGFydDNybjN0"}
+                        dvr_del_response = requests.request("DELETE", url, headers=headers)
+                        if dvr_del_response.status_code != 200:
+                            raise Exception
+
+        except Exception:
+          print("Exception Occured in DVR Call")
+          print("Status code is "+str(dvr_response.status_code))
+
+
+
 abc = MakeApiCall()
 #login_edge_response = abc.execute_spec_endpoint()
 #abc.set_pin("Parental",login_edge_response)
@@ -493,4 +533,5 @@ abc = MakeApiCall()
 #abc.DocFav("Apply")
 #abc.QamFav("Apply")
 #abc.Purchase("On")
-abc.Fav("Set")
+#abc.Fav("Apply")
+abc.DeleteRecording()
