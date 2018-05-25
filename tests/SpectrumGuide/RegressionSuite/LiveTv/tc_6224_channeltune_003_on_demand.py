@@ -13,6 +13,7 @@ from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
 from tests.SpectrumGuide.ObjectRepo import GuideScreen
 from tests.astro.Sampler import UserWrapper
 from tests.SpectrumGuide.Navigate import fromLiveTV
+from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
