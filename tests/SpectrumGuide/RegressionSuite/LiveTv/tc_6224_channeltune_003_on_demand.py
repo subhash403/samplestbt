@@ -95,4 +95,5 @@ def tc_6224_ChannelTune_003_On Demand():
     if not fromMainMenuScreen.to_tvshows("Step 8", user):
         user.clean_up(test_id, test_name)
         return
+    User.cleanup(assertion_flag)
 tc_6224_ChannelTune_003_On Demand()
