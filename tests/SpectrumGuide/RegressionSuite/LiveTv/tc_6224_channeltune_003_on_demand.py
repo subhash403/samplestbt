@@ -49,7 +49,7 @@ def Guidelaunch(step_name ,Tester):
 def test_tc_6224_ChannelTune_003_On_Demand():
     # Initialize test
     test_name = "tc_6224_ChannelTune_003_On Demand"
-    user = UserWrapper(test_name)
+    user = UserWrapper()
     user.start()
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
