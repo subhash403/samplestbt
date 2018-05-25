@@ -1,3 +1,4 @@
+
 import os
 import sys
 from time import sleep
@@ -35,16 +36,16 @@ def miniguidelaunch(step_name ,Tester):
 
 def checkchannelnumberinminiguide(number ,channelnumber ,key_press_times):
     user.remote_control_press(number, key_press_times)
-if not user.check_text(channelnumber):
-    user.clean_up(test_id, test_name)
-    return
+    if not user.check_text(channelnumber):
+        user.clean_up(test_id, test_name)
+        return
 
 def Guidelaunch(step_name ,Tester):
     if UserWrapper.remote_control_press_until_image_match('KEY_Guide', GuideScreen.guide_options["image"],  region=None, maximum_key_press=1) :
-        Tester.LogResults.passed("Expected - Guide is Displayed, Actual- Displayed")
+        UserWrapper.LogResults.passed("Expected - Guide is Displayed, Actual- Displayed")
         return True
     else:
-        Tester.LogResults.failed("Expected - Guide is Displayed, Actual- Not Displayed")
+        UserWrapper.LogResults.failed("Expected - Guide is Displayed, Actual- Not Displayed")
         return False
 
 def test_tc_6224_ChannelTune_003_On_Demand():
@@ -76,7 +77,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.clean_up(test_id, test_name)
         return
 
-'''if 999 channel we got in miniguide then we need to select that to launch the ondemand channel'''
+#if 999 channel we got in miniguide then we need to select that to launch the ondemand channel'''
     user.remote_control_press('KEY_ENTER')
     if not fromMainMenuScreen.to_tvshows("Step 5", user):
         user.clean_up(test_id, test_name)
@@ -90,10 +91,9 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.clean_up(test_id, test_name)
         return
 
-'''if we press 999 from the guide it directly launches the Tvshows page'''
+#if we press 999 from the guide it directly launches the Tvshows page'''
     user.remote_control_press('KEY_9', 3)
     if not fromMainMenuScreen.to_tvshows("Step 8", user):
         user.clean_up(test_id, test_name)
         return
     User.cleanup(assertion_flag)
-tc_6224_ChannelTune_003_On Demand()
