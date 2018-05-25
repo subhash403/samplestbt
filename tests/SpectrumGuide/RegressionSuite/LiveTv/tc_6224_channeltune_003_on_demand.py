@@ -48,6 +48,7 @@ def Guidelaunch(step_name ,Tester):
 
 def test_tc_6224_ChannelTune_003_On_Demand():
     # Initialize test
+    test_id = "tc6224"
     test_name = "tc_6224_ChannelTune_003_On Demand"
     user = UserWrapper()
     user.start()
