@@ -47,7 +47,7 @@ def Guidelaunch(step_name ,Tester):
         Tester.LogResults.failed("Expected - Guide is Displayed, Actual- Not Displayed")
         return False
 
-def tc_6224_ChannelTune_003_On Demand():
+def test_tc_6224_ChannelTune_003_On Demand():
     # Initialize test
     test_name = "tc_6224_ChannelTune_003_On Demand"
     user = UserWrapper(test_name)
