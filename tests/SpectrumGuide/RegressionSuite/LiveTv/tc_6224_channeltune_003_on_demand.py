@@ -1,22 +1,20 @@
-
 import os
 import sys
 from time import sleep
-from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
-from tests.SpectrumGuide.ObjectRepo import GuideScreen
-from tests.astro.Sampler import UserWrapper
-from tests.SpectrumGuide.Navigate import fromLiveTV
-from tests.SpectrumGuide.Navigate import fromMainMenuScreen
-from tests.SpectrumGuide.Navigate import fromminiguidescreen
-
-
-# Workaround for import path behaviour; can be removed once stb-tester v29 is released.
+#Workaround for import path behaviour; can be removed once stb-tester v29 is released.
 def _get_test_pack_root():
     d = os.path.dirname(os.path.abspath(__file__))
     while not os.path.exists(os.path.join(d, ".stbt.conf")):
         d = os.path.dirname(d)
     return d
 sys.path.insert(0, _get_test_pack_root())
+
+from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
+from tests.SpectrumGuide.ObjectRepo import GuideScreen
+from tests.astro.Sampler import UserWrapper
+from tests.SpectrumGuide.Navigate import fromLiveTV
+from tests.SpectrumGuide.Navigate import fromMainMenuScreen
+from tests.SpectrumGuide.Navigate import fromminiguidescreen
 
 def ondemand_to_tv_shows(step_name ,Tester):
     if UserWrapper.remote_control_press_until_image_match('KEY_ONDEMAND', TvShowsScreen.logo["image"], region=None, maximum_key_press=1) :
