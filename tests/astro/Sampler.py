@@ -49,7 +49,7 @@ class UserWrapper:
             img_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
             return stbt.press_until_match(key, image_to_find, max_presses=maximum_key_press, region=img_region)
         else:
-            return stbt.press_until_match(key, image_to_find, max_press=maximum_key_press)
+            return stbt.press_until_match(key, image_to_find, max_presses=maximum_key_press)
 
     def remote_control_press(self,key, number_of_times=1):
         self.LogResults.info("Remote Control Key <{}> pressed {} time(s)".format(key, number_of_times))
