@@ -30,7 +30,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     assertion_flag = True
 
     def ondemand_to_tv_shows(step_name, Tester):
-        if Tester.remote_control_press_until_image_match('KEY_ONDEMAND', TvShowsScreen.logo["image"], region=None):
+        if Tester.remote_control_press_until_image_match('KEY_ONDEMAND', TvShowsScreen.logo["image"]):
             Tester.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
             return True
         else:
@@ -38,7 +38,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             return False
 
     def miniguidelaunch(step_name, Tester):
-        if Tester.remote_control_press_until_image_match('KEY_ENTER', fromminiguidescreen.logo["image"],region=None, maximum_key_press=2):
+        if Tester.remote_control_press_until_image_match('KEY_ENTER', fromminiguidescreen.logo["image"],maximum_key_press=2):
             Tester.LogResults.passed("Expected - MiniGuide is Displayed, Actual- Displayed")
             return True
         else:
