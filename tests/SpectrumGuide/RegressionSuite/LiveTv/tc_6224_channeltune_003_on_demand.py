@@ -30,7 +30,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     assertion_flag = True
 
     def ondemand_to_tv_shows(step_name, Tester):
-        if user.remote_control_press_until_image_match('KEY_ONDEMAND', TvShowsScreen.logo["image"], region=None,maximum_key_press=1):
+        if user.remote_control_press_until_image_match('KEY_ONDEMAND', TvShowsScreen.logo["image"], region=None):
             user.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
             return True
         else:
