@@ -82,7 +82,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.clean_up(test_id, test_name)
         return
 
-    if not checkchannelnumberinminiguide('KEY_9',number_of_times=3,channelnumber=999):
+    if not checkchannelnumberinminiguide('KEY_9',number_of_times=2,channelnumber=999):
         user.clean_up(test_id, test_name)
         return
 
