@@ -46,9 +46,9 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             return False
 
     def checkchannelnumberinminiguide(key,number_of_times,channelnumber):
-        Tester.remote_control_press(key,number_of_times)
-        if not Tester.check_text(channelnumber):
-            Tester.clean_up(test_id, test_name)
+        user.remote_control_press(key,number_of_times)
+        if not user.check_text(channelnumber):
+            user.clean_up(test_id, test_name)
             return
 
     def Guidelaunch(step_name, Tester):
