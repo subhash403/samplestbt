@@ -96,7 +96,8 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.clean_up(test_id, test_name)
         return
 
-    if not Guidelaunch("Step 7", user):
+    if not fromLiveTV.to_guide("Step 2", user):
+        # call any other teardown if necessary
         user.clean_up(test_id, test_name)
         return
 
