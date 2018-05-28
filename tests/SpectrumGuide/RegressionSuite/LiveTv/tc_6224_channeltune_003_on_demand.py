@@ -102,7 +102,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         return
 
 #if we press 999 from the guide it directly launches the Tvshows page'''
-    user.remote_control_press('KEY_9', 3)
+    user.remote_control_press('KEY_9', 2)
     if not fromMainMenuScreen.to_tvshows("Step 8", user):
         user.clean_up(test_id, test_name)
         return
