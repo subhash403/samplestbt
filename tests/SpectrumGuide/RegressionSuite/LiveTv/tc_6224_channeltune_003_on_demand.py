@@ -47,9 +47,13 @@ def test_tc_6224_ChannelTune_003_On_Demand():
 
     def checkchannelnumberinminiguide(key,number_of_times,channelnumber):
         user.remote_control_press(key,number_of_times)
-        if not user.check_image(fromminiguidescreen.miniguide_ondemand["image"]):
+        if user.check_image(fromminiguidescreen.miniguide_ondemand["image"]):
+            user.LogResults.passed("Expected - MiniGuide 999 is Displayed, Actual- Displayed")
+            return True
+        else:
+            user.LogResults.failed("Expected - MiniGuide 999 is Displayed, Actual- Not Displayed")
             user.clean_up(test_id, test_name)
-            return
+            return False
 
     def Guidelaunch(step_name, Tester):
         if Tester.remote_control_press_until_image_match('KEY_Guide', GuideScreen.guide_options["image"],region=None, maximum_key_press=1):
