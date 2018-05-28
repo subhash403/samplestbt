@@ -52,6 +52,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             return True
         else:
             user.LogResults.failed("Expected - MiniGuide 999 is Displayed, Actual- Not Displayed")
+            assertion_flag = False
             user.clean_up(test_id, test_name)
             return False
 
@@ -61,6 +62,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             return True
         else:
             Tester.LogResults.failed("Expected - Guide is Displayed, Actual- Not Displayed")
+            assertion_flag = False
             return False
 
 # User should be in Live Tv Initally while starting the Test case
@@ -103,4 +105,4 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     if not fromMainMenuScreen.to_tvshows("Step 8", user):
         user.clean_up(test_id, test_name)
         return
-    User.cleanup(assertion_flag)
+    user.clean_up(assertion_flag, test_name)
