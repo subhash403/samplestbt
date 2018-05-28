@@ -88,7 +88,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
 
 #if 999 channel we got in miniguide then we need to select that to launch the ondemand channel'''
     user.remote_control_press('KEY_ENTER')
-    if user.check_image(MainMenuScreen.to_tvshows["image"]):
+    if user.check_image(MainMenuScreen.tv_shows["image"]):
         user.LogResults.passed("Expected - Tvshows is Displayed, Actual- Displayed")
         return True
     else:
@@ -108,7 +108,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
 
 #if we press 999 from the guide it directly launches the Tvshows page'''
     user.remote_control_press('KEY_9', 2)
-    if user.check_image(MainMenuScreen.to_tvshows["image"]):
+    if user.check_image(MainMenuScreen.tv_shows["image"]):
         user.LogResults.passed("Expected - Tvshows is Displayed, Actual- Displayed")
         return True
     else:
