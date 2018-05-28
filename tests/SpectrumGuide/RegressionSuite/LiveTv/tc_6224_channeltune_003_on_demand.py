@@ -92,8 +92,8 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     else:
         user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
         return False
-    user.clean_up(assertion_flag, test_name)
-    '''
+    
+    
     if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_id, test_name)
         return
@@ -115,7 +115,6 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     else:
         user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
         return False
-
-   '''
+    user.clean_up(assertion_flag, test_name)
 
 
