@@ -74,7 +74,26 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     if not ondemand_to_tv_shows("Step 2", user):
         user.clean_up(test_id, test_name)
         return
-'''
+    
+    if not fromAnyScreen.exit_to_live_tv_screen("Step 6", user, number_of_exit_key=2, wait_after_key_press_secs=5):
+        user.clean_up(test_id, test_name)
+        return
+
+    if not fromLiveTV.to_guide("Step 4", user):
+        # call any other teardown if necessary
+        user.clean_up(test_id, test_name)
+        return
+
+#if we press 999 from the guide it directly launches the Tvshows page'''
+    user.remote_control_press('KEY_9', 2)
+    if user.check_image(TvShowsScreen.logo["image"]):
+        user.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
+        return True
+    else:
+        user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
+        return False
+    user.clean_up(assertion_flag, test_name)
+    '''
     if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_id, test_name)
         return
@@ -97,23 +116,6 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
         return False
 
-'''
+   '''
 
-    if not fromAnyScreen.exit_to_live_tv_screen("Step 6", user, number_of_exit_key=2, wait_after_key_press_secs=5):
-        user.clean_up(test_id, test_name)
-        return
 
-    if not fromLiveTV.to_guide("Step 4", user):
-        # call any other teardown if necessary
-        user.clean_up(test_id, test_name)
-        return
-
-#if we press 999 from the guide it directly launches the Tvshows page'''
-    user.remote_control_press('KEY_9', 2)
-    if user.check_image(TvShowsScreen.logo["image"]):
-        user.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
-        return True
-    else:
-        user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
-        return False
-    user.clean_up(assertion_flag, test_name)
