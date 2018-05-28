@@ -88,9 +88,14 @@ def test_tc_6224_ChannelTune_003_On_Demand():
 
 #if 999 channel we got in miniguide then we need to select that to launch the ondemand channel'''
     user.remote_control_press('KEY_ENTER')
-    if not fromMainMenuScreen.to_tvshows("Step 5", user):
+    if user.check_image(MainMenuScreen.to_tvshows["image"]):
+        user.LogResults.passed("Expected - Tvshows is Displayed, Actual- Displayed")
+        return True
+    else:
+        user.LogResults.failed("Expected - Tvshows is Displayed, Actual- Not Displayed")
+        assertion_flag = False
         user.clean_up(test_id, test_name)
-        return
+        return False
 
     if not fromAnyScreen.exit_to_live_tv_screen("Step 6", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_id, test_name)
