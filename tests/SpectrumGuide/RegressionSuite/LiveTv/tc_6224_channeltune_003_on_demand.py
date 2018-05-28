@@ -45,8 +45,8 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             Tester.LogResults.failed("Expected - MiniGuide is Displayed, Actual- Not Displayed")
             return False
 
-    def checkchannelnumberinminiguide(number, channelnumber, key_press_times):
-        Tester.remote_control_press(number, key_press_times)
+    def checkchannelnumberinminiguide(key,number_of_times,channelnumber):
+        Tester.remote_control_press(key,number_of_times)
         if not Tester.check_text(channelnumber):
             Tester.clean_up(test_id, test_name)
             return
@@ -76,7 +76,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         user.clean_up(test_id, test_name)
         return
 
-    if not checkchannelnumberinminiguide(number='KEY_9' ,channelnumber=999 ,key_press_times=3):
+    if not checkchannelnumberinminiguide('KEY_9',number_of_times=3,channelnumber=999):
         user.clean_up(test_id, test_name)
         return
 
