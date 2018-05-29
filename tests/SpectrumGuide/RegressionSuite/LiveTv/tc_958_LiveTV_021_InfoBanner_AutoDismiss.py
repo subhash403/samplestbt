@@ -14,8 +14,8 @@ from tests.cleanup.methods import Menu_Methods
 from tests.astro.Sampler import UserWrapper
 #from tests.SpectrumGuide.Navigate import fromLiveTV
 #from tests.SpectrumGuide.Navigate import fromAnyScreen
-from tests.SpectrumGuide.Navigate import MainMenuScreen
-from tests.SpectrumGuide.ObjectRepo import fromMainMenu
+from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
+from tests.SpectrumGuide.Navigate import fromMainMenu
 #from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
