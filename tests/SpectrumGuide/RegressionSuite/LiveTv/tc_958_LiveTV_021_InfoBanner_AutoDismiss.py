@@ -23,6 +23,12 @@ from tests.astro.Sampler import UserWrapper
 # from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 # from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
+def menu_launch():
+    for _ in " "*2: stbt.press('KEY_EXIT')
+    stbt.press('KEY_MENU')
+    assert stbt.wait_until(lambda: stbt.match("images/menu/menu_logo.png")), \
+    "Menu not launched"
+
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"
@@ -32,6 +38,6 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
 
-    if not Menu_Methods.menu_launch():
+    if not menu_launch():
         user.clean_up(test_id, test_name)
         return
