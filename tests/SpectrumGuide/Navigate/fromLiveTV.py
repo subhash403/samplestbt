@@ -94,6 +94,7 @@ def cycle_trickplay_from_pause(step_name, tester, num_times):
                                      "Actual - Live TV is not paused".format(step_name))
             return False
     tester.LogResults.passed("{} : {} trick-play presses worked as expected on STB".format(step_name, (num_times*5)))
+    tester.remote_control_press('KEY_PLAYPAUSE')
     return True
 
 
