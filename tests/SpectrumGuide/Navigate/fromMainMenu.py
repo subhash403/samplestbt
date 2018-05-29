@@ -57,7 +57,7 @@ def to_settings(step_name, Tester):
     else:
         Tester.LogResults.failed("{} : Navigating to TV Settings from Main Menu".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER')
+    Tester.remote_control_press('KEY_ENTER',0)
     if Tester.check_image(SettingsandsupportScreen.logo["image"]):
         Tester.LogResults.passed("Expected - Settings&Support is Displayed, Actual- Displayed")
         return True
