@@ -51,6 +51,7 @@ def pause_for_num_seconds(step_name, tester, num_seconds):
                                "Actual - Live TV did not stay paused for {} seconds".format(num_seconds, num_seconds))
         return False
 
+
 def cycle_trickplay_from_pause(step_name, tester, num_times):
     if tester.check_image(LiveTV.pause["image"]):
         tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
@@ -92,4 +93,7 @@ def cycle_trickplay_from_pause(step_name, tester, num_times):
             tester.LogResults.failed("{} : Expected - Live TV should be paused, "
                                      "Actual - Live TV is not paused".format(step_name))
             return False
+    tester.LogResults.passed("{} : {} trick-play presses worked as expected on STB".format(step_name, (num_times*5)))
     return True
+
+
