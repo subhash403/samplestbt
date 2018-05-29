@@ -2,6 +2,7 @@ from time import sleep
 
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.ObjectRepo import GuideScreen
+from tests.SpectrumGuide.ObjectRepo import LiveTV
 
 
 def to_main_menu(step_name, tester):
@@ -30,3 +31,65 @@ def to_guide(step_name, tester):
         tester.LogResults.failed("{} : Navigating to Guide from Live TV".format(step_name))
         tester.LogResults.info("Expected - Guide <guide-options> should be displayed, Actual - Not Displayed")
         return False
+
+
+def pause_for_num_seconds(step_name, tester, num_seconds):
+    tester.remote_control_press('KEY_PLAYPAUSE')
+    if tester.check_image(LiveTV.pause["image"]):
+        tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
+    else:
+        return False
+    sleep(num_seconds)
+    if tester.check_image(LiveTV.pause["image"])
+        tester.LogResults.passed("{} : Live TV was successfully paused for {} seconds".format(step_name, num_seconds))
+        tester.LogResutls.info("Expected - Live TV stays paused for {} seconds, "
+                               "Actual - Live TV stayed paused for {} seconds".format(num_seconds, num_seconds))
+        return True
+    else:
+        tester.LogResults.failed("{} : Pausing Live TV for {} seconds".format(step_name, num_seconds))
+        tester.LogResults.info("Expected - Live TV stays paused for {} seconds, "
+                               "Actual - Live TV did not stay paused for {} seconds".format(num_seconds, num_seconds))
+        return False
+
+def cycle_trickplay_from_pause(step_name, tester, num_times):
+    if tester.check_image(LiveTV.pause["image"]):
+        tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
+    else:
+        return False
+    for _ in range(num_times):
+        tester.remote_control_press('KEY_PLAYPAUSE')
+        if tester.check_image(LiveTV.play["image"]):
+            tester.LogResults.info("Expected - Live TV should be played, Actual - Live TV is played")
+        else:
+            tester.LogResults.failed("{} : Expected - Live TV should be played,"
+                                     " Actual - Live TV is not played".format(step_name))
+            return False
+        tester.remote_control_press('KEY_REWIND')
+        if tester.check_image(LiveTV.rewind["image"]):
+            tester.LogResults.info("Expected - Live TV should be rewound, Actual - Live TV is rewound")
+        else:
+            tester.LogResults.failed("{} : Expected - Live TV should be rewound, "
+                                     "Actual - Live TV is not rewound".format(step_name))
+            return False
+        tester.remote_control_press('KEY_FASTFORWARD')
+        if tester.check_image(LiveTV.fastforward["image"]):
+            tester.LogResults.info("Expected - Live TV should be forwarded, Actual - Live TV is forwarded")
+        else:
+            tester.LogResults.failed("{} : Expected - Live TV should be forwarded, "
+                                     "Actual - Live TV is not forwarded".format(step_name))
+            return False
+        tester.remote_control_press('KEY_PLAYPAUSE')
+        if tester.check_image(LiveTV.play["image"]):
+            tester.LogResults.info("Expected - Live TV should be resumed, Actual - Live TV is resumed")
+        else:
+            tester.LogResults.failed("{} : Expected - Live TV should be resumed, "
+                                     "Actual - Live TV is not resumed".format(step_name))
+            return False
+        tester.remote_control_press('KEY_PLAYPAUSE')
+        if tester.check_image(LiveTV.pause["image"]):
+            tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
+        else:
+            tester.LogResults.failed("{} : Expected - Live TV should be paused, "
+                                     "Actual - Live TV is not paused".format(step_name))
+            return False
+    return True

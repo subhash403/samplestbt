@@ -40,7 +40,7 @@ def test_01_sr_page_up_down_navigation():
 
     # Step 1 : Check if STB is in live TB
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
-        user.clean_up(test_name)
+        user.clean_up(assertion_flag)
         return
 
     # Step 2 : Navigate to guide screen from Live TV

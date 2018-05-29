@@ -7,11 +7,11 @@ area = {
 }
 
 logo = {
-    "image": IMG_ABS_PATH + "/ImageRepo/Settings/settingslaunched.png"
+    "image": IMG_ABS_PATH + "/ImageRepo/Settings/settings_header.png"
 }
 
 preference = {
-    "selected": IMG_ABS_PATH +"/ImageRepo/Settings/preferences.png",
+    "selected": IMG_ABS_PATH +"/ImageRepo/Settings/preferences_selected.png",
     "launched": IMG_ABS_PATH +"/ImageRepo/Settings/preferences_launched.png"
 }
 

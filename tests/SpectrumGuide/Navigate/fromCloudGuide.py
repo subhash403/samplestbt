@@ -11,8 +11,8 @@ def select_future_program_using_right_arrow(step_name, user, number_of_times_to_
     :return: True / False
     """
     # Verify 'RIGHT KEY highlight future program'
-    user.remote_control_press('KEY_RIGHT',number_of_times_to_move_right)
-    if user.check_image(GuideScreen.first_cell_not_selected["image"], GuideScreen.first_cell_not_selected["region"]) :
+    user.remote_control_press('KEY_RIGHT', number_of_times_to_move_right)
+    if user.check_image(GuideScreen.first_cell_not_selected["image"], GuideScreen.first_cell_not_selected["region"]):
         user.LogResults.passed("{}: Right press moves to next future program in guide".format(step_name))
         return True
     else:
@@ -20,7 +20,7 @@ def select_future_program_using_right_arrow(step_name, user, number_of_times_to_
         return False
 
 
-def move_in_guide_using_down_arrow(step_name, user, number_of_times_to_move_down=1,wait_after_action=1):
+def move_in_guide_using_down_arrow(step_name, user, number_of_times_to_move_down=1, wait_after_action=1):
     """
     :param step_name:
     :param user:
@@ -59,7 +59,8 @@ def record_in_program_cell(step_name, user, number_of_presses=1, wait_after_acti
     """
     # Verify RECORD key in guide cell sets/edits recording
     user.remote_control_press('KEY_RECORD', number_of_presses)
-    if user.check_image(GuideScreen.record_in_cell["image"], GuideScreen.record_in_cell["region"]) or user.check_image(GuideScreen.edit_episode_recording["image"]):
+    if user.check_image(GuideScreen.record_in_cell["image"], GuideScreen.record_in_cell["region"]) or \
+            user.check_image(GuideScreen.edit_episode_recording["image"]):
         user.LogResults.passed("{}: Record press in Guide program cell sets/edits recording".format(step_name))
         return True
     else:
@@ -67,7 +68,7 @@ def record_in_program_cell(step_name, user, number_of_presses=1, wait_after_acti
         return False
 
 
-def check_page_down_channel_scrolling(step_name,user,wait_after_action=1):
+def check_page_down_channel_scrolling(step_name, user, wait_after_action=1):
     """
     :param step_name:
     :param user:
@@ -89,7 +90,7 @@ def check_page_down_channel_scrolling(step_name,user,wait_after_action=1):
         return False
 
 
-def check_page_up_channel_scrolling(step_name,user, wait_after_action=1):
+def check_page_up_channel_scrolling(step_name, user, wait_after_action=1):
     """
     :param step_name:
     :param user:

@@ -1,7 +1,7 @@
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
 from tests.SpectrumGuide.ObjectRepo import MyLibraryScreen
-from tests.SpectrumGuide.ObjectRepo import SettingsandsupportScreen
+from tests.SpectrumGuide.ObjectRepo import SettingsAndSupportScreen
 from time import sleep
 
 menu_region = MainMenuScreen.area["region"]
@@ -16,7 +16,7 @@ def to_menu(step_name, Tester):
         Tester.LogResults.failed("Expected - MENU is Displayed, Actual- Not Displayed")
         return False
 
-def to_tv_shows(step_name,Tester):
+def to_tv_shows(step_name, Tester):
     Tester.remote_control_press('KEY_CHANNELUP')
     if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region) :
         Tester.LogResults.passed("{} : Navigating to TV Shows options in  Main Menu".format(step_name))
@@ -58,7 +58,7 @@ def to_settings(step_name, Tester):
         Tester.LogResults.failed("{} : Navigating to TV Settings from Main Menu".format(step_name))
         return False
     Tester.remote_control_press('KEY_ENTER',0)
-    if Tester.check_image(SettingsandsupportScreen.logo["image"]):
+    if Tester.check_image(SettingsAndSupportScreen.logo["image"]):
         Tester.LogResults.passed("Expected - Settings&Support is Displayed, Actual- Displayed")
         return True
     else:

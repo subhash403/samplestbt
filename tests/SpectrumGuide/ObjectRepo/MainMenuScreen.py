@@ -6,23 +6,23 @@ area = {
 }
 
 Spectrum_Logo = {
-    "image": IMG_ABS_PATH + "/ImageRepo/MainMenu/Spectrum_Logo.png",
+    "image": IMG_ABS_PATH + "/ImageRepo/MainMenu/spectrum_logo.png",
     "region": {}
 }
 Search = {
-    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Search_Menu_Selected.png",
-    "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Search_Menu_Not_Selected.png"
+    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/search_menu_selected.png",
+    "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/search_menu_not_selected.png"
 }
 Guide = {
     "selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Selected.png",
     "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Not_Selected.png"
 }
 my_library = {
-    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Selected.png",
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/my_library_selected.png",
     #"not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Not_Selected.png"
 }
 tv_shows = {
-    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Selected.png",
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/tv_shows_selected.png",
     #"not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/TV_Shows_Not_Selected.png"
 }
 Movies = {
@@ -38,6 +38,6 @@ Apps = {
     "not_selected": "SpecGuide/ImageRepo/MainMenu/Apps_Not_Selected.png"
 }
 Settings = {
-    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/Settings_Selected.png",
-    "not_selected": "SpecGuide/ImageRepo/MainMenu/Settings_Not_Selected.png"
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/settings_selected.png",
+    "not_selected": "SpecGuide/ImageRepo/MainMenu/settings_not_selected.png"
 }
