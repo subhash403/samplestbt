@@ -6,7 +6,7 @@ def to_preference(step_name,Tester):
     else:
         Tester.LogResults.failed("{} : Navigating to Preferences options in  Settings & Support".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER')
+    Tester.remote_control_press('KEY_ENTER',0)
     if Tester.check_image(SettingsandsupportScreen.preference["launched"]):
         Tester.LogResults.passed("Expected - Preferences is Displayed, Actual- Displayed")
         return True
