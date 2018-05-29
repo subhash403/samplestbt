@@ -18,7 +18,7 @@ Guide = {
     "not_selected": IMG_ABS_PATH + "/ImageRepo/MainMenu/Guide_Not_Selected.png"
 }
 my_library = {
-    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Selected.png",
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/my_library_selected.png",
     #"not_selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/My_Library_Not_Selected.png"
 }
 tv_shows = {

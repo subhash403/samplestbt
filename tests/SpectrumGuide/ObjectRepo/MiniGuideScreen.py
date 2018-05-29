@@ -6,6 +6,5 @@ logo = {
 }
 
 miniguide_ondemand = {
-      "image": IMG_ABS_PATH + "/ImageRepo/MiniGuide/miniguide_ondemand.png",
-      "region": {}
+      "image": IMG_ABS_PATH + "/ImageRepo/MiniGuide/miniguide_ondemand.png"
 }

@@ -15,7 +15,7 @@ from tests.astro.Sampler import UserWrapper
 from tests.SpectrumGuide.Navigate import fromLiveTV
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
-from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
+from tests.SpectrumGuide.ObjectRepo import MiniGuideScreen
 
 user = UserWrapper()
 
@@ -38,7 +38,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
             return False
 
     def miniguidelaunch(step_name, Tester):
-        if Tester.remote_control_press_until_image_match('KEY_ENTER', fromminiguidescreen.logo["image"],maximum_key_press=2):
+        if Tester.remote_control_press_until_image_match('KEY_ENTER', MiniGuideScreen.logo["image"], maximum_key_press=2):
             Tester.LogResults.passed("Expected - MiniGuide is Displayed, Actual- Displayed")
             return True
         else:
@@ -48,7 +48,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
     def checkchannelnumberinminiguide(key,number_of_times,channelnumber):
         user.remote_control_press(key,number_of_times)
         sleep(5)
-        if user.check_image(fromminiguidescreen.miniguide_ondemand["image"]):
+        if user.check_image(MiniGuideScreen.miniguide_ondemand["image"]):
             user.LogResults.passed("Expected - MiniGuide 999 is Displayed, Actual- Displayed")
             return True
         else:
