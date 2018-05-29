@@ -31,7 +31,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
         user.clean_up(test_id, test_name)
         return
 
-    if not fromMainMenu.to_settings("step 1", user):
+    if not fromMainMenu.to_settings("step-2", user)
         user.clean_up(test_id, test_name)
         return
 
