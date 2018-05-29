@@ -70,7 +70,7 @@ def test_tc0127_page_up_down_nav():
         assertion_flag = False
 
     # Event if this step fails proceed to check if Page up works.
-    if not  fromCloudGuide.check_page_up_channel_scrolling("Step 10", user):
+    if not fromCloudGuide.check_page_up_channel_scrolling("Step 10", user):
         assertion_flag = False
 
     # Clean up User Wrapper
