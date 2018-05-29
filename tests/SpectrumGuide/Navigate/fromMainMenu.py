@@ -51,7 +51,7 @@ def to_my_library(step_name,Tester):
 
 def to_settings(step_name, Tester):
     Tester.remote_control_press('KEY_CHANNELUP')
-    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["selected"], 7, menu_region):
+    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["selected"], 7):
         Tester.LogResults.passed("{} : Navigating to Settings options in  Main Menu".format(step_name))
     else:
         Tester.LogResults.failed("{} : Navigating to TV Shows from Main Menu".format(step_name))
