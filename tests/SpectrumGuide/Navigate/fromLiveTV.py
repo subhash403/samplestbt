@@ -64,14 +64,14 @@ def cycle_trickplay_from_pause(step_name, tester, num_times):
             tester.LogResults.failed("{} : Expected - Live TV should be played,"
                                      " Actual - Live TV is not played".format(step_name))
             return False
-        tester.remote_control_press('KEY_REWIND')
+        tester.remote_control_press('KEY_LEFT')
         if tester.check_image(LiveTV.rewind["image"]):
             tester.LogResults.info("Expected - Live TV should be rewound, Actual - Live TV is rewound")
         else:
             tester.LogResults.failed("{} : Expected - Live TV should be rewound, "
                                      "Actual - Live TV is not rewound".format(step_name))
             return False
-        tester.remote_control_press('KEY_FASTFORWARD')
+        tester.remote_control_press('KEY_RIGHT')
         if tester.check_image(LiveTV.fastforward["image"]):
             tester.LogResults.info("Expected - Live TV should be forwarded, Actual - Live TV is forwarded")
         else:
