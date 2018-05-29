@@ -60,9 +60,13 @@ def test_time_to_get_text():
     user = UserWrapper(test_name)
     user.start()
     user.LogResults.info("Test Name :{}".format(test_name))
-    #assertion_flag = True
+    assertion_flag = True
     fromAnyScreen.exit_to_live_tv_screen("Step 0", user, number_of_exit_key=1)
     fromLiveTV.to_main_menu("Step 1", user)
-    sleep(5)
-    my_text = user.get_text(MainMenuScreen.Spectrum_Logo["region"])
-    print my_text
+    if not user.check_text("Spectrum", MainMenuScreen.Spectrum_Logo["region"]):
+        assertion_flag = False
+    user.clean_up(assertion_flag)
+
+
+
+
