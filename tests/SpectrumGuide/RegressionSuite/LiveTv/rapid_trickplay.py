@@ -61,6 +61,7 @@ def test_time_to_get_text():
     user.start()
     user.LogResults.info("Test Name :{}".format(test_name))
     #assertion_flag = True
+    fromAnyScreen.exit_to_live_tv_screen("Step 0", user, number_of_exit_key=1)
     fromLiveTV.to_main_menu("Step 1", user)
     sleep(5)
     my_text = user.get_text(MainMenuScreen.Spectrum_Logo["region"])
