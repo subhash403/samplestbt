@@ -5,6 +5,16 @@ from time import sleep
 
 menu_region = MainMenuScreen.area["region"]
 
+
+def to_menu(step_name, Tester):
+    Tester.remote_control_press('KEY_MENU')
+    if Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
+        Tester.LogResults.passed("Expected - MENU is Displayed, Actual- Displayed")
+        return True
+    else:
+        Tester.LogResults.failed("Expected - MENU is Displayed, Actual- Not Displayed")
+        return False
+
 def to_tv_shows(step_name,Tester):
     Tester.remote_control_press('KEY_CHANNELUP')
     if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region) :

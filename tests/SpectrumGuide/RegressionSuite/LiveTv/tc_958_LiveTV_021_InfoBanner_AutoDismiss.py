@@ -15,6 +15,7 @@ from tests.astro.Sampler import UserWrapper
 #from tests.SpectrumGuide.Navigate import fromLiveTV
 #from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
+from tests.SpectrumGuide.ObjectRepo import fromMainMenu
 #from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
@@ -26,15 +27,12 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
 
-    def to_menu(step_name,Tester):
-        Tester.remote_control_press('KEY_MENU')
-        if Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
-            Tester.LogResults.passed("Expected - MENU is Displayed, Actual- Displayed")
-            return True
-        else:
-            Tester.LogResults.failed("Expected - MENU is Displayed, Actual- Not Displayed")
-            return False
-    if not to_menu("step 1", user):
+    if not fromMainMenu.to_menu("step 1", user):
         user.clean_up(test_id, test_name)
         return
 
+    if not fromMainMenu.to_settings("step 1", user):
+        user.clean_up(test_id, test_name)
+        return
+
+    
