@@ -38,6 +38,6 @@ Apps = {
     "not_selected": "SpecGuide/ImageRepo/MainMenu/Apps_Not_Selected.png"
 }
 Settings = {
-    "selected": IMG_ABS_PATH +"/ImageRepo/MainMenu/Settings_Selected.png",
+    "image": IMG_ABS_PATH +"/ImageRepo/MainMenu/Settings_Selected.png",
     "not_selected": "SpecGuide/ImageRepo/MainMenu/Settings_Not_Selected.png"
 }
