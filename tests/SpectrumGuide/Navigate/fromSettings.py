@@ -1,7 +1,7 @@
 from tests.SpectrumGuide.ObjectRepo import SettingsandsupportScreen
-
+settings_region= SettingsandsupportScreen.area["region"]
 def to_preference(step_name,Tester):
-    if Tester.remote_control_press_until_image_match('KEY_DOWN', SettingsandsupportScreen.preference["selected"],maximum_key_press=5):
+    if Tester.remote_control_press_until_image_match('KEY_DOWN', SettingsandsupportScreen.preference["selected"],settings_region,maximum_key_press=5):
         Tester.LogResults.passed("{} : Navigating to Preferences options in  Settings & Support".format(step_name))
     else:
         Tester.LogResults.failed("{} : Navigating to Preferences options in  Settings & Support".format(step_name))
