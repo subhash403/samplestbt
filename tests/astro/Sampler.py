@@ -54,7 +54,7 @@ class UserWrapper:
 
     def remote_control_press(self,key, number_of_times=1):
         self.LogResults.info("Remote Control Key <{}> pressed {} time(s)".format(key, number_of_times))
-        for i in range(0,number_of_times+1) :
+        for i in range(0,number_of_times) :
             stbt.press(str(key))
 
     def check_image(self, image_to_find, region=None, timeout_secs=configuration.image_check_time_out_secs):
