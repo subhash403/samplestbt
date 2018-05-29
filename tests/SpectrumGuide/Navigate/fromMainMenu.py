@@ -49,18 +49,18 @@ def to_my_library(step_name,Tester):
         Tester.LogResults.failed("Expected - My Library is Displayed, Actual- Not Displayed")
         return False
 
-    def to_settings(step_name, Tester):
-        Tester.remote_control_press('KEY_CHANNELUP')
-        if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["image"], 7, menu_region):
-            Tester.LogResults.passed("{} : Navigating to Settings options in  Main Menu".format(step_name))
-        else:
-            Tester.LogResults.failed("{} : Navigating to TV Shows from Main Menu".format(step_name))
-            return False
-        Tester.remote_control_press('KEY_ENTER')
-        if Tester.check_image(SettingsandsupportScreen.logo["image"]):
-            Tester.LogResults.passed("Expected - Settings&Support is Displayed, Actual- Displayed")
-            return True
-        else:
-            Tester.LogResults.failed("Expected - Settings&Support is Displayed, Actual- Not Displayed")
-            return False
+def to_settings(step_name, Tester):
+    Tester.remote_control_press('KEY_CHANNELUP')
+    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["image"], 7, menu_region):
+        Tester.LogResults.passed("{} : Navigating to Settings options in  Main Menu".format(step_name))
+    else:
+        Tester.LogResults.failed("{} : Navigating to TV Shows from Main Menu".format(step_name))
+        return False
+    Tester.remote_control_press('KEY_ENTER')
+    if Tester.check_image(SettingsandsupportScreen.logo["image"]):
+        Tester.LogResults.passed("Expected - Settings&Support is Displayed, Actual- Displayed")
+        return True
+    else:
+        Tester.LogResults.failed("Expected - Settings&Support is Displayed, Actual- Not Displayed")
+        return False
 
