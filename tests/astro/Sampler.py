@@ -13,7 +13,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 class UserWrapper:
-    def __init__(self):
+    def __init__(self,test_name):
+        self.test_name = test_name
         self.version = "stbt-1.0.0"
 
     @staticmethod
@@ -138,7 +139,6 @@ class UserWrapper:
         def warning(message):
             print("WARN: {}".format(message))
 
-    @staticmethod
-    def clean_up(assertion_flag,test_name):
-        assert assertion_flag, "Test case : {} failed".format(test_name)
+    def clean_up(self, assertion_flag):
+        assert assertion_flag, "Test case : {} failed".format(self.test_name)
         return True

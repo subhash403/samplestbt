@@ -29,24 +29,24 @@ Reviewed By : SivaRam Kumar Mani
 
 def test_01_sr_page_up_down_navigation():
     # Initialize test
-    user = UserWrapper()
-    user.start()
     test_name = "01_sr_page_up_down_navigation"
+    user = UserWrapper(test_name)
+    user.start()
     user.LogResults.info("Test Name :{}".format(test_name))
     assertion_flag = True
 
     # Pre-Requisites
+    # Check if STB is ON <TODO>
 
-    # Check if STB is ON
-    # <TODO>
-    # Check if STB is in live TB
+    # Step 1 : Check if STB is in live TB
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_name)
         return
 
+    # Step 2 : Navigate to guide screen from Live TV
     if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
-        user.clean_up(test_name)
+        user.clean_up(assertion_flag)
         return
 
     # Event if this step fails proceed to check if Page down works.
@@ -60,7 +60,7 @@ def test_01_sr_page_up_down_navigation():
         # call any other teardown if necessary
         assertion_flag = False
         # clean up user object
-        user.clean_up(test_name)
+        user.clean_up(assertion_flag)
         return
 
     # Event if this step fails proceed to check if Page down works.
@@ -84,4 +84,4 @@ def test_01_sr_page_up_down_navigation():
         assertion_flag = False
 
     # Clean up User Wrapper
-    user.clean_up(assertion_flag, test_name)
+    user.clean_up(assertion_flag)

@@ -18,10 +18,12 @@ first_cell_not_selected = {
 }
 
 first_channel = {
+    "image": None,
     "region": {"x": 100, "y": 309, "width": 71, "height": 29}
 }
 
 last_channel = {
+    "image": None,
     "region": {"x": 96, "y": 669, "width": 76, "height": 27}
 }
 
