@@ -40,7 +40,7 @@ def pause_for_num_seconds(step_name, tester, num_seconds):
     else:
         return False
     sleep(num_seconds)
-    if tester.check_image(LiveTV.pause["image"])
+    if tester.check_image(LiveTV.pause["image"]):
         tester.LogResults.passed("{} : Live TV was successfully paused for {} seconds".format(step_name, num_seconds))
         tester.LogResutls.info("Expected - Live TV stays paused for {} seconds, "
                                "Actual - Live TV stayed paused for {} seconds".format(num_seconds, num_seconds))
