@@ -24,7 +24,7 @@ from tests.astro.Sampler import UserWrapper
 # from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
 def menu_launch():
-    for _ in " "*2: stbt.press('KEY_EXIT')
+    for _ in " "*2: user.press('KEY_EXIT')
     user.press('KEY_MENU')
     assert user.wait_until(lambda: user.match("images/menu/menu_logo.png")), \
     "Menu not launched"
