@@ -15,6 +15,8 @@ from tests.astro.Sampler import UserWrapper
 from tests.SpectrumGuide.Navigate import fromLiveTV
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.Navigate import fromCloudGuide
+from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
+from time import sleep
 
 """
 ======================================================================================================================
@@ -51,3 +53,15 @@ def test_many_trickplay_presses_on_tsb():
 
     # Clean up User Wrapper
     user.clean_up(assertion_flag)
+
+
+def test_time_to_get_text():
+    test_name = "checking_get_text_time"
+    user = UserWrapper(test_name)
+    user.start()
+    user.LogResults.info("Test Name :{}".format(test_name))
+    #assertion_flag = True
+    fromLiveTV.to_main_menu("Step 1", user)
+    sleep(5)
+    my_text = user.get_text(MainMenuScreen.Spectrum_Logo["region"])
+    print my_text
