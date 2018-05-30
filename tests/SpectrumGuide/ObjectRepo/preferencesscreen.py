@@ -22,7 +22,7 @@ displayduration_launched = {
 }
 
 infobanner = {
-    "image": IMG_ABS_PATH +"/ImageRepo/preferences/infobanner.png"
+    "image": IMG_ABS_PATH +"/ImageRepo/preferences/Infobanner.png"
 
 }
 info_banner_time = {
