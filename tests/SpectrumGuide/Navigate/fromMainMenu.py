@@ -5,19 +5,14 @@ from tests.SpectrumGuide.ObjectRepo import SettingsAndSupportScreen
 from time import sleep
 
 
-def to_menu(step_name, tester):
-    tester.remote_control_press('KEY_MENU')
-    if tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
-        tester.LogResults.info("Expected - MENU is Displayed, Actual- Displayed")
-        tester.LogResults.passed("{} : Navigating to Main Menu".format(step_name))
-        return True
-    else:
-        tester.LogResults.info("Expected - MENU is Displayed, Actual- Not Displayed")
-        tester.LogResults.failed("{} : Navigating to Main Menu".format(step_name))
-        return False
-
-
 def to_tv_shows(step_name, tester):
+    """
+    :author: Beau Yoder
+    :description: Navigates to and launches TV Shows when Main Menu is already open
+    :param step_name:
+    :param tester:
+    :return:
+    """
     tester.remote_control_press('KEY_CHANNELUP')
     if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region):
         tester.LogResults.passed("{} : Navigating to TV Shows in Main Menu".format(step_name))
@@ -34,6 +29,13 @@ def to_tv_shows(step_name, tester):
 
 
 def to_my_library(step_name, tester):
+    """
+    :author: Beau Yoder
+    :description: Navigates to and launches My Library when Main Menu is already open
+    :param step_name:
+    :param tester:
+    :return:
+    """
     tester.remote_control_press('KEY_CHANNELUP')
     sleep(1)
     if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.my_library["image"], 7,
@@ -58,6 +60,13 @@ def to_my_library(step_name, tester):
 
 
 def to_settings(step_name, tester):
+    """
+    :author: Beau Yoder
+    :description: Navigates to and launches Settings when Main Menu is already open
+    :param step_name:
+    :param tester:
+    :return:
+    """
     tester.remote_control_press('KEY_CHANNELUP')
     if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["image"],
                                                      MainMenuScreen.area["region"], maximum_key_press=7):
@@ -72,4 +81,3 @@ def to_settings(step_name, tester):
     else:
         tester.LogResults.failed("Expected - Settings & Support is Displayed, Actual- Not Displayed")
         return False
-

@@ -2,6 +2,13 @@ from tests.SpectrumGuide.ObjectRepo import SettingsAndSupportScreen
 
 
 def to_preference(step_name, tester):
+    """
+    :author: <<TODO>>
+    :description: <<TODO>>
+    :param step_name:
+    :param tester:
+    :return:
+    """
     if tester.remote_control_press_until_image_match('KEY_DOWN', SettingsAndSupportScreen.preference["selected"],
                                                      SettingsAndSupportScreen.area["region"], maximum_key_press=5):
         tester.LogResults.passed("{} : Navigating to Preferences options in  Settings & Support".format(step_name))
