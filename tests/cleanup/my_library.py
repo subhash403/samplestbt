@@ -15,7 +15,7 @@ class MyLibrary(stbt.FrameObject):
     @property
     def is_visible(self):
         return (
-            stbt.match("images/vod/my_library_logo.png", frame=self._frame) and
+            stbt.match("images/vod/my_library_header.png", frame=self._frame) and
             not stbt.match("images/menu/menu_logo.png", frame=self._frame) and
             self.lane)
 
