@@ -107,7 +107,7 @@ class UserWrapper:
             txt_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
             ocr_txt = stbt.ocr(region=txt_region)
             ocr_txt = ocr_txt.strip()
-            self.LogResults.info("Captured Text : {}".format(ocr_txt))
+            self.LogResults.info("Captured Text : {}".format(ocr_txt.encode("utf-8")))
         except:
             self.LogResults.error("Text {} - Found".format(traceback.format_exc()))
             ocr_txt = None
