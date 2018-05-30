@@ -35,7 +35,7 @@ def test_live_tv():
     user.LogResults.info("Test Name :{}".format(test_name))
     assertion_flag = True
 
-    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user):
+    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, 3):
         assertion_flag = False
 
     user.clean_up(assertion_flag)

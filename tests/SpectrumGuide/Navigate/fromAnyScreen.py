@@ -13,11 +13,6 @@ def exit_to_live_tv_screen(step_name, user, number_of_exit_key=1, wait_after_key
     :return:
     """
     user.remote_control_press('KEY_EXIT', number_of_exit_key)
-    if user.check_image(LiveTV.black_screen["image"]):
-        user.remote_control_press('KEY_POWER')
-    if user.check_image(LiveTV.black_screen["image"]):
-        user.LogResults.failed("{}: Unable to confidently power on the STB".format(step_name))
-        return False
     if user.check_motion(motion_time_out_secs=10):
         user.LogResults.passed("{}: Exit from current screen to Live TV Screen using {} EXIT key".format
                                (step_name, number_of_exit_key))
