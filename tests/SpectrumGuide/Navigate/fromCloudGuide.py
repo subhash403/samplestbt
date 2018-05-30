@@ -5,6 +5,8 @@ from tests import configuration
 
 def select_future_program_using_right_arrow(step_name, user, number_of_times_to_move_right=1):
     """
+    :author: Beau Yoder
+    :description: Select a future program in cloud Guide using right arrow.
     :param step_name:
     :param user:
     :param number_of_times_to_move_right:
@@ -22,6 +24,8 @@ def select_future_program_using_right_arrow(step_name, user, number_of_times_to_
 
 def move_in_guide_using_down_arrow(step_name, user, number_of_times_to_move_down=1, wait_after_action=1):
     """
+    :author: Beau Yoder
+    :description: Using down arrow key move to program in next channel
     :param step_name:
     :param user:
     :param number_of_times_to_move_down:
@@ -37,6 +41,8 @@ def move_in_guide_using_down_arrow(step_name, user, number_of_times_to_move_down
 
 def error_check_for_record(step_name, user):
     """
+    :author: Beau Yoder
+    :description: Check if Error panel is displayed for recording
     :param step_name:
     :param user:
     :return: True
@@ -51,6 +57,8 @@ def error_check_for_record(step_name, user):
 
 def record_in_program_cell(step_name, user, number_of_presses=1, wait_after_action=1):
     """
+    :author: Beau Yoder
+    :description: Using Record Key from a program cell, record the program
     :param step_name:
     :param user:
     :param number_of_presses:
@@ -70,6 +78,8 @@ def record_in_program_cell(step_name, user, number_of_presses=1, wait_after_acti
 
 def check_page_down_channel_scrolling(step_name, user, wait_after_action=1):
     """
+    :author: Beau Yoder
+    :description: Check page down scrolling works in Guide Screen
     :param step_name:
     :param user:
     :param wait_after_action:
@@ -92,6 +102,8 @@ def check_page_down_channel_scrolling(step_name, user, wait_after_action=1):
 
 def check_page_up_channel_scrolling(step_name, user, wait_after_action=1):
     """
+    :author: Beau Yoder
+    :description: Using page up chec scrolling in guide screen
     :param step_name:
     :param user:
     :param wait_after_action:

@@ -46,6 +46,7 @@ def test_01_sr_page_up_down_navigation():
     # Step 2 : Navigate to guide screen from Live TV
     if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
+        assertion_flag = False
         user.clean_up(assertion_flag)
         return
 

@@ -6,7 +6,13 @@ from tests.SpectrumGuide.ObjectRepo import LiveTV
 
 
 def to_main_menu(step_name, tester):
-    """ Returns true or false based on navigation from LiveTv into Main Menu Screen """
+    """
+        :author: Beau Yoder
+        :description: navigate from LiveTv into Main Menu Screen using <MENU> key press
+        :param step_name:
+        :param tester:
+        :return: true or false
+    """
     tester.remote_control_press("KEY_MENU")
     if tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
         tester.LogResults.passed("{} : Navigate to Main Menu from Live TV".format(step_name))
@@ -19,7 +25,13 @@ def to_main_menu(step_name, tester):
 
 
 def to_guide(step_name, tester):
-    """ Returns true or false based on navigation from LiveTV into Guide Screen """
+    """
+    :author: Beau Yoder
+    :description: navigate from cloud guide screen using GUIDE key press
+    :param step_name:
+    :param tester:
+    :return: True / False
+    """
     tester.remote_control_press("KEY_GUIDE")
     # wait for 3 seconds for guide screen to launch
     sleep(3)
@@ -34,6 +46,14 @@ def to_guide(step_name, tester):
 
 
 def pause_for_num_seconds(step_name, tester, num_seconds):
+    """
+    :author: Beau Yoder
+    :description: pause a video for a given time in seconds using <PLAY>/<PAUSE> key press.
+    :param step_name:
+    :param tester:
+    :param num_seconds:
+    :return:
+    """
     tester.remote_control_press('KEY_PLAYPAUSE')
     if tester.check_image(LiveTV.pause["image"]):
         tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
