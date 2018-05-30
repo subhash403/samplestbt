@@ -29,7 +29,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"
     test_name = "tc_958_LiveTV_021_InfoBanner_AutoDismiss"
-    user = UserWrapper()
+    user = UserWrapper(test_name)
     user.start()
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
@@ -42,7 +42,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
             else:
                 Tester.LogResults.failed("{} : Navigating to Display_Duration from Guide Settings".format(step_name))
                 return False
-            Tester.remote_control_press('KEY_ENTER')
+            Tester.remote_control_press('KEY_ENTER',0)
             if Tester.check_image(preferencesscreen.displayduration_launched["image"]):
                 Tester.LogResults.passed("Expected - displayDuration is Displayed, Actual- Displayed")
                 return True
