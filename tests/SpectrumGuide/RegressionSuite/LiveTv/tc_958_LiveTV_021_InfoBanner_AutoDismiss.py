@@ -38,9 +38,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
         if Tester.check_image(preferencesscreen.guidesettings_launched["image"]):
             def to_tv_shows(step_name, Tester):
                 Tester.remote_control_press('KEY_DOWN')
-                if Tester.remote_control_press_until_image_match('KEY_RIGHT',
-                                                                 preferencesscreen.display_duration["image"],
-                                                                 region=None, maximum_key_press=3):
+                if Tester.remote_control_press_until_image_match('KEY_RIGHT',preferencesscreen.display_duration["image"], region=None, maximum_key_press=3):
                     Tester.LogResults.passed("{} : Navigating to display_duration options in Guide Setitngs".format(step_name))
                 else:
                     Tester.LogResults.failed("{} : Navigating to Display_Duration from Guide Settings".format(step_name))
@@ -73,6 +71,6 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
         user.clean_up(test_id, test_name)
         return
 
-    if not to_display_suration("step 6", user):
+    if not to_display_duration("step 6",user):
         user.clean_up(test_id, test_name)
         return
