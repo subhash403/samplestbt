@@ -26,6 +26,7 @@ Reviewed By : TBD
 ======================================================================================================================
 """
 
+
 def test_live_tv():
     # Initialize test
     test_name = "sanity_live_tv"
@@ -34,10 +35,7 @@ def test_live_tv():
     user.LogResults.info("Test Name :{}".format(test_name))
     assertion_flag = True
 
-    # Pre-Requisites
-    # Check if STB is ON <TODO>
+    if not fromAnyScreen.exit_to_live_tv_screen("Step 1"):
+        assertion_flag = False
 
-    # Step 1 : Check if STB is in live TB
-    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
-        user.clean_up(assertion_flag)
-        return
+    user.clean_up(assertion_flag)
