@@ -22,7 +22,7 @@ from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.Navigate import fromSettings
 from tests.SpectrumGuide.Navigate import frompreferences
 from tests.SpectrumGuide.Navigate import fromMainMenu
-from tests.SpectrumGuide.ObjectRepo import preferencescreen
+from tests.SpectrumGuide.ObjectRepo import preferencesscreen
 
 
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
