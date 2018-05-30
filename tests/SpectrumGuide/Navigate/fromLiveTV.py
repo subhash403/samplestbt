@@ -73,6 +73,15 @@ def pause_for_num_seconds(step_name, tester, num_seconds):
 
 
 def cycle_trickplay_from_pause(step_name, tester, num_times):
+    """
+    :author: Beau Yoder
+    :description: if Live TV is paused, the sequence 'Play, Rewind, FFW, Play, Pause' is performed num_times times, \
+    then Live TV is played/resumed
+    :param step_name:
+    :param tester:
+    :param num_times: number of cycle iterations
+    :return: True if all trick-play commands are successful, else False
+    """
     if tester.check_image(LiveTV.pause["image"]):
         tester.LogResults.info("Expected - Live TV should be paused, Actual - Live TV is paused")
     else:

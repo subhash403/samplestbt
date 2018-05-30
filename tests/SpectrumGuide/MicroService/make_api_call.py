@@ -125,7 +125,7 @@ class MakeApiCall:
 
     def set_pin(self,value,login_edge_response):
         print("*********Triggering Set PIN API*********")
-        if(value == "Parental"):
+        if (value == "Parental"):
             payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Parental Control PIN","value":["2222"]}]}]}}'
         elif(value == "Purchase"):
             payload = '{"settings":{"groups":[{"id":"STB' + self.mac_address + '","type":"device-stb","options":[{"name":"Purchase PIN","value":["0000"]},{"name":"Purchase PIN Active","value":[true]}]}]}}'

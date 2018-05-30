@@ -4,64 +4,72 @@ from tests.SpectrumGuide.ObjectRepo import MyLibraryScreen
 from tests.SpectrumGuide.ObjectRepo import SettingsAndSupportScreen
 from time import sleep
 
-menu_region = MainMenuScreen.area["region"]
 
-
-def to_menu(step_name, Tester):
-    Tester.remote_control_press('KEY_MENU')
-    if Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
-        Tester.LogResults.passed("Expected - MENU is Displayed, Actual- Displayed")
+def to_menu(step_name, tester):
+    tester.remote_control_press('KEY_MENU')
+    if tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
+        tester.LogResults.info("Expected - MENU is Displayed, Actual- Displayed")
+        tester.LogResults.passed("{} : Navigating to Main Menu".format(step_name))
         return True
     else:
-        Tester.LogResults.failed("Expected - MENU is Displayed, Actual- Not Displayed")
+        tester.LogResults.info("Expected - MENU is Displayed, Actual- Not Displayed")
+        tester.LogResults.failed("{} : Navigating to Main Menu".format(step_name))
         return False
 
-def to_tv_shows(step_name, Tester):
-    Tester.remote_control_press('KEY_CHANNELUP')
-    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region) :
-        Tester.LogResults.passed("{} : Navigating to TV Shows options in  Main Menu".format(step_name))
+
+def to_tv_shows(step_name, tester):
+    tester.remote_control_press('KEY_CHANNELUP')
+    if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.tv_shows["image"], 7, menu_region):
+        tester.LogResults.passed("{} : Navigating to TV Shows in Main Menu".format(step_name))
     else:
-        Tester.LogResults.failed("{} : Navigating to TV Shows from Main Menu".format(step_name))
+        tester.LogResults.failed("{} : Navigating to TV Shows in Main Menu".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER')
-    if Tester.check_image(TvShowsScreen.logo["image"]):
-        Tester.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
+    tester.remote_control_press('KEY_ENTER')
+    if tester.check_image(TvShowsScreen.logo["image"]):
+        tester.LogResults.passed("Expected - TV Shows is Displayed, Actual- Displayed")
         return True
     else:
-        Tester.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
+        tester.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
         return False
 
 
-def to_my_library(step_name,Tester):
-    Tester.LogResults.info("Navigating to My Library from Main Menu")
-    Tester.remote_control_press('KEY_CHANNELUP')
+def to_my_library(step_name, tester):
+    tester.remote_control_press('KEY_CHANNELUP')
     sleep(1)
-    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.my_library["image"], 7, menu_region):
-        Tester.LogResults.passed("Expected - navigate to my library option, Actual- Displayed")
+    if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.my_library["image"], 7,
+                                                     MainMenuScreen.area["region"]):
+        tester.LogResults.info("Expected - navigate to my library option, Actual- Displayed")
+        tester.LogResults.passed("{} : Navigating to My Library in Main Menu".format(step_name))
     else:
-        Tester.LogResults.passed("Expected - navigate to my library option, Actual- not displayed")
+        tester.LogResults.info("Expected - navigate to my library option, Actual- not displayed")
+        tester.LogResults.failed("{} : Navigating to My Library in Main Menu".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER')
+    tester.remote_control_press('KEY_ENTER')
     sleep(1)
-    if Tester.check_image(MyLibraryScreen.logo["image"]) and not Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
-        Tester.LogResults.passed("Expected - My Library is Displayed, Actual- Displayed")
+    if tester.check_image(MyLibraryScreen.logo["image"]) and not \
+            tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
+        tester.LogResults.info("Expected - My Library is Displayed, Actual- Displayed")
+        tester.LogResults.passed("{} : Reached My Library page".format(step_name))
         return True
     else:
-        Tester.LogResults.failed("Expected - My Library is Displayed, Actual- Not Displayed")
+        tester.LogResults.info("Expected - My Library is Displayed, Actual- Not Displayed")
+        tester.LogResults.failed("{} : Did not reach My Library page".format(step_name))
         return False
 
-def to_settings(step_name, Tester):
-    Tester.remote_control_press('KEY_CHANNELUP')
-    if Tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["image"],menu_region,maximum_key_press=7):
-        Tester.LogResults.passed("{} : Navigating to Settings options in  Main Menu".format(step_name))
+
+def to_settings(step_name, tester):
+    tester.remote_control_press('KEY_CHANNELUP')
+    if tester.remote_control_press_until_image_match('KEY_DOWN', MainMenuScreen.Settings["image"],
+                                                     MainMenuScreen.area["region"], maximum_key_press=7):
+        tester.LogResults.passed("{} : Navigating to Settings options in  Main Menu".format(step_name))
     else:
-        Tester.LogResults.failed("{} : Navigating to TV Settings from Main Menu".format(step_name))
+        tester.LogResults.failed("{} : Navigating to TV Settings from Main Menu".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER',0)
-    if Tester.check_image(SettingsAndSupportScreen.logo["image"]):
-        Tester.LogResults.passed("Expected - Settings&Support is Displayed, Actual- Displayed")
+    tester.remote_control_press('KEY_ENTER', 0)
+    if tester.check_image(SettingsAndSupportScreen.logo["image"]):
+        tester.LogResults.passed("Expected - Settings & Support is Displayed, Actual- Displayed")
         return True
     else:
-        Tester.LogResults.failed("Expected - Settings&Support is Displayed, Actual- Not Displayed")
+        tester.LogResults.failed("Expected - Settings & Support is Displayed, Actual- Not Displayed")
         return False
 
