@@ -18,7 +18,7 @@ from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MyDVRScreen
 from tests.SpectrumGuide.ObjectRepo import LiveTV
 from tests.SpectrumGuide.MicroService import make_api_call
-from tests.SpectrumGuide.Navigate import fromMainMenu
+
 """
 ======================================================================================================================
 Function Test Coverage : <ALM_Functional_Test_Name>
@@ -80,7 +80,7 @@ def test_tc_954_ChanelBar_Not_Displayed():
         assertion_flag = False
 
   #########Step 3: Press "Guide",Guide Screen should be displayed without displaying the channel bar
-    if not fromLiveTV.to_guide("Step 4", user):
+    if not fromLiveTV.to_guide("Step 3", user):
         assertion_flag = False
   ######Navigate to LIVE TV
     if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
@@ -91,7 +91,7 @@ def test_tc_954_ChanelBar_Not_Displayed():
         assertion_flag = False
 
 ###########Step 4: Press "MYDVR",DVRScreen should be displayed without displaying the channel bar.
-    if not LiveTV_to_MyDVR("Step6", user):
+    if not LiveTV_to_MyDVR("Step4", user):
         assertion_flag = False
         ######Navigate to LIVE TV
         if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
@@ -102,7 +102,7 @@ def test_tc_954_ChanelBar_Not_Displayed():
             assertion_flag = False
 
     ## Step 5: Press "MENU",menu Screen should be displayed without displaying the channel bar.
-    if not fromMainMenu.to_menu("Step5",user):
+    if not fromLiveTV.to_main_menu("step 5", user):
         assertion_flag = False
         ######Navigate to LIVE TV
         if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
@@ -113,7 +113,7 @@ def test_tc_954_ChanelBar_Not_Displayed():
             assertion_flag = False
 
     # Step 6: Press "on demand",on demand Screen should be displayed without displaying the channel bar.
-    if not LiveTV_to_Tvshows("Step8", user):
+    if not LiveTV_to_Tvshows("Step6", user):
         assertion_flag = False
         ######Navigate to LIVE TV
         if not fromAnyScreen.exit_to_live_tv_screen("Step 3", user, number_of_exit_key=2, wait_after_key_press_secs=5):
@@ -126,7 +126,7 @@ def test_tc_954_ChanelBar_Not_Displayed():
     ########## Press "POWER",System should be turned 'OFF' without displaying the channel bar
     user.remote_control_press('KEY_POWER',0)
     if not stbt.is_screen_black:
-        user.clean_up(test_id, test_name)
+        user.clean_up(assertion_flag)
         return
     user.remote_control_press('KEY_POWER', 0)
     sleep(3)
