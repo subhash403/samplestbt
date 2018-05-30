@@ -75,8 +75,8 @@ class UserWrapper:
                 self.LogResults.warning("Image check failed using: {}".format(image_name))
                 return False
 
-    def check_motion(self, motion_timeout):
-        if stbt.wait_for_motion(motion_timeout):
+    def check_motion(self, motion_time_out_secs):
+        if stbt.wait_for_motion(motion_time_out_secs):
             self.LogResults.info("Motion detected")
             return True
         else:
