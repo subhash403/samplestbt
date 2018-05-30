@@ -51,8 +51,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
                 return False
 
     def info_banner(step_name, Tester):
-        Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], 7,
-                                                      menu_region):
+        Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], 7,menu_region):
         Tester.remote_control_press('KEY_ENTER', 0)
         Tester.get_text(self, preferencesscreeninfo_banner_time.["region"]):
 
