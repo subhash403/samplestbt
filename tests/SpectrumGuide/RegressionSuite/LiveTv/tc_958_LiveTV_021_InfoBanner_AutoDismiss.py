@@ -35,7 +35,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     assertion_flag = True
 
     def to_display_duration(step_name, Tester):
-        if Tester.check_image(preferencesscreen.guide_settings_launched["image"]):
+        if Tester.check_image(preferencesscreen.guidesettings_launched ["image"]):
             Tester.remote_control_press('KEY_DOWN')
             if Tester.remote_control_press_until_image_match('KEY_RIGHT', preferencesscreen.display_duration["image"],
                                                              region=None, maximum_key_press=3):
