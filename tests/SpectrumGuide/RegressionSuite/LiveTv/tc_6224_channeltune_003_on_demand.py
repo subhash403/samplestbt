@@ -17,7 +17,14 @@ from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.ObjectRepo import MiniGuideScreen
 
-user = UserWrapper()
+"""
+======================================================================================================================
+Function Test Coverage : ChannelTune_003_On_Demand
+Author      : Subhash Boddu
+Description : Test to Launch Ondemand channel from Live Tv & MiniGuide & CloudGuide  
+Reviewed By :  
+======================================================================================================================
+"""
 
 
 def test_tc_6224_ChannelTune_003_On_Demand():
@@ -73,8 +80,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         return
 
     if not ondemand_to_tv_shows("Step 2", user):
-        user.clean_up(test_id, test_name)
-        return
+        assertion_flag = False
 #Step-2
 #Launch the ondemand channel from Guide 
     
@@ -84,8 +90,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
 
     if not fromLiveTV.to_guide("Step 4", user):
         # call any other teardown if necessary
-        user.clean_up(test_id, test_name)
-        return
+        assertion_flag = False
 
 #if we press 999 from the guide it directly launches the Tvshows page'''
     user.remote_control_press('KEY_9', 2)
@@ -102,12 +107,10 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         return
     
     if not miniguidelaunch("Step 4", user):
-        user.clean_up(test_id, test_name)
-        return
+        assertion_flag = False
 
     if not checkchannelnumberinminiguide('KEY_9',number_of_times=2,channelnumber=999):
-        user.clean_up(test_id, test_name)
-        return
+        assertion_flag = False
 
 #if 999 channel we got in miniguide then we need to select that to launch the ondemand channel
     user.remote_control_press('KEY_ENTER')
@@ -117,7 +120,7 @@ def test_tc_6224_ChannelTune_003_On_Demand():
         return True
     else:
         user.LogResults.failed("Expected - TV Shows is Displayed, Actual- Not Displayed")
-        return False
+        assertion_flag = False
     user.clean_up(assertion_flag, test_name)
 
 
