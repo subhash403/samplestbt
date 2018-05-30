@@ -23,24 +23,29 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"
     test_name = "tc_958_LiveTV_021_InfoBanner_AutoDismiss"
-    user = UserWrapper()
+    user = UserWrapper(test_name)
     user.start()
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
 
-    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2,wait_after_key_press_secs=5):
-        user.clean_up(test_id, test_name)
+    if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
     if not fromMainMenu.to_menu("step 2", user):
-        user.clean_up(test_id, test_name)
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
     if not fromMainMenu.to_settings("step 3", user):
-        user.clean_up(test_id, test_name)
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
     if not fromSettings.to_preference("Step 4", user):
-        user.clean_up(test_id, test_name)
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
+    user.clean_up(assertion_flag)

@@ -21,7 +21,7 @@ from tests.SpectrumGuide.Navigate import fromCloudGuide
 Function Test Coverage : <ALM_Functional_Test_Name> 
 Author      : Beau Yoder    
 Description : In Cloud Guide, Check if 
-Reviewed By : 
+Reviewed By : TBD
 ======================================================================================================================
 """
 
@@ -37,13 +37,15 @@ def test_01_record_in_cguide():
     # We can also check if there are any action panels and see if we can get out it to a Live channel, for now we will
     # exit the test.
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2,wait_after_key_press_secs=5):
-        user.clean_up(False)
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
     if not fromLiveTV.to_guide("Step 2", user):
         # call any other teardown if necessary
         # <TODO> Check If cloud guide is available.
-        user.clean_up(False)
+        assertion_flag = False
+        user.clean_up(assertion_flag)
         return
 
     # Event start a recording using record button

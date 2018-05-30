@@ -20,7 +20,7 @@ from tests.SpectrumGuide.ObjectRepo import MiniGuideScreen
 user = UserWrapper()
 
 
-def test_tc_6224_ChannelTune_003_On_Demand():
+def test_tc_6224_channel_tune_003_on_demand():
     # Initialize test
     test_id = "tc6224"
     test_name = "tc_6224_ChannelTune_003_On Demand"
