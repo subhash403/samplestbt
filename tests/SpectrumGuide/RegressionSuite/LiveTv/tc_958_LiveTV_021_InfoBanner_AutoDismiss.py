@@ -70,7 +70,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
         if not to_display_duration("step 6", user):
             assertion_flag = False
 
-        if not info_banner():
+        if not info_banner("step 7",user):
             assertion_flag = False
 
         # Clean up User Wrapper
