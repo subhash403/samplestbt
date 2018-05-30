@@ -16,6 +16,7 @@ from tests.astro.Sampler import UserWrapper
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.Navigate import fromSettings
+from tests.SpectrumGuide.Navigate import frompreferences
 from tests.SpectrumGuide.Navigate import fromMainMenu
 #from tests.SpectrumGuide.ObjectRepo import fromminiguidescreen
 
@@ -43,4 +44,9 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     if not fromSettings.to_preference("Step 4", user):
         user.clean_up(test_id, test_name)
         return
+
+    if not frompreferences.to_guide_settings("step 5",user):
+        user.clean_up(test_id, test_name)
+        return
+
 
