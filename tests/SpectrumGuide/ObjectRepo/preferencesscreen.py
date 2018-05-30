@@ -9,3 +9,11 @@ guide_Settings = {
 guidesettings_launched = {
     "image": IMG_ABS_PATH +"/ImageRepo/preferences/Guide_settings_launched.png"
 }
+
+display_duration = {
+    "image": IMG_ABS_PATH +"/ImageRepo/preferences/Display_Duration.png"
+}
+
+displayduration_launched = {
+    "image": IMG_ABS_PATH +"/ImageRepo/preferences/displayduration_launched.png"
+}
