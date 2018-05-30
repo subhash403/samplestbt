@@ -20,7 +20,9 @@ displayduration_launched = {
 
 infobanner = {
     "image": IMG_ABS_PATH +"/ImageRepo/preferences/infobanner.png"
-    "region": {"x": 504, "y": 404, "width": 65, "height": 39}
+    "region" = {
+        "x": 504, "y": 404, "width": 65, "height": 39
+}
 }
 info_banner_time = {
     "region": {"x": 420, "y": 405, "width": 80, "height": 37}
