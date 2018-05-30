@@ -112,7 +112,7 @@ class UserWrapper:
             self.LogResults.error("Text {} - Found".format(traceback.format_exc()))
             ocr_txt = None
 
-        return ocr_txt
+        return ocr_txt.encode("utf-8")
 
     class LogResults:
 
