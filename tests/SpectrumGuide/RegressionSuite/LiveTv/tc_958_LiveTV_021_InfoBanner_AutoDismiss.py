@@ -13,10 +13,7 @@ def _get_test_pack_root():
 
 sys.path.insert(0, _get_test_pack_root())
 from tests.cleanup.methods import Menu_Methods
-# from tests.SpectrumGuide.ObjectRepo import TvShowsScreen
-# from tests.SpectrumGuide.ObjectRepo import GuideScreen
 from tests.astro.Sampler import UserWrapper
-# from tests.SpectrumGuide.Navigate import fromLiveTV
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
 from tests.SpectrumGuide.Navigate import fromSettings
@@ -51,9 +48,10 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
 
     def info_banner(step_name, Tester):
         preferences_region= preferencesscreen.area["region"]
-        Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], maximum_key_press=1,region=preferences_region)
+        Tester.remote_control_press('KEY_DOWN', 0)
+        #Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], maximum_key_press=1,region=preferences_region)
         Tester.remote_control_press('KEY_ENTER', 0)
-        Tester.get_text(self, preferencesscreen.info_banner_time["region"])
+        Tester.get_text(preferencesscreen.info_banner_time["region"])
 
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_id, test_name)
