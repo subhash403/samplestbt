@@ -7,7 +7,7 @@ def to_guide_settings(step_name,Tester):
     else:
         Tester.LogResults.failed("{} : Navigating to Guide settings from preferences ".format(step_name))
         return False
-    Tester.remote_control_press('KEY_ENTER')
+    Tester.remote_control_press('KEY_ENTER',0)
     if Tester.check_image(preferencesscreen.guidesettings_launched["image"]):
         Tester.LogResults.passed("Expected - guidesettings is Displayed, Actual- Displayed")
         return True
