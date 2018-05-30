@@ -24,7 +24,6 @@ from tests.SpectrumGuide.Navigate import frompreferences
 from tests.SpectrumGuide.Navigate import fromMainMenu
 from tests.SpectrumGuide.ObjectRepo import preferencesscreen
 
-
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"
