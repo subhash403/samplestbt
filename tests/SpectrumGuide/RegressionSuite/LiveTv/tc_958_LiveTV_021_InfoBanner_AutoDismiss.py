@@ -55,25 +55,25 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
         Tester.remote_control_press('KEY_ENTER', 0)
         Tester.get_text(self, preferencesscreen.info_banner_time["region"])
 
-        if not fromMainMenu.to_menu("step 2", user):
-            assertion_flag = False
+    if not fromMainMenu.to_menu("step 2", user):
+        assertion_flag = False
 
-        if not fromMainMenu.to_settings("step 3", user):
-            assertion_flag = False
+    if not fromMainMenu.to_settings("step 3", user):
+        assertion_flag = False
 
-        if not fromSettings.to_preference("Step 4", user):
-            assertion_flag = False
+    if not fromSettings.to_preference("Step 4", user):
+        assertion_flag = False
 
-        if not frompreferences.to_guide_settings("step 5", user):
-            assertion_flag = False
+    if not frompreferences.to_guide_settings("step 5", user):
+        assertion_flag = False
 
-        if not to_display_duration("step 6", user):
-            assertion_flag = False
+    if not to_display_duration("step 6", user):
+        assertion_flag = False
 
-        if not info_banner("step 7",user):
-            assertion_flag = False
+    if not info_banner("step 7",user):
+        assertion_flag = False
 
         # Clean up User Wrapper
-        user.clean_up(assertion_flag)
+    user.clean_up(assertion_flag)
 
 
