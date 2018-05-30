@@ -23,3 +23,7 @@ rewind = {
     "image": IMG_ABS_PATH + "LiveTV/rewind.png",
     "region": {"x": 209, "y": 551, "width": 132, "height": 123}
 }
+
+black_screen = {
+    "image": IMG_ABS_PATH + "LiveTV/black_screen.png"
+}
