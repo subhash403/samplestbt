@@ -7,11 +7,11 @@ from tests.SpectrumGuide.ObjectRepo import LiveTV
 
 def to_main_menu(step_name, tester):
     """
-        :author: Beau Yoder
-        :description: navigate from LiveTv into Main Menu Screen using <MENU> key press
-        :param step_name:
-        :param tester:
-        :return: true or false
+    :author: Beau Yoder
+    :description: navigate from LiveTv into Main Menu Screen using <MENU> key press
+    :param step_name:
+    :param tester:
+    :return: true or false
     """
     tester.remote_control_press("KEY_MENU")
     if tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
