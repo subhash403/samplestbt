@@ -1,7 +1,8 @@
 
 from tests.SpectrumGuide.ObjectRepo import preferencesscreen
+
 def to_guide_settings(step_name,Tester):
-    if Tester.remote_control_press_until_image_match('KEY_RIGHT', preferencesscreen.guide_Settings["image"],menu_region,maximum_key_press=4) :
+    if Tester.remote_control_press_until_image_match('KEY_RIGHT', preferencesscreen.guide_Settings["image"],region=None,maximum_key_press=4) :
         Tester.LogResults.passed("{} : Navigating to Guide_settings in  Preferences".format(step_name))
     else:
         Tester.LogResults.failed("{} : Navigating to Guide settings from preferences ".format(step_name))
