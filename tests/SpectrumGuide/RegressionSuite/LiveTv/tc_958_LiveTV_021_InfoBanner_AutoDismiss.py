@@ -30,29 +30,6 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
 
-    def to_display_duration(step_name, Tester):
-        if Tester.check_image(preferencesscreen.guidesettings_launched["image"]):
-            Tester.remote_control_press('KEY_DOWN')
-            if Tester.check_image(preferencesscreen.display_duration["image"]):
-                Tester.remote_control_press('KEY_RIGHT', 0)
-            else:
-                Tester.LogResults.failed("{} : Navigating to Display_Duration from Guide Settings".format(step_name))
-                return False
-            Tester.remote_control_press('KEY_ENTER', 0)
-            if Tester.check_image(preferencesscreen.displayduration_launched["image"]):
-                Tester.LogResults.passed("Expected - displayDuration is Displayed, Actual- Displayed")
-                return True
-            else:
-                Tester.LogResults.failed("Expected - Display Duration is Displayed, Actual- Not Displayed")
-                return False
-
-    def info_banner(step_name, Tester):
-        preferences_region= preferencesscreen.area["region"]
-        Tester.remote_control_press('KEY_DOWN', 0)
-        #Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], maximum_key_press=1,region=preferences_region)
-        Tester.remote_control_press('KEY_ENTER', 0)
-        Tester.get_text(preferencesscreen.info_banner_time["region"])
-
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, number_of_exit_key=2, wait_after_key_press_secs=5):
         user.clean_up(test_id, test_name)
         return
@@ -69,11 +46,11 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     if not frompreferences.to_guide_settings("step 5", user):
         assertion_flag = False
 
-    if not to_display_duration("step 6", user):
+    if not frompreferences.to_display_duration("step 6", user):
         assertion_flag = False
 
-    if not info_banner("step 7",user):
+    if not frompreferences.info_banner("step 7",user):
         assertion_flag = False
 
-        # Clean up User Wrapper
+    # Clean up User Wrapper
     user.clean_up(assertion_flag)
