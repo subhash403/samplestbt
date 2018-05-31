@@ -31,7 +31,7 @@ def test_tc_6224_channel_tune_003_on_demand():
     # Initialize test
     test_id = "tc6224"
     test_name = "tc_6224_ChannelTune_003_On Demand"
-    user = UserWrapper()
+    user = UserWrapper(test_name)
     user.start()
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
