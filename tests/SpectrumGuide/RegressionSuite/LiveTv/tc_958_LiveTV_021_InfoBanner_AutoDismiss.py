@@ -21,6 +21,15 @@ from tests.SpectrumGuide.Navigate import frompreferences
 from tests.SpectrumGuide.Navigate import fromMainMenu
 from tests.SpectrumGuide.ObjectRepo import preferencesscreen
 
+"""
+======================================================================================================================
+Function Test Coverage :  LiveTV_021_InfoBanner_AutoDismiss
+Author      : Subhash Boddu
+Description : Test to validate the Display Duration (Autodismiss) of Info Banner 
+Reviewed By :  
+======================================================================================================================
+"""
+
 def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"

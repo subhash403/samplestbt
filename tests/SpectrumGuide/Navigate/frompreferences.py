@@ -33,7 +33,7 @@ def to_display_duration(step_name, Tester):
 
 def info_banner(step_name, Tester):
     preferences_region= preferencesscreen.area["region"]
-    Tester.remote_control_press('KEY_DOWN', 0)
-    #Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], maximum_key_press=1,region=preferences_region)
+    #Tester.remote_control_press('KEY_DOWN', 0)
+    Tester.remote_control_press_until_image_match('KEY_DOWN', preferencesscreen.infobanner["image"], maximum_key_press=1,region=preferences_region)
     Tester.remote_control_press('KEY_ENTER', 0)
     Tester.get_text(preferencesscreen.info_banner_time["region"])
