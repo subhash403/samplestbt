@@ -33,7 +33,7 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
     # Initialize test
     test_id = "tc958"
     test_name = "tc_958_LiveTV_021_InfoBanner_AutoDismiss"
-    user = UserWrapper()
+    user = UserWrapper(test_name)
     user.start()
     user.LogResults.info("Test ID : {}, Test Name :{}".format(test_id, test_name))
     assertion_flag = True
