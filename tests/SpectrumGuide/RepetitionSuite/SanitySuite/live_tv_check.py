@@ -34,10 +34,7 @@ def test_live_tv():
     user.start()
     user.LogResults.info("Test Name :{}".format(test_name))
     assertion_flag = True
-'''
-    if not fromAnyScreen.turn_box_on("Step 0", user):
-        assertion_flag = False
-'''
+
     if not fromAnyScreen.exit_to_live_tv_screen("Step 1", user, 3):
         assertion_flag = False
 
