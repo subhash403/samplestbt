@@ -77,5 +77,3 @@ def test_tc_958_LiveTV_021_InfoBanner_AutoDismiss():
 
         # Clean up User Wrapper
     user.clean_up(assertion_flag)
-
-

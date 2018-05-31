@@ -13,7 +13,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 class UserWrapper:
-    def __init__(self):
+    def __init__(self,test_name):
+        self.test_name = test_name
         self.version = "stbt-1.0.0"
 
     @staticmethod
@@ -53,7 +54,7 @@ class UserWrapper:
 
     def remote_control_press(self,key, number_of_times=1):
         self.LogResults.info("Remote Control Key <{}> pressed {} time(s)".format(key, number_of_times))
-        for i in range(0,number_of_times+1) :
+        for i in range(0,number_of_times) :
             stbt.press(str(key))
 
     def check_image(self, image_to_find, region=None, timeout_secs=configuration.image_check_time_out_secs):
@@ -74,8 +75,8 @@ class UserWrapper:
                 self.LogResults.warning("Image check failed using: {}".format(image_name))
                 return False
 
-    def check_motion(self, motion_timeout):
-        if stbt.wait_for_motion(motion_timeout):
+    def check_motion(self, motion_time_out_secs):
+        if stbt.wait_for_motion(motion_time_out_secs):
             self.LogResults.info("Motion detected")
             return True
         else:
@@ -106,12 +107,12 @@ class UserWrapper:
             txt_region = stbt.Region(region["x"], region["y"], width=region["width"], height=region["height"])
             ocr_txt = stbt.ocr(region=txt_region)
             ocr_txt = ocr_txt.strip()
-            self.LogResults.info("Captured Text : {}".format(ocr_txt))
+            self.LogResults.info("Captured Text : {}".format(ocr_txt.encode("utf-8")))
         except:
             self.LogResults.error("Text {} - Found".format(traceback.format_exc()))
             ocr_txt = None
 
-        return ocr_txt
+        return ocr_txt.encode("utf-8")
 
     class LogResults:
 
@@ -138,7 +139,6 @@ class UserWrapper:
         def warning(message):
             print("WARN: {}".format(message))
 
-    @staticmethod
-    def clean_up(assertion_flag,test_name):
-        assert assertion_flag, "Test case : {} failed".format(test_name)
+    def clean_up(self, assertion_flag):
+        assert assertion_flag, "Test case : {} failed".format(self.test_name)
         return True
