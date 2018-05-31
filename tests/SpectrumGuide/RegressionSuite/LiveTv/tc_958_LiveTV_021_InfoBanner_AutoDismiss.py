@@ -12,7 +12,6 @@ def _get_test_pack_root():
 
 
 sys.path.insert(0, _get_test_pack_root())
-from tests.cleanup.methods import Menu_Methods
 from tests.astro.Sampler import UserWrapper
 from tests.SpectrumGuide.Navigate import fromAnyScreen
 from tests.SpectrumGuide.ObjectRepo import MainMenuScreen
