@@ -5,6 +5,15 @@ from tests.SpectrumGuide.ObjectRepo import SettingsAndSupportScreen
 from time import sleep
 
 
+def to_menu(step_name, Tester):
+    Tester.remote_control_press('KEY_MENU')
+    if Tester.check_image(MainMenuScreen.Spectrum_Logo["image"]):
+        Tester.LogResults.passed("Expected - MENU is Displayed, Actual- Displayed")
+        return True
+    else:
+        Tester.LogResults.failed("Expected - MENU is Displayed, Actual- Not Displayed")
+        return False
+    
 def to_tv_shows(step_name, tester):
     """
     :author: Beau Yoder
